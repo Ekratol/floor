@@ -381,11 +381,14 @@
                     const ownerData = gameState.grid.find(c => c.originalOwner === cell.currentOwner);
                     const isEliminated = cell.originalOwner !== cell.currentOwner;
 
-                    // Pokud žák na tomto políčku vypadl, zmenšíme jméno a zprůhledníme ho
+                       // Pokud žák na tomto políčku vypadl (pole je obsazené útočníkem)
                     if (isEliminated) {
                         div.innerHTML = `
-                            <span class="cell-owner" style="font-size: 0.9rem; opacity: 0.4; font-weight: normal; text-decoration: line-through;">${cell.initials}</span>
-                            <span class="cell-topic" style="font-size: 0.65rem; opacity: 0.7; color: #94a3b8;">👑 ${ownerData ? ownerData.initials : ''}</span>
+                            <!-- Původní poražený žák (přeškrtnutý a malý) -->
+                            <span class="cell-owner" style="font-size: 0.8rem; opacity: 0.3; font-weight: normal; text-decoration: line-through;">${cell.initials}</span>
+                            
+                            <!-- 👑 NOVÝ MAJITEL (ÚTOČNÍK) - ZDE JSME ZVĚTŠILI PÍSMO NA 1.2rem A DALI TUČNOST -->
+                            <span class="cell-topic" style="font-size: 1.2rem; font-weight: 900; opacity: 1; color: #ffffff; text-shadow: 0 0 8px rgba(255,255,255,0.3);">👑 ${ownerData ? ownerData.initials : ''}</span>
                         `;
                         div.style.borderStyle = "dashed"; // Vyřazená pole mají přerušovaný okraj
                     } else {
