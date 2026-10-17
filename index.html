@@ -208,7 +208,7 @@
             "#be185d", // 11. Tmavě růžová
             "#374151"  // 12. Antracitová
         ];
-  // 🎵 VYLEPŠENÝ ZVUKOVÝ ENGINE (DLOUHÉ MELODIE A VELKOLEPÁ FANFÁRA)
+ // 🎵 MAJESTÁTNÍ ZVUKOVÝ ENGINE (DLOUHÉ, TÁHLÉ TÓNY A VELKOLEPÁ SHOW)
         const AudioEngine = {
             ctx: null,
             init() { if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
@@ -217,30 +217,32 @@
                 const now = this.ctx.currentTime;
                 
                 if (type === 'correct') { 
-                    // 🟢 SPRÁVNÁ ODPOVĚĎ - 3 delší, jasně stoupající tóny (píp-píp-píp)
-                    this.playTone(523.25, now, 0.15);       // C5
-                    this.playTone(659.25, now + 0.10, 0.15); // E5
-                    this.playTone(783.99, now + 0.20, 0.25); // G5
+                    // 🟢 SPRÁVNÁ ODPOVĚĎ - Dlouhé, čisté a slavnostní tóny, které krásně doznívají
+                    this.playTone(523.25, now, 0.40);       // C5 (táhlý)
+                    this.playTone(659.25, now + 0.15, 0.45); // E5 (táhlý)
+                    this.playTone(783.99, now + 0.30, 0.60); // G5 (dlouhý konec)
                     
                 } else if (type === 'wrong') { 
-                    // 🔴 ŠPATNĚ / PASS - Výraznější, delší klesající smutné tóny (bú-bú-bú)
-                    this.playTone(261.63, now, 0.25, 'sawtooth');        // C4
-                    this.playTone(220.00, now + 0.20, 0.25, 'sawtooth'); // A3
-                    this.playTone(174.61, now + 0.40, 0.40, 'sawtooth'); // F3
+                    // 🔴 ŠPATNĚ / PASS - Mohutné, hluboké a dlouhé klesající mručení
+                    this.playTone(196.00, now, 0.50, 'sawtooth');        // G3 (dlouhý bzučák)
+                    this.playTone(164.81, now + 0.30, 0.55, 'sawtooth'); // E3
+                    this.playTone(130.81, now + 0.60, 0.80, 'sawtooth'); // C3 (velmi hluboký dlouhý konec)
                     
                 } else if (type === 'victory') { 
-                    // 🏆 CELKOVÁ VÝHRA V DUELU - Velkolepá osmitónová fanfára letící nahoru
-                    this.playTone(261.63, now, 0.18);        // C4
-                    this.playTone(329.63, now + 0.15, 0.18); // E4
-                    this.playTone(392.00, now + 0.30, 0.18); // G4
-                    this.playTone(523.25, now + 0.45, 0.18); // C5
-                    this.playTone(659.25, now + 0.60, 0.18); // E5
-                    this.playTone(783.99, now + 0.75, 0.18); // G5
-                    this.playTone(1046.50, now + 0.90, 0.22); // C6
-                    this.playTone(1318.51, now + 1.05, 0.70); // E6 (Dlouhý, triumfální finální tón)
+                    // 🏆 VÍTĚZSTVÍ V DUELU - Obří, dlouhá 10tónová televizní fanfára (trvá přes 2.5 sekundy)
+                    this.playTone(261.63, now, 0.50);        // C4
+                    this.playTone(329.63, now + 0.15, 0.50); // E4
+                    this.playTone(392.00, now + 0.30, 0.50); // G4
+                    this.playTone(523.25, now + 0.45, 0.60); // C5
+                    this.playTone(659.25, now + 0.60, 0.60); // E5
+                    this.playTone(783.99, now + 0.75, 0.70); // G5
+                    this.playTone(1046.50, now + 0.90, 0.80); // C6
+                    this.playTone(1318.51, now + 1.05, 0.90); // E6
+                    this.playTone(1567.98, now + 1.20, 1.20); // G6 (masivní vysoký tón)
+                    this.playTone(2093.00, now + 1.35, 1.50); // C7 (ultimátní triumfální konec)
                 }
             },
-            // Pomocná metoda pro vygenerování jednoho tónu
+            // Vylepšená metoda s delším a plynulejším dozníváním zvuku (linearRamp)
             playTone(freq, startTime, duration, waveType = 'sine') {
                 const osc = this.ctx.createOscillator();
                 const gain = this.ctx.createGain();
@@ -248,8 +250,10 @@
                 osc.type = waveType;
                 osc.frequency.setValueAtTime(freq, startTime);
                 
-                gain.gain.setValueAtTime(0.12, startTime); // Mírně zesíleno pro lepší slyšitelnost ve třídě
-                gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+                // Mírně zesíleno pro zaplnění třídy a nastaven pozvolný fade-out
+                gain.gain.setValueAtTime(0.15, startTime);
+                gain.gain.linearRampToValueAtTime(0.15, startTime + (duration * 0.4)); // Drží plnou hlasitost
+                gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);  // Pak plynule utichne
                 
                 osc.connect(gain);
                 gain.connect(this.ctx.destination);
