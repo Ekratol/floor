@@ -551,7 +551,7 @@
             showNextQuestion();
         });
 
-        // UKONČENÍ DUELU (S OPRAVENOU LOGIKOU PODLE PRAVIDEL SHOW)
+       // UKONČENÍ DUELU
         function endDuel(winnerSide) {
             clearInterval(gameState.timerInterval);
             duelModal.classList.add('hidden');
@@ -559,7 +559,6 @@
             let winnerId = gameState.attackerIndex;
             let loserId = gameState.defenderIndex;
 
-            // Zajištění přesné detekce podle stavu zbývajícího času
             if (gameState.timers.p1 <= 0) {
                 winnerId = gameState.defenderIndex;
                 loserId = gameState.attackerIndex;
@@ -575,41 +574,31 @@
             gameState.grid.forEach(cell => {
                 if (cell.currentOwner === loserId) {
                     cell.currentOwner = winnerId;
-                    cell.initials = winnerData.initials;
                 }
             });
 
-            
             gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ] a zabral jeho území.`;
-            
             gameState.defenderIndex = null;
 
             if (checkGameEnd()) return;
 
-            // Vyhodnocení dalšího postupu podle toho, KDO vyhrál:
+            // --- ZDE JE TA OPRAVA ---
             if (winnerId === gameState.attackerIndex) {
-                // Vyhrál ÚTOČNÍK -> má možnost volby (Pokračovat vs. Vrátit podlaze)
+                // Vyhrál ÚTOČNÍK -> pokračuje v útoku, zvýrazníme nové sousedy
                 btnRandomize.classList.add('hidden');
                 btnPassTurn.classList.remove('hidden');
-                highlightTargets();
+                highlightTargets(); 
             } else {
-                // Vyhrál OBRÁNCE -> podle pravidel show se slovo automaticky vrací podlaze
+                // Vyhrál OBRÁNCE -> útočník je smazán, slovo má randomizér
                 gameState.attackerIndex = null;
                 btnPassTurn.classList.add('hidden');
                 btnRandomize.classList.remove('hidden');
-                renderFloor();
+                
+                // Místo highlightTargets() zavoláme čisté překreslení plochy!
+                renderFloor(); 
                 gameStatus.innerText += ` Obránce se úspěšně ubránil. Losujte nového vyzyvatele.`;
             }
         }
-
-        btnPassTurn.addEventListener('click', () => {
-            gameState.attackerIndex = null;
-            btnPassTurn.classList.add('hidden');
-            btnRandomize.classList.remove('hidden');
-            gameStatus.innerText = `Slovo předáno. Klikněte na Losovat vyzyvatele pro určení nového útočníka.`;
-            renderFloor();
-        });
-
        function checkGameEnd() {
     // Spočítáme unikátní vlastníky, kteří na podlaze ještě drží nějaké území
     const activeOwners = Array.from(new Set(
