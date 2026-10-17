@@ -1,0 +1,297 @@
+#Scratch
+
+Jak se ve Scratchi nazývá hlavní postava nebo jakýkoliv grafický objekt?;Kostým;Scéna;Postava (Sprite);C
+Jakou barvu mají bloky, které ovládají pohyb postavy?;Modrou;Zelenou;Žlutou;A
+Která událost se nejčastěji používá pro spuštění celého programu?;Po kliknutí na zelenou vlaječku;Po kliknutí na červené tlačítko;Po stisknutí klávesy mezerník;A
+Jakým blokem zařídíte, aby postava šla dopředu?;Otoč se o 15 stupňů;Skoč na náhodnou pozici;Dopředu o 10 kroků;C
+Která kategorie bloků (oranžová) umožňuje programu opakovat činnost nebo rozhodovat?;Pohyb;Ovládání;Zvuk;B
+Co dělá blok Opakuj 10krát?;Spustí 10 různých programů;Opakuje bloky vložené uvnitř přesně 10krát;Smaže 10 postav;B
+Jakou barvu mají bloky Události, které spouští kód (např. po stisknutí klávesy)?;Žlutou;Fialovou;Světle modrou;A
+Který blok použijete, aby postava na obrazovce něco napsala v bublině?;Bublina;Řekni Ahoj! na 2 sekundy;Změň kostým na;B
+Kde se odehrává veškerý děj a kde se pohybují postavy?;V batohu;Na Scéně (Stage);V malování;B
+Co se stane s postavou, když použijete blok Skryj se?;Postava zmizí ze scény, ale program běží dál;Postava se smaže z počítače;Postava změní barvu;A
+Jak zařídíte, aby skrytá postava byla na scéně opět vidět?;Použiji blok Ukaž se;Použiji blok Změň kostým;Dvakrát kliknu na obrazovku;A
+Jakou barvu mají bloky Vzhled, které mění kostýmy a bubliny?;Zelenou;Fialovou;Růžovou;B
+Co určuje pozice X na scéně?;Svislou polohu (nahoru a dolů);Vodorovnou polohu (vlevo a vpravo);Velikost postavy;B
+Co určuje pozice Y na scéně?;Svislou polohu (nahoru a dolů);Vodorovnou polohu (vlevo a vpravo);Směr otočení;A
+Jaké souřadnice [X, Y] má přesný střed scény ve Scratchi?;[100, 100];[0, 0];[240, 180];B
+Kterým blokem otočíte postavu hlavou dolů nebo na bok?;Otoč se o stupně;Dopředu o kroky;Změň velikost o;A
+Co dělá blok opakuj stále?;Opakuje kód uvnitř do nekonečna, dokud program nezastavíme;Spustí program jednou za hodinu;Opakuje kód desetkrát;A
+Která kategorie bloků obsahuje matematické operace jako sčítání nebo porovnávání?;Proměnné;Operátory (světle zelená);Vnímání;B
+Který blok použijete pro větvení programu, když se má něco stát jen za určité podmínky?;Blok Když ..., tak ...;Blok Opakuj;Blok Čekej;A
+Jakou barvu mají bloky Vnímání (např. dotýká se barvy)?;Světle modrou;Oranžovou;Tmavě modrou;A
+Který blok detekuje, že hráč stiskl konkrétní klávesu na klávesnici?;Klávesa stisknuta?;Když kliknu na postavu;Čekej než klávesa;A
+Kam ukládáme hodnoty, které se během hry mění (např. Skóre nebo Počet životů)?;Do bloku Pohyb;Do Proměnné;Do Kostýmu;B
+Jak změníte vzhled postavy, aby to vypadalo, že například utíká?;Změním její pozici Y;Přepnu na její další kostým;Použiji blok Přejdi na pozici;B
+Který blok musíte použít, aby projekt začal po kliknutí na zelenou vlaječku?; po kliknutí na mezerník; po kliknutí na zelenou vlaječku; když se změní pozadí; B
+Ve které kategorii najdete blok pro změnu kostýmu postavy?; Pohyb; Události; Vzhled; C
+Co se stane, když použijete blok „dopředu 10 kroků“?; Postava se posune dopředu; Postava se otočí; Postava zmizí; A
+Jak se ve Scratchi říká obrázkovému pozadí scény?; Kostým; Scéna/Pozadí; Proměnná; B
+Který blok použijete, pokud chcete, aby se nějaká akce opakovala stále dokola bez přestání?; opakuj 10krát; opakuj dokud nenastane; opakuj stále; C
+Jak můžete do projektu přidat novou postavu?; Kliknutím na ikonu s hlavou kočky vpravo dole; Kliknutím na soubor v horním menu; Stisknutím klávesy Enter; A
+Co dělá blok „skoč na náhodná pozice“?; Přesune postavu na náhodné místo na scéně; Otočí postavu o náhodný úhel; Změní barvu postavy; A
+Který blok použijete, aby postava chvíli počkala, než udělá další věc?; čekej 1 sekund; opakuj stále; dopředu 10 kroků; A
+Jak se nazývají různé podoby nebo obrázky jedné postavy, které umožňují například animaci chůze?; Kostýmy; Pozadí; Zvuky; A
+Kam skládáte programové bloky, abyste postavu rozpohybovali?; Do batohu; Na plochu scénářů (kódovací plochu); Do editoru obrázků; B
+Co se stane s postavou, když použijete blok „skryj se“?; Postava se smaže z projektu; Postava nebude na scéně vidět; Postava se zmenší; B
+Jak se jmenuje kategorie bloků, které mají světle modrou barvu a slouží k pohybu postav?; Události; Vzhled; Pohyb; C
+Ve které kategorii najdete bloky pro přehrávání hudby a zvukových efektů?; Zvuk; Vnímání; Operátory; A
+Co znamená, když má blok tvar šestiúhelníku (například podmínky v bloku „když ... tak“)?; Je to blok pro zadání čísla; Je to logická podmínka (ano/ne); Je to startovní blok; B
+Který blok použijete, aby postava na scéně řekla nějaký text v bublině?; bublina; řekni Ahoj! na 2 sekundy; napiš text; B
+Jak vymažete blok z plochy scénářů?; Kliknete na něj pravým tlačítkem a dáte smazat (nebo ho přetáhnete zpět do nabídky); Stisknete klávesu Esc; Vypnete Scratch; A
+Jaká barva bloku reprezentuje kategorii „Události“ (Events)?; Žlutá; Zelená; Modrá; A
+Co udělá blok „otoč se o 15 stupňů“?; Posune postavu nahoru; Otočí postavu na místě; Zvětší postavu; B
+Může mít jedna postava více než jeden kostým?; Ne, pouze jeden; Ano, může jich mít kolik chce; Maximaálně dva; B
+K čemu slouží červené tlačítko vedle zelené vlaječky?; Ke spuštění hry; K uložení projektu; K zastavení celého projektu; C
+Jak se nazývá osa, která ve Scratchi určuje vodorovný pohyb (doleva a doprava)?; Osa X; Osa Y; Osa Z; A
+Jaká hodnota osy Y posune postavu na scéně směrem nahoru?; Kladné číslo (např. 50); Záporné číslo (např. -50); Nula; A
+Ve které kategorii najdete blok „když se dotýkáš [ukazatel myši]?“; Vnímání; Operátory; Moje bloky; A
+K čemu slouží blok „následující kostým“?; Změní pozadí scény; Přepne postavu na její další obrázek v pořadí; Vytvoří kopii postavy; B
+Co se stane, když použijete blok „změň efekt barva o 25“?; Postava změní svou velikost; Postava změní svou barvu; Postava se otočí vzhůru nohama; B
+Jak se jmenuje online komunita a editor, kde se programuje v blocích?; Python; Scratch; Minecraft; B
+Co dělá blok „nastav velikost na 100 %“?; Vrátí postavu do její původní velikosti; Zvětší postavu na celou obrazovku; Postava zmizí; A
+Který z těchto bloků spustí kód pouze tehdy, když je splněna určitá podmínka?; opakuj stále; když ... tak; čekej dokud; B
+Co dělá blok Když narazíš na okraj, odraž se?;Otočí scénu vzhůru nohama;Zabrání postavě odejít mimo obrazovku a otočí ji zpět;Ukončí celý program;B
+Jak smažete nechtěný blok ze scénáře?;Přetáhnete ho zpět do levého menu bloků;Kliknete na zelenou vlaječku;Schováte ho do batohu;A
+Může mít jedna postava více než jeden kostým?;Ne, pouze jeden;Ano, může jich mít libovolně mnoho;Maximálně dva;B
+Co dělá blok Čekej 1 sekundu?;Zrychlí program na maximum;Zastaví provádění dalších bloků pod ním na jednu sekundu;Ukončí hru;B
+Jak zařídíte, aby postava mluvila a zároveň hrál zvuk?;Vložím bloky pod sebe nebo použiji paralelní scénáře;Scratch to neumí;Musím vytvořit dvě stejné postavy;A
+Který blok nastaví směr postavy přesně doprava?;Nastav směr na 90;Nastav směr na 0;Nastav směr na -90;A
+Který blok nastaví směr postavy přesně nahoru?;Nastav směr na 90;Nastav směr na 0;Nastav směr na 180;B
+Co se stane, když použijete blok Přejdi na náhodná pozice?;Postava zmizí;Vytvoří se nová náhodná postava;Postava skočí na náhodné místo na scéně;C
+Která část Scratch rozhraní slouží k sestavování bloků do kódu?;Okno scénářů (prostřední panel);Scéna;Knihovna kostýmů;A
+Jak vytvoříte novou proměnnou?;V záložce Proměnné kliknu na Vytvoř proměnnou;V záložce Pohyb kliknu na Nový krok;Proměnné se tvoří samy;A
+Co se stane s proměnnou Skóre, pokud použijete blok Změň Skóre o 1?;Skóre se sníží o 1 bod;Skóre se nastaví na nulu;Skóre se zvýší o 1 bod;C
+Co se stane s proměnnou Skóre, pokud použijete blok Nastav Skóre na 0?;Skóre se zvýší o nulu;Skóre se vynuluje (bude přesně 0);Skóre se smaže;B
+Můžeme ve Scratchi měnit pozadí Scény?;Ne, pozadí je vždy bílé;Ano, můžeme kreslit nebo vybírat z knihovny pozadí;Pouze v placené verzi;B
+Která kategorie bloků (tmavě modrá) slouží k kreslení čar na scénu pomocí postavy?;Pero (rozšíření);Pohyb;Vzhled;A
+Co dělá blok Smaž v kategorii Pero?;Smaže celou postavu;Smaže všechny nakreslené čáry ze scény;Vynuluje skóre;B
+Co dělá blok Spiš v kategorii Pero?;Postava začne za sebou při pohybu kreslit čáru;Postava přestane kreslit;Postava napíše text;A
+Co dělá blok Zvedni pero?;Postava začne kreslit silnější čáru;Postava přestane při pohybu kreslit čáru;Postava vyskočí nahoru;B
+Jak spustíte kód, který je připojen k bloku Po kliknutí na tuto postavu?;Stisknutím mezerníku;Kliknutím na pozadí;Kliknutím myší přímo na postavu na scéně;C
+Co se stane, když spojíte dva bloky k sobě?;Vytvoří sekvenci příkazů, které se provedou hned po sobě;Program nahlásí chybu;Bloky se navzájem vymažou;A
+Co dělá blok Změň velikost o 10?;Postava se zvětší;Postava se zmenší;Postava se posune o 10 kroků nahoru;A
+Co dělá blok Změň velikost o -10?;Postava se zvětší;Postava se zmenší;Postava se otočí;B
+Může na scéně běžet více programů (scénářů) najednou?;Ne, vždy běží jen jeden kód;Ano, Scratch podporuje současný běh více kódů;Ano, ale pouze u pozadí;B
+K čemu slouží červené osmiúhelníkové tlačítko vedle zelené vlaječky?;K uložení projektu;Ke spuštění zvuku;K okamžitému zastavení celého programu;C
+Jakým blokem otestujete, zda se postava dotýká okraje scény?;Dotýká se okraj?;Když narazíš na okraj odraž se;Pozice X = okraj;A
+Který blok vybere náhodné číslo například pro házení kostkou?;skoč na náhodná pozice;náhodné číslo od 1 do 6;opakuj náhodně;B
+
+#Buňka
+
+Jak se nazývá základní stavební a funkční jednotka živých organismů?;Tkáň;Orgán;Buňka;C
+Která struktura řídí činnost buňky a obsahuje většinu genetické informace?;Jádro;Ribozom;Cytoplazma;A
+Jak se nazývá organela, ve které probíhá buněčné dýchání a tvorba ATP?;Chloroplast;Mitochondrie;Golgiho aparát;B
+Která vrstva obklopuje rostlinnou buňku, ale u živočišné chybí?;Buněčná stěna;Plazmatická membrána;Tonoplast;A
+V které organele rostlinných buněk probíhá fotosyntéza?;Mitochondrie;Chloroplast;Vakuola;B
+Která organela je zodpovědná za syntézu bílkovin?;Ribozom;Lysozom;Centrozom;A
+Jak se nazývá gelovitá tekutina, která vyplňuje vnitřek buňky?;Nukleoplasma;Cytoplazma;Míza;B
+Který typ buňky nemá pravé jádro ohraničené membránou?;Eukaryotická;Prokaryotická;Živočišná;B
+Která struktura selektivně propouští látky do buňky a ven z ní?;Plazmatická membrána;Buněčná stěna;Endoplazmatické retikulum;A
+Velká centrální vakuola je typická pro který typ buňky?;Živočišnou;Bakteriální;Rostlinnou;C
+Která organela obsahuje trávicí enzymy a rozkládá odpadní látky u živočichů?;Lysozom;Ribozom;Golgiho aparát;A
+Jak se nazývá síť membránových kanálků spojená s jádrem?;Golgiho aparát;Endoplazmatické retikulum;Cytoskeleton;B
+Které endoplazmatické retikulum má na svém povrchu vázané ribozomy?;Drsné;Hladké;Senzorické;A
+Která organela slouží k úpravě a balení bílkovin k exportu z buňky?;Lysozom;Mitochondrie;Golgiho aparát;C
+Z jaké látky je primárně složena buněčná stěna rostlin?;Z celulózy;Z chitinu;Z glykogenu;A
+Z jaké látky je složena buněčná stěna hub?;Z celulózy;Z chitinu;Z peptidoglykanu;B
+Jak se nazývá vnitřní lešení buňky tvořené mikrotubuly a mikrofilamenty?;Buněčná stěna;Cytoskeleton;Kortex;B
+Která organela se významně podílí na tvorbě dělicího vřeténka při mitóze?;Centrozom;Vakuola;Nukleolus;A
+Jak se nazývá dělení jádra eukaryotické buňky, při kterém vznikají identické buňky?;Meióza;Mitóza;Amitóza;B
+Jak se nazývá redukční dělení buňky, kterým vznikají pohlavní buňky?;Mitóza;Meióza;Binární dělení;B
+Která nukleová kyselina je hlavní nositelkou genetické informace v jádře?;RNA;DNA;ATP;B
+Jak se nazývá oblast v prokaryotické buňce, kde je volně uložen chromozom?;Nukleoid;Nukleolus;Plazmid;A
+Jak se nazývají malé kruhové molekuly DNA v bakteriích mimo hlavní chromozom?;Ribozomy;Plazmidy;Mesozomy;B
+Který proces popisuje přechod látek přes membránu z místa vyšší koncentrace do nižší bez spotřeby energie?;Aktivní transport;Difuze;Endocytóza;B
+Jak se nazývá difuze vody přes polopropustnou membránu?;Osmóza;Exocytóza;Pinocytóza;A
+Která molekula slouží jako bezprostřední zdroj energie pro buněčné procesy?;Glukóza;ATP;DNA;B
+Co tvoří základní kostru plazmatické membrány?;Dvojvrstva fosfolipidů;Vrstva celulózy;Bílkovinná mřížka;A
+Jak se nazývá proces, kdy buňka pohlcuje velké pevné částice?;Fagocytóza;Pinocytóza;Exocytóza;A
+Jak se nazývá proces, kdy buňka pohlcuje kapénky tekutiny?;Fagocytóza;Pinocytóza;Transcytóza;B
+V které části jádra dochází k tvorbě ribozomální RNA (rRNA)?;V jadérku (nukleolu);V jaderné membráně;V chromatinu;A
+Která struktura zajišťuje pohyb některých buněk (např. spermií)?;Bičík;Pili;Mikrofilamenta;A
+Jak se nazývá barvivo v chloroplastech klíčové pro fotosyntézu?;Karoten;Chlorofyl;Xantofyl;B
+Kolik chromozomů má zdravá lidská tělesná buňka?;23;46;48;B
+Kolik chromozomů má lidská spermie nebo vajíčko?;23;46;22;A
+Jak se nazývá roztok, který má stejnou koncentraci rozpuštěných látek jako buňka?;Hypertonický;Hypotonický;Izotonický;C
+Co se stane s živočišnou buňkou v silně hypotonickém prostředí?;Praskne (lyze);Svrkne se;Nezmění se;A
+Jak se nazývá jev, kdy rostlinná buňka v hypertonickém prostředí ztrácí vodu a membrána se odchybuje od stěny?;Plasmolýza;Deplasmolýza;Turgor;A
+Která organela chybí v dospělých lidských červených krvinkách?;Plazmatická membrána;Jádro;Cytoplazma;B
+Jak se nazývá syntéza RNA podle matrice DNA?;Transkripce;Translace;Replikace;A
+Jak se nazývá syntéza bílkovin podle matrice mRNA?;Transkripce;Translace;Replikace;B
+Která fáze mitózy je charakteristická seřazením chromozomů do ekvatoriální roviny?;Profáze;Metafáze;Anafáze;B
+Ve které fázi mitózy se sesterské chromatidy oddělují a putují k pólům buňky?;Anafáze;Telofáze;Metafáze;A
+Jaká teorie vysvětluje původ mitochondrií a chloroplastů z původně volně žijících bakterií?;Buněčná teorie;Endosymbiotická teorie;Evoluční teorie;B
+Které organely se podílejí na detoxikaci buněk a metabolismu lipidů (např. v játrech)?;Hladké endoplazmatické retikulum;Drsné endoplazmatické retikulum;Ribozomy;A
+Která struktura tvoří obal jádra a obsahuje póry pro komunikaci s cytoplazmou?;Karyotéka (jaderná membrána);Nukleoid;Kapsula;A
+Jak se nazývá komplex DNA a bílkovin nacházející se v jádře?;Chromatin;Nukleosom;Plazmid;A
+Který protein tvoří mikrotubuly cytoskeletonu?;Aktin;Tubulin;Keratin;B
+Která organela je zodpovědná za fotosyntézu u sinic?;Nemají chloroplasty, fotosyntéza probíhá na thylakoidech v cytoplazmě;Chloroplast;Mitochondrie;A
+Jak se nazývá vnitřní prostor mitochondrie vyplněný tekutinou?;Matrix;Stroma;Lumen;A
+Jak se nazývá vnitřní prostor chloroplastu obklopující thylakoidy?;Matrix;Stroma;Krysta;B
+
+#Vznik života
+
+Jak se nazývá vědní obor, který se zabývá vznikem a vývojem života?;Biochemie;Abiogeneze;Paleontologie;B
+Jak stará je přibližně planeta Země?;3,5 miliardy let;4,5 miliardy let;13,8 miliardy let;B
+Před kolika miliardami let se na Zemi objevily první prokazatelné formy života?;Před 1,5 miliardami;Před 3,8 miliardami;Před 6 miliardami;B
+Který plyn chyběl v prvotní (primitivní) atmosféře Země?;Metan;Vodík;Kyslík;C
+Který slavný experiment v roce 1953 dokázal, že z anorganických látek mohou vzniknout aminokyseliny?;Millerův-Ureyův experiment;Pasteurův experiment;Darwinův pokus;A
+Jak se nazývá teorie, podle které byl život na Zemi zanesen z vesmíru?;Teorie panspermie;Teorie samoplození;Oparinova teorie;A
+Který ruský vědec jako jeden z prvních vypracoval ucelenou teorii o chemické evoluci života?;Louis Pasteur;Alexandr Oparin;Charles Darwin;B
+Co jsou to koacerváty podle Oparinovy teorie?;První živé bakterie;Kapénky organických látek ohraničené membránou;Zkameněliny prvohorních organismů;B
+Která makromolekula byla podle moderních teorií pravděpodobně první nositelkou genetické informace i katalyzátorem?;DNA;RNA;Bílkovina;B
+Jak se nazývá hypotéza, která předpokládá, že raný život byl založen výhradně na jedné nukleové kyselině?;Hypotéza RNA světa;Hypotéza DNA světa;Proteinový svět;A
+Jak se nazývají vrstevnaté usazeniny vzniklé činností sinic, které patří k nejstarším fosiliím?;Stromatolity;Trilobiti;Amolarity;A
+Který proces u prvních organismů způsobil radikální nárůst kyslíku v atmosféře?;Buněčné dýchání;Kvašení (fermentace);Oxygenní fotosyntéza;C
+Jak se nazývá hypotéza, že život mohl vzniknout v hlubokomořských hydrotermálních průduších?;Hypotéza černých kuřáků;Teorie teplého rybníčku;Panspermie;A
+Který britský přírodovědec básnicky nazval místo vzniku života jako „malý teplý rybníček“?;Charles Darwin;Gregor Mendel;Stanley Miller;A
+Jak se nazývaly první živé organismy z hlediska získávání energie a kyslíku?;Aerobní autotrofové;Anaerobní heterotrofové;Aerobní heterotrofové;B
+Který vědec definitivně vyvrátil teorii samoplození (že myši vznikají ze špíny a červi z masa)?;Louis Pasteur;Jean-Baptiste Lamarck;Robert Hooke;A
+Jak se odborně nazývá proces vývoje od neživé hmoty k prvním živým buňkám?;Biologická evoluce;Chemická evoluce;Kosmická evoluce;B
+Co poskytovalo hlavní zdroj energie pro chemické reakce v prvohorní atmosféře a oceánech?;UV záření a elektrické výboje;Magnetické pole;Sluneční vítr;A
+Která vrstva atmosféry se vytvořila až po nárůstu kyslíku a chránila život před UV zářením?;Ozonová vrstva;Troposféra;Ionosféra;A
+Z jakých typů buněk se vyvinuly první organismy na Zemi?;Eukaryotických;Prokaryotických;Mnohobuněčných;B
+Jak se nazývá proces, při kterém buňka pohltila jinou buňku, a tak vznikly mitochondrie a chloroplasty?;Endosymbióza;Exocytóza;Fagocytóza;A
+Který typ organismů využíval k výrobě organických látek energii chemických vazeb, nikoli slunce?;Fotoautotrofové;Chemoautotrofové;Heterotrofové;B
+Jaká událost před cca 540 miliony let znamenala náhlý a masivní rozvoj mnoha forem mnohobuněčného života?;Kambrijská exploze;Velké vymírání;Dinosauří éra;A
+Co bylo hlavním stavebním kamenem prvních organických sloučenin na Zemi?;Uhlík;Křemík;Železo;A
+Které prostředí bylo nezbytné pro vznik a přežití nejranějšího života na Zemi?;Souš;Voda (oceán);Ledovce;B
+Jak se nazývá teorie, že život vzniká spontánně z neživé hmoty (např. mouchy z hnijícího masa)?;Teorie panspermie;Teorie generatio aequivoca (samoplození);Kreacionismus;B
+Které organely mají vlastní kruhovou DNA a ribozomy prokaryotického typu?;Mitochondrie a chloroplasty;Ribozomy a lysozomy;Golgiho aparát;A
+Jak se nazývají nejstarší známé organismy schopné fotosyntézy, které obohatily Zemi kyslíkem?;Sinice (cyanobakterie);Prvoci;Zelené řasy;A
+Před kolika lety došlo k tzv. Velké oxidační události (katastrofě)?;Před 4,5 miliardami let;Před 2,4 miliardami let;Před 500 miliony let;B
+Co znamenal nárůst kyslíku pro tehdejší striktně anaerobní organismy?;Způsobil jejich masivní vyhynutí (byl pro ně toxický);Pomohl jim k rychlejšímu růstu;Neměl na ně žádný vliv;A
+Jak se nazývá věda o fosiliích a historii života na Zemi?;Geologie;Paleontologie;Archeologie;B
+Jak se nazývá směr předpokládající, že život byl stvořen nadpřirozenou silou?;Evolucionismus;Kreacionismus;Materialismus;B
+Která kyselina tvoří základní stavební jednotku bílkovin a byla syntetizována v Millerově experimentu?;Mastná kyselina;Aminokyselina;Nukleová kyselina;B
+Jaký typ metabolismu využívaly první buňky před vznikem fotosyntézy?;Dýchání kyslíku;Fermentaci (kvašení);Anorganickou oxidaci;B
+Co tvořilo tzv. „prvotní polévku“?;Směs vody a jednoduchých organických látek v raných oceánech;Láva vyvěrající ze sopek;Kyselé deště na povrchu země;A
+Které prvky tvoří zkratku CHONPS označující základní biogenní prvky?;Uhlík, Vodík, Kyslík, Dusík, Fosfor, Síra;Měď, Železo, Zlato, Stříbro, Zinek;Vápník, Hořčík, Sodík, Draslík;A
+Jak se nazývá stadium, kdy se jednobuněčné organismy začaly sdružovat, což vedlo k mnohobuněčnosti?;Kolonie;Tkáň;Symbióza;A
+Proč nemohla DNA pravděpodobně vzniknout jako úplně první nukleová kyselina?;Je příliš stabilní a nedokáže sama fungovat jako katalyzátor;Neobsahuje fosfor;Nenachází se v buňkách;A
+Co jsou to micely a lipozomy v kontextu abiogeneze?;Jednoduché lipidové struktury, které mohly tvořit prapůvodní membrány;První formy virů;Bakteriální spóry;A
+Která hypotéza tvrdí, že minerály (např. jíly) sloužily jako povrch pro polymeraci prvních organických látek?;Jílová hypotéza;Ledová hypotéza;Meteoritická teorie;A
+Jaký plyn se v prvotní atmosféře nacházel ve vysoké koncentraci díky intenzivní sopečné činnosti?;Oxid uhličitý;Kyslík;Helium;A
+Jak se nazývají organismy, které žijí v extrémních podmínkách (horko, sůl, kyselost) podobných rané Zemi?;Extremofilové;Kosmopolité;Indikátory;A
+Která doména organismů (často extremofilů) je považována za jednu z nejstarších vývojových větví?;Archea (Archeobakterie);Eukaryota;Viry;A
+Co pomohlo kondenzaci vodní páry a vzniku prvních stálých oceánů na Zemi?;Ochlazení zemského povrchu;Zvýšení slunečního záření;Zánik atmosféry;A
+Jak se nazývá proces, při kterém z jednoduchých organických monomerů vznikají polymery (např. proteiny)?;Polymerace;Hydratace;Krystalizace;A
+Která sloučenina fosforu je klíčová pro energetický metabolismus všech buněk a musela vzniknout na rané Zemi?;Glukóza;ATP;Chlorofyl;B
+Z čeho se skládala druhotná atmosféra, která vznikla odplyňováním rozžhavené Země?;Z vodní páry, oxidu uhličitého, dusíku a oxidu siřičitého;Z čistého kyslíku a argonu;Z hélia a neonu;A
+Jak se nazývá nejstarší geologická éra, během které vznikal první život?;Hadaikum;Archaikum (Prahory);Kenozoikum;B
+Jak se nazývají úseky RNA, které mají katalytickou funkci podobnou enzymům?;Ribozymy;Ribozomy;Plazmidy;A
+Které organismy jako první kolonizovaly souš?;První suchozemské rostliny a houby;Dinosauři;Hmyz;A
+
+#sféry Země
+
+Jak se nazývá pevný kamenný obal Země, který zahrnuje zemskou kůru a nejsvrchnější část plaztu?;Atmosféra;Litosféra;Biosféra;B
+Která sféra Země zahrnuje veškeré vodstvo na planetě (oceány, řeky, ledovce)?;Hydrosféra;Kryosféra;Pedosféra;A
+Jak se nazývá plynný obal Země?;Biosféra;Atmosféra;Geosféra;B
+Která sféra Země představuje půdní obal vzniklý zvětráváním hornin?;Litosféra;Pedosféra;Biosféra;B
+Jak se nazývá sféra Země, která zahrnuje všechny živé organismy?;Biosféra;Hydrosféra;Pedosféra;A
+Která vrstva tvoří nejsvrchnější pevnou část tělesa Země?;Zemský plášť;Zemská kůra;Zemské jádro;B
+Jak se nazývá plastická, částečně natavená vrstva v horním plášti, po které se pohybují litosférické desky?;Astenosféra;Barosféra;Mezosféra;A
+Která část zemského jádra je kvůli extrémnímu tlaku pevná?;Vnější jádro;Vnitřní jádro;Zemská kůra;B
+Která vrstva Země je tekutá a generuje magnetické pole naší planety?;Vnější jádro;Vnitřní jádro;Spodní plášť;A
+Které dva kovy tvoří hlavní složku zemského jádra?;Zlato a stříbro;Železo a nikl;Hliník a křemík;B
+Jak se nazývá nejtlustší vrstva Země, která se nachází mezi kůrou a jádrem?;Zemský plášť;Astenosféra;Litosféra;A
+Jak se nazývá rozhraní (diskontinuita) mezi zemskou kůrou a zemským pláštěm?;Gutenbergovo rozhraní;Mohorovičićovo rozhraní (Moho);Lehmannovo rozhraní;B
+Jak se nazývá rozhraní mezi zemským pláštěm a zemským jádrem v hloubce cca 2900 km?;Gutenbergovo rozhraní;Mohorovičićovo rozhraní;Conradovo rozhraní;A
+Který typ zemské kůry je tlustší a tvoří kontinenty?;Oceánská kůra;Kontinentální kůra;Pevninská kůra neexistuje;B
+Která hornina je hlavní stavební složkou oceánské kůry?;Čedič (bazalt);Žula (granit);Vápenec;A
+Která hornina převládá v nejsvrchnější části kontinentální kůry?;Čedič;Žula (granit);Mramor;B
+Jak se nazývá subsféra hydrosféry, která zahrnuje vodu v pevném stavu (sníh a led)?;Kryosféra;Pedosféra;Atmosféra;A
+Který plyn je nejvíce zastoupen v zemské atmosféře (tvoří cca 78 %)?;Kyslík;Dusík;Oxid uhličitý;B
+Kolik procent zemské atmosféry tvoří kyslík?;Cca 78 %;Cca 21 %;Cca 1 %;B
+Jak se nazývá nejnižší vrstva atmosféry, ve které probíhá většina počasí?;Stratosféra;Troposféra;Termosféra;B
+V které vrstvě atmosféry se nachází ozonová vrstva chránící Zemi před UV zářením?;Troposféra;Stratosféra;Mezosféra;B
+Jak se nazývá proces, při kterém se teplo ze zemského jádra přenáší stoupáním a klesáním hmoty v plášti?;Plášťová konvekce;Radiace;Kondukce;A
+Který chemický prvek je nejčastěji zastoupen v zemské kůře?;Železo;Kyslík;Křemík;B
+Jak se nazývá věda, která studuje složení, stavbu a historický vývoj Země?;Geografie;Geologie;Geodézie;B
+Jak se nazývá moderní teorie vysvětlující pohyb litosférických desek a vznik pohoří?;Teorie stacionární Země;Desková tektonika;Neptunismus;B
+Jak se nazývá superkontinent, který před stovkami milionů let spojoval téměř všechny pevniny?;Atlantida;Pangea;Gondwana;B
+Které sféry se prolínají v půdě (pedosféře)?;Litosféra, hydrosféra, atmosféra a biosféra;Pouze litosférická a hydrosférická;Pouze biosféra a atmosféra;A
+Kde na Zemi je zemská kůra nejtenčí?;Pod vysokými pohořími;Na dnech oceánů;V oblastech pouští;B
+Co se děje s teplotou a tlakem směrem do středu Země?;Teplota i tlak stoupají;Teplota klesá, tlak stoupá;Teplota stoupá, tlak klesá;A
+Jak se nazývá hodnota vyjadřující, o kolik stupňů Celsia stoupne teplota při sestupu do hloubky 100 metrů?;Geotermální gradient;Tepelný koeficient;Magmatický stupeň;A
+Která sféra zadržuje největší množství sladké vody na Zemi?;Řeky a jezera;Ledovce (kryosféra);Podzemní voda;B
+Jak se nazývá svrchní hranice hydrosféry na pevnině, pod kterou jsou póry hornin nasyceny vodou?;Hladina podzemní vody;Arteský horizont;Propustná vrstva;A
+Jak se nazývá nejvyšší vrstva atmosféry, která plynule přechází do vesmíru?;Exosféra;Mezosféra;Termosféra;A
+Která vrstva atmosféry odráží rádiové vlny díky vysoké koncentraci iontů?;Ionosféra;Troposféra;Stratosféra;A
+Co způsobuje vznik polární záře v atmosféře?;Interakce slunečního větru s magnetickým polem Země;Sopečný prach ve stratosféře;Městské osvětlení;A
+Jak se nazývá ochranný magnetický obal kolem Země, generovaný jádrem?;Ozonosféra;Magnetosféra;Biosféra;B
+Která sféra zajišťuje koloběh látek mezi živou a neživou přírodou?;Kryosféra;Biosféra;Barosféra;B
+V jakém skupenství je zemská kůra?;Pevném;Kapalném;Plastickém (polotekutém);A
+Jak se nazývají hluboké příkopy v oceánské kůře, kde dochází k podsouvání litosférických desek?;Subdukční zóny;Riftové zóny;Transformní zlomy;A
+Jak se nazývá podmořské pohoří, kde vzniká nová oceánská kůra?;Středooceánský hřbet;Oceánský příkop;Šelf;A
+Která vrstva tvoří přechod mezi vnějším a vnitřním zemským jádrem?;Lehmannova zóna;Gutenbergova zóna;Conradova linie;A
+Jak se nazývá pevná horninová složka půdy?;Organická složka;Minerální složka;Edafon;B
+Jak se nazývá odumřelá organická hmota v půdě, která určuje její úrodnost?;Humus;Magma;Regolit;A
+Který typ hornin vzniká chladnutím a krystalizací magmatu pod povrchem nebo lávy na povrchu?;Usazené (sedimentární);Vyvřelé (magmatické);Přeměněné (metamorfované);B
+Které horniny vznikají usazováním úlomků hornin, zbytků organismů nebo chemickým srážením?;Vyvřelé;Usazené (sedimentární);Přeměněné;B
+Jaké horniny vznikají změnou struktury původních hornin vlivem vysokého tlaku a teploty v hloubce?;Vyvřelé;Usazené;Přeměněné (metamorfované);C
+Která sféra zadržuje nejvíce oxidu uhličitého na Zemi v dlouhodobém měřítku?;Atmosféra;Litosféra (v carbonates/horninách);Biosféra;B
+Jak se nazývá věda, která zkoumá půdy, jejich vznik a vlastnosti?;Geomorfologie;Pedologie;Hydrologie;B
+Která sféra je nejvíce ovlivněna činností člověka (antropogenní činností)?;Všechny povrchové sféry (atmosféra, hydrosféra, biosféra, pedosféra);Pouze zemské jádro;Pouze kryosféra;A
+Jak se nazývá bod uvnitř Země, kde vzniká zemětřesení?;Epicentrum;Hypocentrum (ohnisko);Seismograf;B
+
+#Vznik Sluneční soustavy
+
+Před kolika miliardami let přibližně vznikla Sluneční soustava?;Před 13,8 miliardami let;Před 4,6 miliardami let;Před 2 miliardami let;B
+Z jakého útvaru tvořeného prachem a plynem vzniklo Slunce a planety?;Z černé díry;Z mlhoviny (solární nebuly);Z asteroidu;B
+Které dva chemické prvky tvořily naprostou většinu materiálu v prapůvodní mlhovině?;Vodík a helium;Uhlík a kyslík;Železo a nikl;A
+Jaká síla zapříčinila smršťování prapůvodní mlhoviny a shlukování materiálu?;Odstředivá síla;Gravitační síla;Magnetická síla;B
+Jak se nazývá disk rotujícího prachu a plynu, který obklopoval rodící se Slunce?;Protoplanetární disk;Galaktické jádro;Oortův oblak;A
+Která fáze vývoje Slunce předcházela jeho zapálení jako plnohodnotné hvězdy?;Bílý trpaslík;Protohvězda;Červený obr;B
+Jaká fyzikální reakce v jádru Slunce odstartovala jeho život a produkci světla?;Termonukleární fúze;Chemické hoření;Radioaktivní rozpad;A
+Sloučením kterých jader dochází k termonukleární fúzi v jádru mladého Slunce?;Jader helia na uhlík;Jader vodíku na helium;Jader železa na uran;B
+Jak se nazývají malá prapůvodní tělesa, z jejichž srážek a spojování vznikly planety?;Planetezimály;Komety;Meteoroidy;A
+Jak se odborně nazývá proces postupného nabalování a shlukování prachových částic do větších celků?;Subdukce;Akrece;Konvekce;B
+Proč jsou vnitřní planety (Merkur, Venuše, Země, Mars) kamenné a vnější plynné?;Kvůli teplotě Slunce, která v blízkosti odpařila lehké plyny;Vnitřní planety vznikly mnohem později;Plynné planety byly zachyceny z jiné soustavy;A
+Jak se nazývá pomyslná hranice v rané Sluneční soustavě, za kterou mohly kondenzovat těkavé látky jako voda a metan do podoby ledu?;Sněžná čára (frost line);Oortova linie;Kuiperův práh;A
+Který typ planet vznikl blízko Slunce díky vysoké hustotě kovů a křemičitanů?;Terestrické (kamenné);Plynní obři;Ledoví obři;A
+Která planeta Sluneční soustavy vznikla jako první a nashromáždila nejvíce hmoty?;Země;Saturn;Jupiter;C
+Jak se nazývá intenzivní proud částic z mladého Slunce, který odfoukl zbytky plynu a prachu z protoplanetárního disku?;Sluneční vítr;Sluneční erupce;Solární záření;A
+Jak se nazývá hypotéza, která vysvětluje vznik Měsíce srážkou Země s tělesem velikosti Marsu?;Hypotéza zachycení;Hypotéza velké srážky (Theia);Hypotéza společného vzniku;B
+Jak se jmenovalo hypotetické těleso, které narazilo do mladé Země a dalo vzniknout Měsíci?;Ceres;Theia;Titan;B
+Jak se nazývá období před cca 4 miliardami let, kdy byly planety vystaveny masivnímu bombardování zbytky materiálu?;Pozdní těžké bombardování;Kambrijská exploze;Velké tání;A
+Odkud pravděpodobně pocházela většina vody, která se dostala na mladou Zemi během bombardování?;Z jádra Země;Z komet a meteoritů z vnějších částí soustavy;Z atmosféry Venuše;B
+Jak se nazývá oblast na samotném okraji Sluneční soustavy, která je rezervoárem komet?;Kuiperův pás;Oortův oblak;Pás asteroidů;B
+Která vědecká teorie/model nejlépe popisuje ranou migraci obřích planet a stability Sluneční soustavy?;Niceský model;Darwinův model;Copernicův model;A
+Kde se nachází hlavní pás planetek (asteroidů), které se kvůli gravitaci Jupitera nikdy nespojily v planetu?;Mezi Merkurem a Venuší;Mezi Marsem a Jupiterem;Za Neptunem;B
+Jak se nazývá proces, při kterém se v roztavených mladých planetách těžké kovy propadly do jádra a lehčí křemičitany zůstaly na povrchu?;Planetární diferenciace;Akrece;Tektogeneze;A
+Které dvě planety řadíme mezi tzv. ledové obry, kteří vznikli ve vzdálenějších a chladnějších částech disku?;Uran a Neptun;Jupiter a Saturn;Mars a Venuše;A
+Jaký tvar měl protoplanetární disk díky rotaci a odstředivé síle?;Tvar koule;Tvar zploštělého disku;Tvar nepravidelného mraku;B
+Z čeho byly složeny první prachové částice v protoplanetárním disku blízko Slunce?;Z ledu a metanu;Z kovů a křemičitanových minerálů;Z organických sloučenin;B
+Jak se nazývají objekty, které dosáhly dostatečné hmotnosti, aby vyčistily své okolí od jiných těles, ale jsou menší než planety?;Trpasličí planety;Protoplanety;Exoplanety;B
+Který prvek tvoří přibližně tři čtvrtiny hmotnosti Slunce?;Helium;Vodík;Železo;B
+Co drží planety na jejich oběžných drahách kolem Slunce?;Magnetické pole Slunce;Rovnováha mezi gravitací Slunce a odstředivou silou pohybu planet;Tlak slunečního větru;B
+Jak se nazývá disk ledových těles nacházející se za dráhou Neptunu, kam patří i Pluto?;Pás asteroidů;Kuiperův pás;Oortův oblak;B
+Jak se změnila rychlost rotace původního mračna prachu a plynu, když se začalo hroutit do středu?;Zpomalila se;Zrychlila se (zákon zachování momentu hybnosti);Zastavila se;B
+V jaké galaxii vznikla naše Sluneční soustava?;V Galaxii v Andromedě;V Mléčné dráze;V Magellanově mračnu;B
+Co pravděpodobně dalo první impuls (šokovou vlnu) ke kolapsu naší prapůvodní mlhoviny?;Výbuch blízké supernovy;Srážka dvou černých děr;Sluneční erupce;A
+Která planeta má dodnes extrémní sklon rotační osy („válí sudy“), což mohlo být způsobeno obří srážkou během jejího vzniku?;Saturn;Neptun;Uran;C
+Jak se nazývala prapůvodní atmosféra terestrických planet složená převážně z vodíku a helia?;Primární atmosféra;Sekundární atmosféra;Terciární atmosféra;A
+Proč Merkur nemá téměř žádnou atmosféru?;Je příliš daleko od Slunce;Je malý a sluneční vítr ji kvůli slabé gravitaci odfoukl;Je složen pouze z ledu;B
+Co se stalo se zbylým plynem a prachem, který planety nespotřebovaly k svému růstu?;Zkapalněl a vytvořil oceány;Byl vymetena slunečním větrem a tlakem záření mimo soustavu;Spadl zpět na povrch planet;Bils;B
+Jak se nazývají tělesa, která vznikla spojením planetezimál, mají průměr tisíce kilometrů a jsou předchůdci dnešních planet?;Protoplanety;Komety;Meteority;A
+Která z obřích planet má nejnižší hustotu (nižší než voda), což odráží její složení z ledu a plynů v rané fázi?;Jupiter;Saturn;Uran;B
+Co tvoří hlavní složku komet, které vznikaly v nejvzdálenějších oblastech Sluneční soustavy?;Pevné železo a nikl;Vodní led, zmrzlé plyny a prach;Tekutá láva;B
+Jak se nazývá vědní obor, který studuje vznik, vývoj a složení vesmírných těles a soustav?;Kosmogonie;Geologie;Meteorologie;A
+Z jakého důvodu mají téměř všechny planety oběžné dráhy přibližně v jedné rovině?;Vznikly z jednoho plochého rotujícího disku;Slunce je magneticky přitahuje v jedné línii;Je to náhoda;A
+Kterým směrem obíhá většina planet kolem Slunce (při pohledu od severního pólu)?;Proti směru hodinových ručiček;Po směru hodinových ručiček;Každá planeta obíhá jiným směrem;A
+Co se stalo s vnitřním teplem planet po jejich vzniku akrecí?;Postupně chladly, přičemž větší planety si teplo udržely déle;Všechno teplo okamžitě zmizelo do vesmíru;Teplota planet neustále roste;A
+Která planeta byla v raných fázích migrace planet pravděpodobně posunuta nejvíce do vnějších částí soustavy?;Neptun;Jupiter;Země;A
+Jak staré jsou nejstarší nalezené meteority (chondrity), které nám pomáhají určit věk Sluneční soustavy?;4,56 miliardy let;6 miliard let;1 miliarda let;A
+Jaký typ hvězdy je naše Slunce z hlediska spektrální klasifikace a stádia vývoje?;Žlutý trpaslík hlavní posloupnosti;Červený veleobr;Modrý obr;A
+Která struktura vzniklá v rané Sluneční soustavě dodnes chrání vnitřní planety před velkým množstvím mezihvězdného prachu a záření?;Heliosféra;Atmosféra;Magnetosféra Země;A
+Co určovalo složení atmosfér plynných obrů během jejich vzniku?;Jejich obrovská gravitace jim umožnila zachytit lehký vodík a helium z disku;Zachycovaly pouze kyslík;Nemají žádnou atmosféru;A
+Jak dlouho přibližně trval samotný proces zformování planet z protoplanetárního disku?;Stovky miliard let;Několik desítek milionů let;Pouze několik tisíc let;B
+
+
+
+
+
+
+
