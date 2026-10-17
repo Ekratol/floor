@@ -452,9 +452,10 @@
             p1Timer.innerText = "45.0";
             p2Timer.innerText = "45.0";
 
-            gameState.activeTurnPlayer = 1; 
-            document.getElementById('p1-zone').classList.add('active-turn');
-            document.getElementById('p2-zone').classList.remove('active-turn');
+            // Podle pravidel televizní show začíná odpovídat OBRÁNCE (hráč č. 2)
+            gameState.activeTurnPlayer = 2; 
+            document.getElementById('p2-zone').classList.add('active-turn');
+            document.getElementById('p1-zone').classList.remove('active-turn');
 
             duelModal.classList.remove('hidden');
             showNextQuestion();
@@ -475,7 +476,8 @@
             btnOptB.innerText = currentQ.optB;
             btnOptC.innerText = currentQ.optC;
         }
-// ČASOVÁ LOOP
+
+        // ČASOVÁ LOOP
         function startTimerLoop() {
             clearInterval(gameState.timerInterval);
             gameState.timerInterval = setInterval(() => {
@@ -497,12 +499,12 @@
             }, 100);
         }
 
-        // KONTROLA VYBRANÉ ABC MOŽNOSTI
+        // KONTROLA VYBRANÉ ABC MO MOŽNOSTI
         function selectABC(letter) {
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
             
             if (letter === currentQ.a) {
-                // SPRÁVNĚ -> Přepnutí tahu
+                // SPRÁVNĚ -> Přepnutí tahu na soupeře a nová otázka
                 gameState.currentQuestionIdx++;
                 if (gameState.activeTurnPlayer === 1) {
                     gameState.activeTurnPlayer = 2;
@@ -515,9 +517,20 @@
                 }
                 showNextQuestion();
             } else {
-                // ŠPATNĚ -> Blikne červeně
+                // ŠPATNĚ -> Blikne červeně, ztráta 3s penalizace a HNED skočí další otázka
                 quizQuestion.style.color = "var(--danger)";
                 setTimeout(() => quizQuestion.style.color = "var(--text-light)", 400);
+                
+                if (gameState.activeTurnPlayer === 1) {
+                    gameState.timers.p1 = Math.max(0, gameState.timers.p1 - 3);
+                    p1Timer.innerText = gameState.timers.p1.toFixed(1);
+                } else {
+                    gameState.timers.p2 = Math.max(0, gameState.timers.p2 - 3);
+                    p2Timer.innerText = gameState.timers.p2.toFixed(1);
+                }
+                
+                gameState.currentQuestionIdx++;
+                showNextQuestion();
             }
         }
 
@@ -538,7 +551,7 @@
             showNextQuestion();
         });
 
-        // UKONČENÍ DUELU (ZDE JE OPRAVENÁ LOGIKA VÍTĚZE)
+        // UKONČENÍ DUELU (S OPRAVENOU LOGIKOU PODLE PRAVIDEL SHOW)
         function endDuel(winnerSide) {
             clearInterval(gameState.timerInterval);
             duelModal.classList.add('hidden');
@@ -546,7 +559,7 @@
             let winnerId = gameState.attackerIndex;
             let loserId = gameState.defenderIndex;
 
-            // Zajištění spravedlivé detekce podle toho, komu svítí nula
+            // Zajištění přesné detekce podle stavu zbývajícího času
             if (gameState.timers.p1 <= 0) {
                 winnerId = gameState.defenderIndex;
                 loserId = gameState.attackerIndex;
@@ -558,6 +571,7 @@
             const winnerData = gameState.grid.find(c => c.originalOwner === winnerId);
             const loserData = gameState.grid.find(c => c.originalOwner === loserId);
 
+            // Územní posun: Vítěz pohlcuje celé území poraženého
             gameState.grid.forEach(cell => {
                 if (cell.currentOwner === loserId) {
                     cell.currentOwner = winnerId;
@@ -565,15 +579,32 @@
                 }
             });
 
-            gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ] a zabral území.`;
-            gameState.attackerIndex = winnerId;
+            // Původní políčko poraženého žáka definitivně eliminujeme
+            const originalLoserCell = gameState.grid.find(c => c.originalOwner === loserId);
+            if (originalLoserCell) {
+                originalLoserCell.eliminated = true;
+            }
+
+            gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ] a zabral jeho území.`;
+            
             gameState.defenderIndex = null;
 
             if (checkGameEnd()) return;
 
-            btnRandomize.classList.add('hidden');
-            btnPassTurn.classList.remove('hidden');
-            highlightTargets();
+            // Vyhodnocení dalšího postupu podle toho, KDO vyhrál:
+            if (winnerId === gameState.attackerIndex) {
+                // Vyhrál ÚTOČNÍK -> má možnost volby (Pokračovat vs. Vrátit podlaze)
+                btnRandomize.classList.add('hidden');
+                btnPassTurn.classList.remove('hidden');
+                highlightTargets();
+            } else {
+                // Vyhrál OBRÁNCE -> podle pravidel show se slovo automaticky vrací podlaze
+                gameState.attackerIndex = null;
+                btnPassTurn.classList.add('hidden');
+                btnRandomize.classList.remove('hidden');
+                renderFloor();
+                gameStatus.innerText += ` Obránce se úspěšně ubránil. Losujte nového vyzyvatele.`;
+            }
         }
 
         btnPassTurn.addEventListener('click', () => {
