@@ -208,8 +208,7 @@
             "#be185d", // 11. Tmavě růžová
             "#374151"  // 12. Antracitová
         ];
-
- // 🎵 ZVUKOVÝ ENGINE (STOUPAJÍCÍ A KLESAJÍCÍ TÓNY)
+  // 🎵 VYLEPŠENÝ ZVUKOVÝ ENGINE (DLOUHÉ MELODIE A VELKOLEPÁ FANFÁRA)
         const AudioEngine = {
             ctx: null,
             init() { if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
@@ -218,22 +217,27 @@
                 const now = this.ctx.currentTime;
                 
                 if (type === 'correct') { 
-                    // 🟢 SPRÁVNÁ ODPOVĚĎ - Dva rychlé stoupající tóny (píp-píp)
-                    this.playTone(523.25, now, 0.08);       // C5
-                    this.playTone(659.25, now + 0.08, 0.12); // E5
+                    // 🟢 SPRÁVNÁ ODPOVĚĎ - 3 delší, jasně stoupající tóny (píp-píp-píp)
+                    this.playTone(523.25, now, 0.15);       // C5
+                    this.playTone(659.25, now + 0.10, 0.15); // E5
+                    this.playTone(783.99, now + 0.20, 0.25); // G5
                     
                 } else if (type === 'wrong') { 
-                    // 🔴 ŠPATNĚ / PASS - Tři klesající smutné tóny (bú-bú-bú)
-                    this.playTone(220.00, now, 0.12, 'sawtooth');        // A3
-                    this.playTone(196.00, now + 0.10, 0.12, 'sawtooth'); // G3
-                    this.playTone(164.81, now + 0.20, 0.20, 'sawtooth'); // E3
+                    // 🔴 ŠPATNĚ / PASS - Výraznější, delší klesající smutné tóny (bú-bú-bú)
+                    this.playTone(261.63, now, 0.25, 'sawtooth');        // C4
+                    this.playTone(220.00, now + 0.20, 0.25, 'sawtooth'); // A3
+                    this.playTone(174.61, now + 0.40, 0.40, 'sawtooth'); // F3
                     
                 } else if (type === 'victory') { 
-                    // 🏆 CELKOVÁ VÝHRA V DUELU - Rychlá stoupající vítězná fanfára
-                    this.playTone(392.00, now, 0.10);        // G4
-                    this.playTone(523.25, now + 0.10, 0.10); // C5
-                    this.playTone(659.25, now + 0.20, 0.10); // E5
-                    this.playTone(783.99, now + 0.30, 0.40); // G5 (Dlouhý tón na konci)
+                    // 🏆 CELKOVÁ VÝHRA V DUELU - Velkolepá osmitónová fanfára letící nahoru
+                    this.playTone(261.63, now, 0.18);        // C4
+                    this.playTone(329.63, now + 0.15, 0.18); // E4
+                    this.playTone(392.00, now + 0.30, 0.18); // G4
+                    this.playTone(523.25, now + 0.45, 0.18); // C5
+                    this.playTone(659.25, now + 0.60, 0.18); // E5
+                    this.playTone(783.99, now + 0.75, 0.18); // G5
+                    this.playTone(1046.50, now + 0.90, 0.22); // C6
+                    this.playTone(1318.51, now + 1.05, 0.70); // E6 (Dlouhý, triumfální finální tón)
                 }
             },
             // Pomocná metoda pro vygenerování jednoho tónu
@@ -244,7 +248,7 @@
                 osc.type = waveType;
                 osc.frequency.setValueAtTime(freq, startTime);
                 
-                gain.gain.setValueAtTime(0.1, startTime);
+                gain.gain.setValueAtTime(0.12, startTime); // Mírně zesíleno pro lepší slyšitelnost ve třídě
                 gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
                 
                 osc.connect(gain);
@@ -254,7 +258,7 @@
                 osc.stop(startTime + duration);
             }
         };
-        
+         
         let THEMES_LIST = Object.keys(QUIZ_DATABASE);
 
         // STAV HRY
