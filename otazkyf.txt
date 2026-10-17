@@ -183,7 +183,7 @@ Jak se nazývá nejstarší geologická éra, během které vznikal první živo
 Jak se nazývají úseky RNA, které mají katalytickou funkci podobnou enzymům?;Ribozymy;Ribozomy;Plazmidy;A
 Které organismy jako první kolonizovaly souš?;První suchozemské rostliny a houby;Dinosauři;Hmyz;A
 
-#sféry Země
+#Sféry Země
 
 Jak se nazývá pevný kamenný obal Země, který zahrnuje zemskou kůru a nejsvrchnější část plaztu?;Atmosféra;Litosféra;Biosféra;B
 Která sféra Země zahrnuje veškeré vodstvo na planetě (oceány, řeky, ledovce)?;Hydrosféra;Kryosféra;Pedosféra;A
