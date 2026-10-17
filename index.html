@@ -579,12 +579,7 @@
                 }
             });
 
-            // Původní políčko poraženého žáka definitivně eliminujeme
-            const originalLoserCell = gameState.grid.find(c => c.originalOwner === loserId);
-            if (originalLoserCell) {
-                originalLoserCell.eliminated = true;
-            }
-
+            
             gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ] a zabral jeho území.`;
             
             gameState.defenderIndex = null;
@@ -615,21 +610,23 @@
             renderFloor();
         });
 
-        function checkGameEnd() {
-            const activeOwners = Array.from(new Set(
-                gameState.grid.filter(c => !c.eliminated && c.currentOwner !== -1).map(c => c.currentOwner)
-            ));
+       function checkGameEnd() {
+    // Spočítáme unikátní vlastníky, kteří na podlaze ještě drží nějaké území
+    const activeOwners = Array.from(new Set(
+        gameState.grid.filter(c => c.currentOwner !== -1).map(c => c.currentOwner)
+    ));
 
-            if (activeOwners.length === 1) {
-                const absoluteWinner = gameState.grid.find(c => c.originalOwner === activeOwners[0]);
-                gameStatus.innerHTML = `🏆🏆 <strong>KONEC HRY! Žák [ ${absoluteWinner.initials} ] ovládl celou podlahu!</strong> 🏆🏆`;
-                btnRandomize.classList.add('hidden');
-                btnPassTurn.classList.add('hidden');
-                renderFloor();
-                return true;
-            }
-            return false;
-        }
+    // Pokud zbývá už jen 1 jediný vlastník všech polí, máme vítěze!
+    if (activeOwners.length === 1) {
+        const absoluteWinner = gameState.grid.find(c => c.originalOwner === activeOwners[0]);
+        gameStatus.innerHTML = `🏆🏆 <strong>KONEC HRY! Žák [ ${absoluteWinner.initials} ] ovládl celou podlahu!</strong> 🏆🏆`;
+        btnRandomize.classList.add('hidden');
+        btnPassTurn.classList.add('hidden');
+        renderFloor();
+        return true;
+    }
+    return false;
+}
     </script>
 </body>
 </html>
