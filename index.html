@@ -184,15 +184,21 @@
             "Téma 6 (otazky6)": []
         };
         
-        // 🎨 SEM JSME PŘIDALI BARVY PRO ŽÁKY (Vložit hned pod databázi)
+       // 🎨 ROZŠÍŘENÁ PALETA 12 UNIKÁTNÍCH BAREV (Bez čisté červené a žluté)
         let PLAYER_COLORS = [
-            "#1e3a8a", // Tmavě modrá
-            "#065f46", // Tmavě zelená
-            "#7c2d12", // Cihlově červená
-            "#581c87", // Fialová
-            "#701a75", // Vínová
-            "#155e75"  // Tyrkysová
-        ];        
+            "#1e3a8a", // 1. Tmavě modrá
+            "#065f46", // 2. Tmavě zelená
+            "#7c2d12", // 3. Cihlová
+            "#581c87", // 4. Fialová
+            "#a21caf", // 5. Purpurová
+            "#0f766e", // 6. Tyrkysová
+            "#4d7c0f", // 7. Olivová / Limetková
+            "#b45309", // 8. Jantarová
+            "#1d4ed8", // 9. Královská modrá
+            "#6b7280", // 10. Břidlicově šedá
+            "#be185d", // 11. Tmavě růžová
+            "#374151"  // 12. Antracitová
+        ];
 
         let THEMES_LIST = Object.keys(QUIZ_DATABASE);
 
@@ -353,12 +359,12 @@
 
 
           // JEDNOTNÉ VYKRESLENÍ MŘÍŽKY A ZVÝRAZNĚNÍ
+// JEDNOTNÉ VYKRESLENÍ MŘÍŽKY A ZVÝRAZNĚNÍ (PŘEHLEDNÁ VERZE)
         function renderFloor() {
             floorGrid.innerHTML = '';
             floorGrid.style.gridTemplateColumns = `repeat(${gameState.cols}, 1fr)`;
             floorGrid.style.gridTemplateRows = `repeat(${gameState.rows}, 1fr)`;
 
-            // Pokud máme vybraného útočníka, předem si zjistíme jeho platné sousedy (majitele)
             let validOpponents = [];
             if (gameState.attackerIndex !== null && gameState.defenderIndex === null) {
                 validOpponents = getNeighbors(gameState.attackerIndex);
@@ -368,41 +374,51 @@
                 const div = document.createElement('div');
                 div.className = 'floor-cell';
                 
-                if (cell.eliminated || cell.currentOwner === -1) {
+                if (cell.currentOwner === -1) {
                     div.classList.add('eliminated');
                     div.innerHTML = `<span class="cell-owner">❌</span>`;
                 } else {
-                    // Správně najdeme data aktuálního majitele pro zobrazení jeho tématu
                     const ownerData = gameState.grid.find(c => c.originalOwner === cell.currentOwner);
-                    
-                    div.innerHTML = `
-                        <span class="cell-owner">${cell.initials}</span>
-                        <span class="cell-topic">${ownerData ? ownerData.topic : ''}</span>
-                    `;
-                    
-                    // 🎨 DYNAMICKÉ OBARVENÍ PODLE AKTUÁLNÍHO MAJITELE
-                    // Každý majitel získá svou stálou barvu podle ID z našeho nového seznamu PLAYER_COLORS
-                    const colorIdx = cell.currentOwner % PLAYER_COLORS.length;
-                    div.style.backgroundColor = PLAYER_COLORS[colorIdx];
-                    div.style.borderColor = "rgba(255, 255, 255, 0.15)";
-                    
-                    // 🔴 Pokud je políčko aktivním územím útočníka, přebijeme barvu červenou třídou
-                    if (gameState.attackerIndex !== null && cell.currentOwner === gameState.attackerIndex) {
-                        div.classList.add('active-attacker');
-                        div.style.backgroundColor = ""; // Vynutí barvu z CSS (.active-attacker)
+                    const isEliminated = cell.originalOwner !== cell.currentOwner;
+
+                    // Pokud žák na tomto políčku vypadl, zmenšíme jméno a zprůhledníme ho
+                    if (isEliminated) {
+                        div.innerHTML = `
+                            <span class="cell-owner" style="font-size: 0.9rem; opacity: 0.4; font-weight: normal; text-decoration: line-through;">${cell.initials}</span>
+                            <span class="cell-topic" style="font-size: 0.65rem; opacity: 0.7; color: #94a3b8;">👑 ${ownerData ? ownerData.initials : ''}</span>
+                        `;
+                        div.style.borderStyle = "dashed"; // Vyřazená pole mají přerušovaný okraj
+                    } else {
+                        // Žijící hráč - velké tučné písmo
+                        div.innerHTML = `
+                            <span class="cell-owner" style="font-size: 1.6rem; font-weight: 900;">${cell.initials}</span>
+                            <span class="cell-topic" style="font-size: 0.75rem; color: #cbd5e1;">${ownerData ? ownerData.topic : ''}</span>
+                        `;
+                        div.style.borderStyle = "solid";
                     }
                     
-                    // 🔵 Pokud je políčko platným cílem k útoku, přebijeme barvu modrou třídou
+                    // Obarvení podlahy podle AKTUÁLNÍHO majitele (území se spojují)
+                    const colorIdx = cell.currentOwner % PLAYER_COLORS.length;
+                    div.style.backgroundColor = PLAYER_COLORS[colorIdx];
+                    div.style.borderColor = isEliminated ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.4)";
+                    
+                    // 🔴 Aktivní území útočníka
+                    if (gameState.attackerIndex !== null && cell.currentOwner === gameState.attackerIndex) {
+                        div.classList.add('active-attacker');
+                        div.style.backgroundColor = ""; 
+                    }
+                    
+                    // 🔵 Platné cíle k útoku
                     if (validOpponents.includes(cell.currentOwner)) {
                         div.classList.add('valid-target');
-                        div.style.backgroundColor = ""; // Vynutí barvu z CSS (.valid-target)
+                        div.style.backgroundColor = ""; 
                         div.onclick = () => startDuel(cell.currentOwner);
                     }
                 }
                 floorGrid.appendChild(div);
             });
         }
- 
+        
         // GEOGRAFICKÝ SOUSEDÉ
         function getNeighbors(ownerId) {
             const neighbors = new Set();
