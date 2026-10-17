@@ -142,6 +142,15 @@
         </div>
     </div>
 
+     <!-- OZNAMOVACÍ PROSTŘEDÍ PRO PŘEDÁVÁNÍ MYŠI A KONEC DUELU -->
+    <div id="game-overlay" class="modal hidden" style="z-index: 2000; text-align: center; background-color: rgba(2, 6, 23, 0.98);">
+        <div style="color: white; padding: 40px;">
+            <h1 id="overlay-title" style="font-size: 3rem; margin-bottom: 20px; color: var(--warning);">PŘEDEJTE MYŠ!</h1>
+            <p id="overlay-subtitle" style="font-size: 1.5rem; color: #94a3b8; margin-bottom: 40px;">Na řadě je druhý hráč.</p>
+            <button id="btn-overlay-continue" class="btn btn-success" style="font-size: 1.5rem; padding: 20px 40px;">👉 POKRAČOVAT</button>
+        </div>
+    </div>
+    
     <!-- 3. DUEL MODAL SCREEN -->
     <div id="duel-modal" class="modal hidden">
         <div class="modal-content">
@@ -199,7 +208,32 @@
             "#be185d", // 11. Tmavě růžová
             "#374151"  // 12. Antracitová
         ];
-
+   // 🎵 ZVUKOVÝ ENGINE (Nepotřebuje externí soubory)
+        const AudioEngine = {
+            ctx: null,
+            init() { if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
+            play(type) {
+                this.init();
+                const osc = this.ctx.createOscillator();
+                const gain = this.ctx.createGain();
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                
+                const now = this.ctx.currentTime;
+                if (type === 'correct') { // Krátké pípnutí (Správná odpověď)
+                    osc.frequency.setValueAtTime(600, now); osc.frequency.exponentialRampToValueAtTime(900, now + 0.1);
+                    gain.gain.setValueAtTime(0.1, now); gain.gain.linearRampToValueAtTime(0, now + 0.15);
+                    osc.start(now); osc.stop(now + 0.15);
+                } else if (type === 'wrong') { // Zabzučení (Chyba / Pass)
+                    osc.type = 'sawtooth'; osc.frequency.setValueAtTime(150, now);
+                    gain.gain.setValueAtTime(0.15, now); gain.gain.linearRampToValueAtTime(0, now + 0.25);
+                    osc.start(now); osc.stop(now + 0.25);
+                } else if (type === 'victory') { // Vítězná fanfára (Konec duelu)
+                    osc.frequency.setValueAtTime(400, now); osc.frequency.setValueAtTime(600, now + 0.15); osc.frequency.setValueAtTime(800, now + 0.3);
+                    gain.gain.setValueAtTime(0.2, now); gain.gain.linearRampToValueAtTime(0, now + 0.6);
+                    osc.start(now); osc.stop(now + 0.6);
+                }
+            }
+        };
         let THEMES_LIST = Object.keys(QUIZ_DATABASE);
 
         // STAV HRY
@@ -554,26 +588,30 @@
                 }
             }, 100);
         }
-
-        // KONTROLA VYBRANÉ ABC MO MOŽNOSTI
+ // KONTROLA VYBRANÉ ABC MOŽNOSTI
         function selectABC(letter) {
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
             
             if (letter === currentQ.a) {
-                // SPRÁVNĚ -> Přepnutí tahu na soupeře a nová otázka
+                // 🟢 SPRÁVNĚ -> Zastavíme čas, spustíme zvuk a nápis pro předání myši
+                clearInterval(gameState.timerInterval);
+                AudioEngine.play('correct');
+                
+                // Přepnutí hráče v pozadí
                 gameState.currentQuestionIdx++;
-                if (gameState.activeTurnPlayer === 1) {
-                    gameState.activeTurnPlayer = 2;
-                    document.getElementById('p2-zone').classList.add('active-turn');
-                    document.getElementById('p1-zone').classList.remove('active-turn');
-                } else {
-                    gameState.activeTurnPlayer = 1;
-                    document.getElementById('p1-zone').classList.add('active-turn');
-                    document.getElementById('p2-zone').classList.remove('active-turn');
-                }
-                showNextQuestion();
+                gameState.activeTurnPlayer = gameState.activeTurnPlayer === 1 ? 2 : 1;
+                
+                const nextPlayerCell = gameState.grid.find(c => c.originalOwner === (gameState.activeTurnPlayer === 1 ? gameState.attackerIndex : gameState.defenderIndex));
+                const nextPlayerName = nextPlayerCell ? nextPlayerCell.initials : "Soupeř";
+
+                // Zobrazení předávací obrazovky
+                document.getElementById('overlay-title').innerText = "🤝 PŘEDEJTE MYŠ!";
+                document.getElementById('overlay-subtitle').innerText = `Na řadě je: ${nextPlayerName}`;
+                document.getElementById('game-overlay').classList.remove('hidden');
+                
             } else {
-                // ŠPATNĚ -> Blikne červeně, ztráta 3s penalizace a HNED skočí další otázka
+                // 🔴 ŠPATNĚ -> Zvuk bzučáku, penalizace -3s a hned další otázka
+                AudioEngine.play('wrong');
                 quizQuestion.style.color = "var(--danger)";
                 setTimeout(() => quizQuestion.style.color = "var(--text-light)", 400);
                 
@@ -590,6 +628,16 @@
             }
         }
 
+        // Tlačítko na nápisu (overlay) vrátí hráče do akce a znovu spustí odpočet
+        document.getElementById('btn-overlay-continue').addEventListener('click', () => {
+            document.getElementById('game-overlay').classList.add('hidden');
+            // Pokud se jedná o běžné předání během duelu (duelModal je otevřený), obnovíme smyčku odpočtu
+            if (!duelModal.classList.contains('hidden')) {
+                updateTurnVisuals();
+                showNextQuestion();
+                startTimerLoop();
+            }
+        });
         btnOptA.addEventListener('click', () => selectABC('A'));
         btnOptB.addEventListener('click', () => selectABC('B'));
         btnOptC.addEventListener('click', () => selectABC('C'));
