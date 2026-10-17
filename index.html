@@ -183,17 +183,12 @@
     
  <!-- 4. ČÁST: JAVASCRIPT LOGIKA -->
     <script>
-   // Globální databáze, do které asynchronně načteme data ze souborů
-        let QUIZ_DATABASE = {
-            "Téma 1 (otazky1)": [],
-            "Téma 2 (otazky2)": [],
-            "Téma 3 (otazky3)": [],
-            "Téma 4 (otazky4)": [],
-            "Téma 5 (otazky5)": [],
-            "Téma 6 (otazky6)": []
-        };
-        
-       // 🎨 ROZŠÍŘENÁ PALETA 12 UNIKÁTNÍCH BAREV (Bez čisté červené a žluté)
+
+ // Globální databáze, která se dynamicky naplní ze souboru otazkyf.txt
+        let QUIZ_DATABASE = {};
+        let THEMES_LIST = [];
+
+        // 🎨 ROZŠÍŘENÁ PALETA 12 UNIKÁTNÍCH BAREV
         let PLAYER_COLORS = [
             "#1e3a8a", // 1. Tmavě modrá
             "#065f46", // 2. Tmavě zelená
@@ -201,13 +196,14 @@
             "#581c87", // 4. Fialová
             "#a21caf", // 5. Purpurová
             "#0f766e", // 6. Tyrkysová
-            "#4d7c0f", // 7. Olivová / Limetková
+            "#4d7c0f", // 7. Olivová
             "#b45309", // 8. Jantarová
             "#1d4ed8", // 9. Královská modrá
             "#6b7280", // 10. Břidlicově šedá
             "#be185d", // 11. Tmavě růžová
             "#374151"  // 12. Antracitová
         ];
+                
  // 🎵 MAJESTÁTNÍ ZVUKOVÝ ENGINE (DLOUHÉ, TÁHLÉ TÓNY A VELKOLEPÁ SHOW)
         const AudioEngine = {
             ctx: null,
@@ -305,24 +301,35 @@
         const btnOptC = document.getElementById('btn-opt-C');
         const btnQuizPass = document.getElementById('btn-quiz-pass');
 
-        // 1. ASYNCHRONNÍ NAČTENÍ TEXTOVÝCH SOUBORŮ
+        // 1. ASYNCHRONNÍ NAČTENÍ JEDNOHO SOUBORU otazkyf.txt
         async function loadQuestionsFromTXT() {
-            for (let i = 1; i <= 6; i++) {
-                const themeKey = THEMES_LIST[i - 1];
-                try {
-                    const response = await fetch(`otazky${i}.txt`);
-                    if (!response.ok) throw new Error(`Soubor otazky${i}.txt nenalezen`);
+            try {
+                const response = await fetch('otazkyf.txt');
+                if (!response.ok) throw new Error('Soubor otazkyf.txt nenalezen');
+                
+                const text = await response.text();
+                // Rozdělení textu na řádky (ošetření pro různé typy konců řádků)
+                const lines = text.split(/\r?\n/);
+                
+                let currentTheme = null;
+                QUIZ_DATABASE = {}; // Vyčistíme starou databázi
+                
+                lines.forEach(line => {
+                    const trimmedLine = line.trim();
+                    if (!trimmedLine) return; // Přeskočit prázdné řádky
                     
-                    const text = await response.text();
-                    const lines = text.split('\n');
+                    // Pokud řádek začíná mřížkou #, jedná se o NOVÉ TÉMA
+                    if (trimmedLine.startsWith('#')) {
+                        currentTheme = trimmedLine.replace('#', '').trim();
+                        QUIZ_DATABASE[currentTheme] = []; // Inicializujeme pole pro otázky
+                        return;
+                    }
                     
-                    lines.forEach(line => {
-                        if (!line.trim() || !line.includes(';')) return;
-                        
-                        // Rozdělení řádku podle středníků
-                        const parts = line.split(';');
+                    // Pokud už máme aktivní téma a řádek obsahuje středníky, parsujeme otázku
+                    if (currentTheme && trimmedLine.includes(';')) {
+                        const parts = trimmedLine.split(';');
                         if (parts.length >= 5) {
-                            QUIZ_DATABASE[themeKey].push({
+                            QUIZ_DATABASE[currentTheme].push({
                                 q: parts[0].trim(),
                                 optA: parts[1].trim(),
                                 optB: parts[2].trim(),
@@ -330,20 +337,35 @@
                                 a: parts[4].trim().toUpperCase() // Očekává A, B nebo C
                             });
                         }
-                    });
-                } catch (error) {
-                    console.error(error.message);
-                    // Záložní otázka, pokud soubor chybí
-                    QUIZ_DATABASE[themeKey].push({
-                        q: `Ukázková otázka pro Téma ${i}? (Chybí otazky${i}.txt)`,
-                        optA: "A) Možnost A", optB: "B) Možnost B", optC: "C) Možnost C", a: "A"
-                    });
+                    }
+                });
+                
+                // Aktualizujeme seznam nalezených témat
+                THEMES_LIST = Object.keys(QUIZ_DATABASE);
+                
+                if (THEMES_LIST.length === 0) {
+                    throw new Error('V souboru otazkyf.txt nebyla nalezena žádná témata uvozená #');
                 }
+                
+            } catch (error) {
+                console.error(error.message);
+                // Záložní nouzové téma, pokud soubor chybí nebo je poškozený
+                QUIZ_DATABASE["Záložní Téma"] = [{
+                    q: "Chybí nebo je poškozen soubor otazkyf.txt! Pokračovat?",
+                    optA: "Ano", optB: "Ne", optC: "Nevím", a: "A"
+                }];
+                THEMES_LIST = Object.keys(QUIZ_DATABASE);
             }
         }
 
-        // GENERÁTOR POLÍ PRO SEZNAM ŽÁKŮ
-        btnGenerateInputs.addEventListener('click', () => {
+           // GENERÁTOR POLÍ PRO SEZNAM ŽÁKŮ (S DYNAMICKÝM NAČTENÍM TÉMAT)
+        btnGenerateInputs.addEventListener('click', async () => {
+            btnGenerateInputs.disabled = true;
+            btnGenerateInputs.innerText = "Načítám témata...";
+            
+            // Nejdříve prozkoumáme soubor a vytáhneme témata
+            await loadQuestionsFromTXT();
+            
             const count = parseInt(studentCountSelect.value);
             gameState.totalCells = count;
             
@@ -370,11 +392,15 @@
                 
                 const select = document.createElement('select');
                 select.className = 'select-topic';
+                
+                // Vygenerujeme možnosti podle témat z otazkyf.txt
                 THEMES_LIST.forEach(t => {
                     const opt = document.createElement('option');
                     opt.value = t; opt.innerText = t;
                     select.appendChild(opt);
                 });
+                
+                // Spravedlivě rozdělíme nalezená témata mezi žáky
                 select.value = THEMES_LIST[i % THEMES_LIST.length];
 
                 row.appendChild(input);
@@ -383,17 +409,14 @@
                 card.appendChild(row);
                 inputsContainer.appendChild(card);
             }
+            
+            btnGenerateInputs.disabled = false;
+            btnGenerateInputs.innerText = "Připravit jmenný seznam";
             btnStartGame.classList.remove('hidden');
         });
         
-// SPUŠTĚNÍ HRY S NAČTENÍM SOUBORŮ
-        btnStartGame.addEventListener('click', async () => {
-            btnStartGame.disabled = true;
-            btnStartGame.innerText = "Načítám textové soubory...";
-            
-            // Asynchronní stažení otázek ze souborů otazky1.txt až otazky6.txt
-            await loadQuestionsFromTXT();
-
+         // SPUŠTĚNÍ HRY
+        btnStartGame.addEventListener('click', () => {
             const initInputs = document.querySelectorAll('.input-initials');
             const topicSelects = document.querySelectorAll('.select-topic');
             gameState.grid = [];
@@ -419,10 +442,8 @@
             gameScreen.classList.remove('hidden');
             gameStatus.innerText = "Hra načtena. Klikněte na Losovat vyzyvatele.";
             renderFloor();
-        });
-
-
-          // JEDNOTNÉ VYKRESLENÍ MŘÍŽKY A ZVÝRAZNĚNÍ
+        }); 
+        
 // JEDNOTNÉ VYKRESLENÍ MŘÍŽKY A ZVÝRAZNĚNÍ (PŘEHLEDNÁ VERZE)
         function renderFloor() {
             floorGrid.innerHTML = '';
