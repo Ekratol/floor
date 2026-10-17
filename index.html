@@ -340,11 +340,17 @@
             renderFloor();
         });
 
-        // VYKRESLENÍ MŘÍŽKY PODLAHY
+   // JEDNOTNÉ VYKRESLENÍ MŘÍŽKY A ZVÝRAZNĚNÍ
         function renderFloor() {
             floorGrid.innerHTML = '';
             floorGrid.style.gridTemplateColumns = `repeat(${gameState.cols}, 1fr)`;
             floorGrid.style.gridTemplateRows = `repeat(${gameState.rows}, 1fr)`;
+
+            // Pokud máme vybraného útočníka, předem si zjistíme jeho platné sousedy (majitele)
+            let validOpponents = [];
+            if (gameState.attackerIndex !== null && gameState.defenderIndex === null) {
+                validOpponents = getNeighbors(gameState.attackerIndex);
+            }
 
             gameState.grid.forEach((cell, idx) => {
                 const div = document.createElement('div');
@@ -354,13 +360,23 @@
                     div.classList.add('eliminated');
                     div.innerHTML = `<span class="cell-owner">❌</span>`;
                 } else {
+                    // Správně najdeme data aktuálního majitele pro zobrazení jeho tématu
                     const ownerData = gameState.grid.find(c => c.originalOwner === cell.currentOwner);
+                    
                     div.innerHTML = `
                         <span class="cell-owner">${cell.initials}</span>
                         <span class="cell-topic">${ownerData ? ownerData.topic : ''}</span>
                     `;
+                    
+                    // 🔴 Zvýraznění AKTIVNÍHO ÚZEMÍ ÚTOČNÍKA (všechna pole, která mu aktuálně patří)
                     if (gameState.attackerIndex !== null && cell.currentOwner === gameState.attackerIndex) {
                         div.classList.add('active-attacker');
+                    }
+                    
+                    // 🔵 Zvýraznění PLATNÝCH CÍLŮ K ÚTOKU
+                    if (validOpponents.includes(cell.currentOwner)) {
+                        div.classList.add('valid-target');
+                        div.onclick = () => startDuel(cell.currentOwner);
                     }
                 }
                 floorGrid.appendChild(div);
@@ -405,30 +421,32 @@
 
             const pickedOwner = activeOwners[Math.floor(Math.random() * activeOwners.length)];
             gameState.attackerIndex = pickedOwner;
+            gameState.defenderIndex = null; // Vynulujeme starého obránce
             
             const attackerData = gameState.grid.find(c => c.originalOwner === pickedOwner);
             gameStatus.innerText = `🎲 Randomizér vybral žáka [ ${attackerData.initials} ]. Vyberte souseda kliknutím na podlahu!`;
             
-            highlightTargets();
-        });
-
-        function highlightTargets() {
-            renderFloor();
-            const validOpponents = getNeighbors(gameState.attackerIndex);
-
-            if (validOpponents.length === 0) {
-                gameStatus.innerText = `Žák nemá žádné sousedy k útoku. Losujte znovu.`;
+            // Ověříme, zda má vůbec koho napadnout
+            if (getNeighbors(pickedOwner).length === 0) {
+                gameStatus.innerText = `Žák nemá žádné sousedy k útoku. Losujeme automaticky znovu...`;
                 gameState.attackerIndex = null;
+                // Malá pauza, aby se skript nezacyklil, a zkusíme znovu
+                setTimeout(() => btnRandomize.click(), 500);
                 return;
             }
 
-            const cells = floorGrid.children;
-            gameState.grid.forEach((cell, idx) => {
-                if (validOpponents.includes(cell.currentOwner)) {
-                    cells[idx].classList.add('valid-target');
-                    cells[idx].onclick = () => startDuel(cell.currentOwner);
-                }
-            });
+            renderFloor(); // Vykreslí plochu a rovnou modře nasvítí cíle
+        });
+
+        // PŘEDÁNÍ SLOVA RANDOMIZÉRU
+        btnPassTurn.addEventListener('click', () => {
+            gameState.attackerIndex = null;
+            gameState.defenderIndex = null;
+            btnPassTurn.classList.add('hidden');
+            btnRandomize.classList.remove('hidden');
+            gameStatus.innerText = `Slovo předáno. Klikněte na Losovat vyzyvatele pro určení nového útočníka.`;
+            renderFloor();
+        });
         }
 
         // ZAHÁJENÍ DUELU (ABC VERZE)
@@ -551,15 +569,15 @@
             showNextQuestion();
         });
 
-       // UKONČENÍ DUELU
-  function endDuel(winnerSide) {
+        // UKONČENÍ DUELU (ZCELA OPRAVENÁ VERZE)
+        function endDuel(winnerSide) {
             clearInterval(gameState.timerInterval);
             duelModal.classList.add('hidden');
 
             let winnerId = gameState.attackerIndex;
             let loserId = gameState.defenderIndex;
 
-            // Správná detekce vítěze podle času
+            // Detekce vítěze podle toho, komu došel čas
             if (gameState.timers.p1 <= 0) {
                 winnerId = gameState.defenderIndex;
                 loserId = gameState.attackerIndex;
@@ -571,8 +589,7 @@
             const winnerData = gameState.grid.find(c => c.originalOwner === winnerId);
             const loserData = gameState.grid.find(c => c.originalOwner === loserId);
 
-            // Územní posun: Přejmenujeme POUZE vlastníka (currentOwner)
-            // Nikdy nepřepisujeme cell.initials, ty reprezentují pevné místo na mapě!
+            // ZÁBĚR ÚZEMÍ: Všechna políčka poraženého přejdou pod vítěze
             gameState.grid.forEach(cell => {
                 if (cell.currentOwner === loserId) {
                     cell.currentOwner = winnerId;
@@ -580,27 +597,26 @@
             });
 
             gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ] a zabral jeho území.`;
-            
             gameState.defenderIndex = null;
 
             if (checkGameEnd()) return;
 
-            // Rozcestník podle toho, kdo vyhrál duel
+            // ROZCESTNÍK PODLE TOHO, KDO VYHRÁL:
             if (winnerId === gameState.attackerIndex) {
-                // Vyhrál ÚTOČNÍK -> index útočníka zůstává, pokračuje v agresi
+                // ⚔️ VYHRÁL ÚTOČNÍK -> Pokračuje v agresi ze svého nového velkého území
                 btnRandomize.classList.add('hidden');
                 btnPassTurn.classList.remove('hidden');
-                highlightTargets();
+                renderFloor(); // Automaticky rozsvítí nové sousedy modře!
             } else {
-                // Vyhrál OBRÁNCE -> útočník je vymazán, slovo se vrací podlaze
-                gameState.attackerIndex = null;
+                // 🛡️ VYHRÁL OBRÁNCE -> Útočník padl, slovo se vrací podlaze
+                gameState.attackerIndex = null; 
                 btnPassTurn.classList.add('hidden');
-                btnRandomize.classList.remove('hidden');
-                renderFloor(); // Čisté překreslení odblokuje podlahu pro další losování
+                btnRandomize.classList.remove('hidden'); // Odblokuje tlačítko randomizéru
+                renderFloor(); // Zhasne plochu do základního stavu a připraví ji na další losování
                 gameStatus.innerText += ` Obránce se úspěšně ubránil. Vylosujte nového vyzyvatele.`;
             }
         }
-
+  
        function checkGameEnd() {
     // Spočítáme unikátní vlastníky, kteří na podlaze ještě drží nějaké území
     const activeOwners = Array.from(new Set(
