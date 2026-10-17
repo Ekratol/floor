@@ -644,6 +644,7 @@
 
         // PŘESKOČENÍ (TREST -3s)
         btnQuizPass.addEventListener('click', () => {
+            AudioEngine.play('wrong'); // Přidán zvuk chyby
             if (gameState.activeTurnPlayer === 1) {
                 gameState.timers.p1 = Math.max(0, gameState.timers.p1 - 3);
                 p1Timer.innerText = gameState.timers.p1.toFixed(1);
@@ -654,8 +655,7 @@
             gameState.currentQuestionIdx++;
             showNextQuestion();
         });
-
-        // UKONČENÍ DUELU (ZCELA OPRAVENÁ VERZE)
+      
         function endDuel(winnerSide) {
             clearInterval(gameState.timerInterval);
             duelModal.classList.add('hidden');
@@ -663,7 +663,6 @@
             let winnerId = gameState.attackerIndex;
             let loserId = gameState.defenderIndex;
 
-            // Detekce vítěze podle toho, komu došel čas
             if (gameState.timers.p1 <= 0) {
                 winnerId = gameState.defenderIndex;
                 loserId = gameState.attackerIndex;
@@ -675,34 +674,43 @@
             const winnerData = gameState.grid.find(c => c.originalOwner === winnerId);
             const loserData = gameState.grid.find(c => c.originalOwner === loserId);
 
-            // ZÁBĚR ÚZEMÍ: Všechna políčka poraženého přejdou pod vítěze
+            // Územní posun na pozadí
             gameState.grid.forEach(cell => {
                 if (cell.currentOwner === loserId) {
                     cell.currentOwner = winnerId;
                 }
             });
 
+            // Určení role pro text nápisu
+            const isAttackerWinner = (winnerId === gameState.attackerIndex);
+            const titleRoleText = isAttackerWinner ? "⚔️ ÚTOČNÍK VYHRÁVÁ!" : "🛡️ OBRÁNCE SE UBRÁNIL!";
+
+            // 🏆 SPUŠTĚNÍ VÍTĚZNÉHO OZNÁMENÍ (Zamezí prokliknutí na mapu)
+            AudioEngine.play('victory');
+            document.getElementById('overlay-title').innerText = titleRoleText;
+            document.getElementById('overlay-subtitle').innerText = `Žák [ ${winnerData.initials} ] ovládl území žáka [ ${loserData.initials} ]!`;
+            document.getElementById('game-overlay').classList.remove('hidden');
+
             gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ] a zabral jeho území.`;
             gameState.defenderIndex = null;
 
             if (checkGameEnd()) return;
 
-            // ROZCESTNÍK PODLE TOHO, KDO VYHRÁL:
-            if (winnerId === gameState.attackerIndex) {
-                // ⚔️ VYHRÁL ÚTOČNÍK -> Pokračuje v agresi ze svého nového velkého území
+            // Vyhodnocení stavu herní plochy
+            if (isAttackerWinner) {
                 btnRandomize.classList.add('hidden');
                 btnPassTurn.classList.remove('hidden');
-                renderFloor(); // Automaticky rozsvítí nové sousedy modře!
             } else {
-                // 🛡️ VYHRÁL OBRÁNCE -> Útočník padl, slovo se vrací podlaze
-                gameState.attackerIndex = null; 
+                gameState.attackerIndex = null;
                 btnPassTurn.classList.add('hidden');
-                btnRandomize.classList.remove('hidden'); // Odblokuje tlačítko randomizéru
-                renderFloor(); // Zhasne plochu do základního stavu a připraví ji na další losování
+                btnRandomize.classList.remove('hidden');
                 gameStatus.innerText += ` Obránce se úspěšně ubránil. Vylosujte nového vyzyvatele.`;
             }
+            
+            // Mapu překreslíme rovnou na pozadí, ale uživatel ji plně uvidí až po zavření overlay nápisu
+            renderFloor();
         }
-  
+        
        function checkGameEnd() {
     // Spočítáme unikátní vlastníky, kteří na podlaze ještě drží nějaké území
     const activeOwners = Array.from(new Set(
