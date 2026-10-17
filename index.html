@@ -171,9 +171,10 @@
             </div>
         </div>
     </div>
+    
  <!-- 4. ČÁST: JAVASCRIPT LOGIKA -->
     <script>
-        // Globální databáze, do které asynchronně načteme data ze souborů
+   // Globální databáze, do které asynchronně načteme data ze souborů
         let QUIZ_DATABASE = {
             "Téma 1 (otazky1)": [],
             "Téma 2 (otazky2)": [],
@@ -183,6 +184,16 @@
             "Téma 6 (otazky6)": []
         };
         
+        // 🎨 SEM JSME PŘIDALI BARVY PRO ŽÁKY (Vložit hned pod databázi)
+        let PLAYER_COLORS = [
+            "#1e3a8a", // Tmavě modrá
+            "#065f46", // Tmavě zelená
+            "#7c2d12", // Cihlově červená
+            "#581c87", // Fialová
+            "#701a75", // Vínová
+            "#155e75"  // Tyrkysová
+        ];        
+
         let THEMES_LIST = Object.keys(QUIZ_DATABASE);
 
         // STAV HRY
@@ -340,7 +351,8 @@
             renderFloor();
         });
 
-   // JEDNOTNÉ VYKRESLENÍ MŘÍŽKY A ZVÝRAZNĚNÍ
+
+          // JEDNOTNÉ VYKRESLENÍ MŘÍŽKY A ZVÝRAZNĚNÍ
         function renderFloor() {
             floorGrid.innerHTML = '';
             floorGrid.style.gridTemplateColumns = `repeat(${gameState.cols}, 1fr)`;
@@ -368,21 +380,29 @@
                         <span class="cell-topic">${ownerData ? ownerData.topic : ''}</span>
                     `;
                     
-                    // 🔴 Zvýraznění AKTIVNÍHO ÚZEMÍ ÚTOČNÍKA (všechna pole, která mu aktuálně patří)
+                    // 🎨 DYNAMICKÉ OBARVENÍ PODLE AKTUÁLNÍHO MAJITELE
+                    // Každý majitel získá svou stálou barvu podle ID z našeho nového seznamu PLAYER_COLORS
+                    const colorIdx = cell.currentOwner % PLAYER_COLORS.length;
+                    div.style.backgroundColor = PLAYER_COLORS[colorIdx];
+                    div.style.borderColor = "rgba(255, 255, 255, 0.15)";
+                    
+                    // 🔴 Pokud je políčko aktivním územím útočníka, přebijeme barvu červenou třídou
                     if (gameState.attackerIndex !== null && cell.currentOwner === gameState.attackerIndex) {
                         div.classList.add('active-attacker');
+                        div.style.backgroundColor = ""; // Vynutí barvu z CSS (.active-attacker)
                     }
                     
-                    // 🔵 Zvýraznění PLATNÝCH CÍLŮ K ÚTOKU
+                    // 🔵 Pokud je políčko platným cílem k útoku, přebijeme barvu modrou třídou
                     if (validOpponents.includes(cell.currentOwner)) {
                         div.classList.add('valid-target');
+                        div.style.backgroundColor = ""; // Vynutí barvu z CSS (.valid-target)
                         div.onclick = () => startDuel(cell.currentOwner);
                     }
                 }
                 floorGrid.appendChild(div);
             });
         }
-
+ 
         // GEOGRAFICKÝ SOUSEDÉ
         function getNeighbors(ownerId) {
             const neighbors = new Set();
