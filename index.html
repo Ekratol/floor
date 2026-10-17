@@ -552,13 +552,14 @@
         });
 
        // UKONČENÍ DUELU
-        function endDuel(winnerSide) {
+  function endDuel(winnerSide) {
             clearInterval(gameState.timerInterval);
             duelModal.classList.add('hidden');
 
             let winnerId = gameState.attackerIndex;
             let loserId = gameState.defenderIndex;
 
+            // Správná detekce vítěze podle času
             if (gameState.timers.p1 <= 0) {
                 winnerId = gameState.defenderIndex;
                 loserId = gameState.attackerIndex;
@@ -570,7 +571,8 @@
             const winnerData = gameState.grid.find(c => c.originalOwner === winnerId);
             const loserData = gameState.grid.find(c => c.originalOwner === loserId);
 
-            // Územní posun: Vítěz pohlcuje celé území poraženého
+            // Územní posun: Přejmenujeme POUZE vlastníka (currentOwner)
+            // Nikdy nepřepisujeme cell.initials, ty reprezentují pevné místo na mapě!
             gameState.grid.forEach(cell => {
                 if (cell.currentOwner === loserId) {
                     cell.currentOwner = winnerId;
@@ -578,27 +580,27 @@
             });
 
             gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ] a zabral jeho území.`;
+            
             gameState.defenderIndex = null;
 
             if (checkGameEnd()) return;
 
-            // --- ZDE JE TA OPRAVA ---
+            // Rozcestník podle toho, kdo vyhrál duel
             if (winnerId === gameState.attackerIndex) {
-                // Vyhrál ÚTOČNÍK -> pokračuje v útoku, zvýrazníme nové sousedy
+                // Vyhrál ÚTOČNÍK -> index útočníka zůstává, pokračuje v agresi
                 btnRandomize.classList.add('hidden');
                 btnPassTurn.classList.remove('hidden');
-                highlightTargets(); 
+                highlightTargets();
             } else {
-                // Vyhrál OBRÁNCE -> útočník je smazán, slovo má randomizér
+                // Vyhrál OBRÁNCE -> útočník je vymazán, slovo se vrací podlaze
                 gameState.attackerIndex = null;
                 btnPassTurn.classList.add('hidden');
                 btnRandomize.classList.remove('hidden');
-                
-                // Místo highlightTargets() zavoláme čisté překreslení plochy!
-                renderFloor(); 
-                gameStatus.innerText += ` Obránce se úspěšně ubránil. Losujte nového vyzyvatele.`;
+                renderFloor(); // Čisté překreslení odblokuje podlahu pro další losování
+                gameStatus.innerText += ` Obránce se úspěšně ubránil. Vylosujte nového vyzyvatele.`;
             }
         }
+
        function checkGameEnd() {
     // Spočítáme unikátní vlastníky, kteří na podlaze ještě drží nějaké území
     const activeOwners = Array.from(new Set(
