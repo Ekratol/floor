@@ -618,20 +618,23 @@
             }, 100);
         }
 
-// KONTROLA VYBRANÉ ABC MOŽNOSTI
+ // KONTROLA VYBRANÉ ABC MOŽNOSTI (OPRAVENÉ ZAMRZNUTÍ ČASU)
         function selectABC(letter) {
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
             
             if (letter === currentQ.a) {
-                // 🟢 SPRÁVNĚ -> Stopneme starý časovač a přehrajeme pípnutí
+                // 🛑 OKAMŽITÉ ZASTAVENÍ ČASU - Už neuteče ani desetina sekundy!
                 clearInterval(gameState.timerInterval);
+                gameState.timerInterval = null; 
+                
+                // Spustíme dlouhé táhlé tóny
                 AudioEngine.play('correct');
                 
-                // Přepnutí hráče na tahu
+                // Přepnutí hráče na tahu v pozadí
                 gameState.currentQuestionIdx++;
                 gameState.activeTurnPlayer = gameState.activeTurnPlayer === 1 ? 2 : 1;
                 
-                // Zjistíme iniciály žáka, který má myš převzít
+                // Zjistíme jméno žáka, který má myš převzít
                 const nextPlayerId = (gameState.activeTurnPlayer === 1) ? gameState.attackerIndex : gameState.defenderIndex;
                 const nextPlayerCell = gameState.grid.find(c => c.originalOwner === nextPlayerId);
                 const nextPlayerName = nextPlayerCell ? nextPlayerCell.initials : "Soupeř";
@@ -659,6 +662,7 @@
                 showNextQuestion();
             }
         }
+       
  // TLAČÍTKO PRO NÁVRAT DO HRY PO PŘEDÁNÍ MYŠI
         document.getElementById('btn-overlay-continue').addEventListener('click', () => {
             document.getElementById('game-overlay').classList.add('hidden');
