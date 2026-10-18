@@ -453,7 +453,7 @@
             if (!gameState.isTimeFrozen) startTimerLoop();
         }
 
-        // ZOBRAZENÍ ABC OTÁZKY S POJISTKOU PROTI PÁDŮM
+             // ZOBRAZENÍ ABC OTÁZKY (S OPRAVOU PROTI ZAMRZNUTÍ PŘI VYČERPÁNÍ)
         function showNextQuestion() {
             let defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
             let currentTopic = "Záložní Téma";
@@ -466,21 +466,37 @@
             if (gameState.currentQuestionIdx >= gameState.currentRoundQuestions.length) {
                 const remaining = QUIZ_DATABASE[currentTopic] || [];
                 if (remaining.length > 0) {
-                    gameState.currentRoundQuestions = [...remaining].sort(() => Math.random() - 0.5); gameState.currentQuestionIdx = 0;
+                    gameState.currentRoundQuestions = [...remaining].sort(() => Math.random() - 0.5); 
+                    gameState.currentQuestionIdx = 0;
                 } else {
-                    quizQuestion.innerText = "Otázky vyčerpány! Stiskněte Nevím / Přeskočit."; return;
+                    // 🚨 OPRAVA ZÁSEKU: Pokud otázky došly úplně, vypíšeme text a ODEMKNEME klikání!
+                    quizQuestion.innerText = "Otázky vyčerpány! Pokračujte ústně, rozhodčí kliká na libovolné tlačítko.";
+                    
+                    // Nastavíme fiktivní nouzovou otázku, aby kliknutí mělo co vyhodnotit
+                    gameState.currentRoundQuestions[gameState.currentQuestionIdx] = {
+                        q: "Otázky vyčerpány! Pokračujte ústně, rozhodčí kliká na libovolné tlačítko.",
+                        optA: "A) Správně", optB: "B) Správně", optC: "C) Správně", a: "A"
+                    };
+                    
+                    gameState.isClickLocked = false; // 🔓 Odemčení herního rozhraní
+                    return;
                 }
             }
+            
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
             if (QUIZ_DATABASE[currentTopic] && currentQ) {
                 const dbIndex = QUIZ_DATABASE[currentTopic].findIndex(item => item.q === currentQ.q);
                 if (dbIndex !== -1) QUIZ_DATABASE[currentTopic].splice(dbIndex, 1);
             }
+            
             if (currentQ) {
-                quizQuestion.innerText = currentQ.q; btnOptA.innerText = currentQ.optA; btnOptB.innerText = currentQ.optB; btnOptC.innerText = currentQ.optC;
+                quizQuestion.innerText = currentQ.q; 
+                btnOptA.innerText = currentQ.optA; 
+                btnOptB.innerText = currentQ.optB; 
+                btnOptC.innerText = currentQ.optC;
             }
         }
-
+     
         // ČASOVÁ LOOP
         function startTimerLoop() {
             if (gameState.timerInterval) clearInterval(gameState.timerInterval);
