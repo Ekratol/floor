@@ -271,7 +271,8 @@
             currentQuestionIdx: 0,
             activeTurnPlayer: null, // 1 = útočník, 2 = obránce
             timers: { p1: 45, p2: 45 },
-            timerInterval: null
+            timerInterval: null,
+            isClickLocked: false // 🔒 Nový zámek, který brání divokému klikání a dvojklikům
         };
 
         // DOM ELEMENTY
@@ -670,24 +671,27 @@
                 }
             }, 100);
         }
-
- // KONTROLA VYBRANÉ ABC MOŽNOSTI (OPRAVENÉ ZAMRZNUTÍ ČASU)
+  // KONTROLA VYBRANÉ ABC MOŽNOSTI (S COOLDOWNEM PROTI DVOJKLIKU)
         function selectABC(letter) {
+            // Pokud je hra zrovna uzamčená, kliknutí ignorujeme
+            if (gameState.isClickLocked) return;
+            
+            // Okamžitě uzamkneme možnost klikat
+            gameState.isClickLocked = true;
+            
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
             
             if (letter === currentQ.a) {
-                // 🛑 OKAMŽITÉ ZASTAVENÍ ČASU - Už neuteče ani desetina sekundy!
+                // 🟢 SPRÁVNĚ -> Stopneme starý časovač a přehrajeme pípnutí
                 clearInterval(gameState.timerInterval);
                 gameState.timerInterval = null; 
                 
-                // Spustíme dlouhé táhlé tóny
                 AudioEngine.play('correct');
                 
-                // Přepnutí hráče na tahu v pozadí
+                // Přepnutí hráče na tahu
                 gameState.currentQuestionIdx++;
                 gameState.activeTurnPlayer = gameState.activeTurnPlayer === 1 ? 2 : 1;
                 
-                // Zjistíme jméno žáka, který má myš převzít
                 const nextPlayerId = (gameState.activeTurnPlayer === 1) ? gameState.attackerIndex : gameState.defenderIndex;
                 const nextPlayerCell = gameState.grid.find(c => c.originalOwner === nextPlayerId);
                 const nextPlayerName = nextPlayerCell ? nextPlayerCell.initials : "Soupeř";
@@ -697,11 +701,12 @@
                 document.getElementById('overlay-subtitle').innerText = `Na řadě je: ${nextPlayerName}`;
                 document.getElementById('game-overlay').classList.remove('hidden');
                 
+                // Odemkneme až při stisknutí tlačítka POKRAČOVAT (ošetřeno v btn-overlay-continue)
+                
             } else {
-                // 🔴 ŠPATNĚ -> Zvuk bzučáku, penalizace -3s a hned nová otázka pro stejného hráče
+                // 🔴 ŠPATNĚ -> Zvuk bzučáku, penalizace -3s a bliknutí textu
                 AudioEngine.play('wrong');
                 quizQuestion.style.color = "var(--danger)";
-                setTimeout(() => quizQuestion.style.color = "var(--text-light)", 400);
                 
                 if (gameState.activeTurnPlayer === 1) {
                     gameState.timers.p1 = Math.max(0, gameState.timers.p1 - 3);
@@ -712,17 +717,21 @@
                 }
                 
                 gameState.currentQuestionIdx++;
-                showNextQuestion();
+                
+                // Krátká pauza (0.4s) na doznění zvuku a bliknutí, teprve pak skočí nová otázka a odemkne se klikání
+                setTimeout(() => {
+                    quizQuestion.style.color = "var(--text-light)";
+                    showNextQuestion();
+                    gameState.isClickLocked = false; // 🔓 Odemčení tlačítek
+                }, 400);
             }
         }
-       
- // TLAČÍTKO PRO NÁVRAT DO HRY PO PŘEDÁNÍ MYŠI
+        
+  // TLAČÍTKO PRO NÁVRAT DO HRY PO PŘEDÁNÍ MYŠI
         document.getElementById('btn-overlay-continue').addEventListener('click', () => {
             document.getElementById('game-overlay').classList.add('hidden');
             
-            // Pokud je duel aktivní (modal je zobrazen), musíme hru znovu rozběhnout
             if (!duelModal.classList.contains('hidden')) {
-                // Aktualizujeme grafické podsvícení aktivního hráče
                 const z1 = document.getElementById('p1-zone');
                 const z2 = document.getElementById('p2-zone');
                 
@@ -734,19 +743,24 @@
                     z1.classList.remove('active-turn');
                 }
                 
-                // Načteme další otázku a spustíme časomíru tomu, kdo zrovna přebral myš
                 showNextQuestion();
-                startTimerLoop(); 
+                startTimerLoop();
+                
+                // 🔥 Odemkneme klikání až v momentě, kdy nový hráč potvrdil, že má myš v ruce!
+                gameState.isClickLocked = false; 
             }
         });
       
         btnOptA.addEventListener('click', () => selectABC('A'));
         btnOptB.addEventListener('click', () => selectABC('B'));
         btnOptC.addEventListener('click', () => selectABC('C'));
-
-        // PŘESKOČENÍ (TREST -3s)
+ // PŘESKOČENÍ (TREST -3s S POJISTKOU PROTI SPAMOVÁNÍ)
         btnQuizPass.addEventListener('click', () => {
+            if (gameState.isClickLocked) return;
+            gameState.isClickLocked = true; // 🔒 Uzamknout
+            
             AudioEngine.play('wrong');
+            
             if (gameState.activeTurnPlayer === 1) {
                 gameState.timers.p1 = Math.max(0, gameState.timers.p1 - 3);
                 p1Timer.innerText = gameState.timers.p1.toFixed(1);
@@ -754,8 +768,14 @@
                 gameState.timers.p2 = Math.max(0, gameState.timers.p2 - 3);
                 p2Timer.innerText = gameState.timers.p2.toFixed(1);
             }
+            
             gameState.currentQuestionIdx++;
-            showNextQuestion();
+            
+            // Počkáme 400ms, než ukážeme další otázku a dovolíme znovu kliknout
+            setTimeout(() => {
+                showNextQuestion();
+                gameState.isClickLocked = false; // 🔓 Odemknout
+            }, 400);
         });
              
         function endDuel(winnerSide) {
