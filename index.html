@@ -434,7 +434,13 @@
             document.getElementById('p2-zone').classList.add('active-turn'); document.getElementById('p1-zone').classList.remove('active-turn');
             const ind = document.getElementById('time-lock-indicator'); if (ind) { ind.innerText = "ČAS BĚŽÍ"; ind.style.backgroundColor = "var(--success)"; }
 
-            duelModal.classList.remove('hidden'); showNextQuestion(); startTimerLoop();
+              duelModal.classList.remove('hidden'); 
+            showNextQuestion(); 
+            
+            // 🔥 KLÍČOVÁ POJISTKA: Časomíru odstartujeme POUZE, pokud není zapnutá manuální pauza (T)
+            if (!gameState.isTimeFrozen) {
+                startTimerLoop();
+            }
         }
 
         // ZOBRAZENÍ ABC OTÁZKY S POJISTKOU PROTI PÁDŮM
@@ -524,7 +530,8 @@
             if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) { endDuel(); return; }
             setTimeout(() => { showNextQuestion(); gameState.isClickLocked = false; }, 400);
         });
-          // 3D: UKONČENÍ DUELU
+         
+          // 3D: UKONČENÍ DUELU (S PERZISTENTNÍM ZACHOVÁNÍM PAUZY)
         function endDuel() {
             clearInterval(gameState.timerInterval); gameState.timerInterval = null; duelModal.classList.add('hidden');
             let winnerId = gameState.attackerIndex; let loserId = gameState.defenderIndex;
@@ -554,7 +561,9 @@
         document.getElementById('btn-overlay-continue').addEventListener('click', () => {
             document.getElementById('game-overlay').classList.add('hidden');
             if (!duelModal.classList.contains('hidden')) {
-                showNextQuestion(); if (!gameState.isTimeFrozen) startTimerLoop();
+                showNextQuestion(); 
+                // 🔥 Čas se po předání myši rozběhne POUZE v případě, že není aktivní manuální pauza (T)
+                if (!gameState.isTimeFrozen) startTimerLoop();
                 gameState.isClickLocked = false;
             }
         });
@@ -566,34 +575,41 @@
         function checkGameEnd() {
             const activeOwners = Array.from(new Set(gameState.grid.filter(c => !c.eliminated && c.currentOwner !== -1).map(c => c.currentOwner)));
             if (activeOwners.length === 1) {
-                const absoluteWinner = gameState.grid.find(c => c.originalOwner === activeOwners[0]);
+                const absoluteWinner = gameState.grid.find(c => c.originalOwner === activeOwners);
                 gameStatus.innerHTML = `🏆🏆 <strong>KONEC HRY! Žák [ ${absoluteWinner.initials} ] ovládl celou podlahu!</strong> 🏆🏆`;
                 btnRandomize.classList.add('hidden'); btnPassTurn.classList.add('hidden'); renderFloor(); return true;
             }
             return false;
         }
 
-        // OVLÁDÁNÍ KLÁVESAMI T A R
+        // ⌨️ OVLÁDÁNÍ KLÁVESAMI T A R (FUNGUJE KDYKOLIV BĚHEM HRY)
         window.addEventListener('keydown', (event) => {
-            if (duelModal.classList.contains('hidden')) return;
             const indicator = document.getElementById('time-lock-indicator');
+            
             if (event.key.toLowerCase() === 't') {
                 if (!gameState.isTimeFrozen) {
-                    gameState.isTimeFrozen = true; clearInterval(gameState.timerInterval); gameState.timerInterval = null;
+                    gameState.isTimeFrozen = true; 
+                    clearInterval(gameState.timerInterval); 
+                    gameState.timerInterval = null;
                     if (indicator) { indicator.innerText = "PAUZA (T)"; indicator.style.backgroundColor = "var(--danger)"; }
+                    gameStatus.innerText += " [Čas celkově pozastaven]";
                 }
             } else if (event.key.toLowerCase() === 'r') {
                 if (gameState.isTimeFrozen) {
                     gameState.isTimeFrozen = false;
                     if (indicator) { indicator.innerText = "ČAS BĚŽÍ"; indicator.style.backgroundColor = "var(--success)"; }
-                    startTimerLoop();
+                    
+                    // Čas znovu nahodíme pouze v případě, že se zrovna nacházíme v rozjetém duelu
+                    if (!duelModal.classList.contains('hidden') && document.getElementById('game-overlay').classList.contains('hidden')) {
+                        startTimerLoop();
+                    }
                 }
             }
         });
     </script>
 </body>
 </html>
-
+        
 
 
 
