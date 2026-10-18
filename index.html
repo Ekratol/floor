@@ -267,7 +267,7 @@
                 const text = await response.text();
                 
                 // 🔥 OPRAVENO: Čisté rozdělení řádků podle konců souborů
-                const lines = text.split(\(/\r\)?\n/);
+                const lines = text.split(/\r?\n/);
                 
                 let currentTheme = null; QUIZ_DATABASE = {};
                 lines.forEach(line => {
