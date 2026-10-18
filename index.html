@@ -164,18 +164,24 @@
             <h2 style="text-align:center;">🔥 VĚDOMOSTNÍ DUEL 🔥</h2>
             <div id="duel-topic-name" class="topic-badge">Téma: ???</div>
 
-            <div class="duel-arena">
+           <div class="duel-arena">
                 <div id="p1-zone" class="player-zone">
                     <div id="p1-name" class="p-name">Útočník</div>
                     <div id="p1-timer" class="p-timer">45.0</div>
                 </div>
-                <div class="vs-divider">VS</div>
+                
+                <!-- ⏱️ ZDE JE UPRAVENÝ STŘED S INDIKÁTOREM PAUZY -->
+                <div class="vs-divider" style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
+                    <div>VS</div>
+                    <div id="time-lock-indicator" style="font-size: 0.8rem; background: var(--success); color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; min-width: 80px; text-align: center;">ČAS BĚŽÍ</div>
+                </div>
+                
                 <div id="p2-zone" class="player-zone">
                     <div id="p2-name" class="p-name">Obránce</div>
                     <div id="p2-timer" class="p-timer">45.0</div>
                 </div>
             </div>
-
+            
             <div class="quiz-box">
                 <div id="quiz-question" class="question-text">Načítám otázku...</div>
                 <div class="abc-container">
@@ -279,7 +285,8 @@
             activeTurnPlayer: null, // 1 = útočník, 2 = obránce
             timers: { p1: 45, p2: 45 },
             timerInterval: null,
-            isClickLocked: false // 🔒 Nový zámek, který brání divokému klikání a dvojklikům
+            isClickLocked: false,
+            isTimeFrozen: false // ⏸️ Nový stav: true = čas je manuálně stopnutý tlačítkem T
         };
 
         // DOM ELEMENTY
@@ -627,6 +634,10 @@
             duelModal.classList.remove('hidden');
             showNextQuestion();
             startTimerLoop();
+            // Vynulování pauzy pro nový zápas
+            gameState.isTimeFrozen = false;
+            const indicator = document.getElementById('time-lock-indicator');
+            if (indicator) { indicator.innerText = "ČAS BĚŽÍ"; indicator.style.backgroundColor = "var(--success)"; }
         }
         
  // ZOBRAZENÍ ABC OTÁZKY S BEZPEČNOSTNÍ POJISTKOU PROTI PÁDU
@@ -727,20 +738,30 @@
                     document.getElementById('game-overlay').classList.remove('hidden');
                 }, 1450);
                 
-            } else {
-                // 🔴 ŠPATNĚ -> Zůstává stejné jako předtím (penalizace -3s, pauza 400ms a další otázka)
+               } else {
+                // 🔴 ŠPATNĚ -> Zvuk bzučáku a dynamická penalizace
                 AudioEngine.play('wrong');
                 quizQuestion.style.color = "var(--danger)";
                 
+                // 🧠 URČENÍ DÉLKY PENALIZACE (Pokud je čas vypnutý klávesou T, trest je -8s, jinak -3s)
+                const penaltySeconds = gameState.isTimeFrozen ? 8 : 3;
+                
                 if (gameState.activeTurnPlayer === 1) {
-                    gameState.timers.p1 = Math.max(0, gameState.timers.p1 - 3);
+                    gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penaltySeconds);
                     p1Timer.innerText = gameState.timers.p1.toFixed(1);
                 } else {
-                    gameState.timers.p2 = Math.max(0, gameState.timers.p2 - 3);
+                    gameState.timers.p2 = Math.max(0, gameState.timers.p2 - 45); // ošetření pod nulu
+                    gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penaltySeconds);
                     p2Timer.innerText = gameState.timers.p2.toFixed(1);
                 }
                 
                 gameState.currentQuestionIdx++;
+                
+                // Kontrola, zda hráči okamžitě nedošel čas kvůli vysoké penalizaci
+                if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) {
+                    endDuel();
+                    return;
+                }
                 
                 setTimeout(() => {
                     quizQuestion.style.color = "var(--text-light)";
@@ -748,7 +769,6 @@
                     gameState.isClickLocked = false;
                 }, 1400);
             }
-        }
         
   // TLAČÍTKO PRO NÁVRAT DO HRY PO PŘEDÁNÍ MYŠI
         document.getElementById('btn-overlay-continue').addEventListener('click', () => {
@@ -777,30 +797,37 @@
         btnOptA.addEventListener('click', () => selectABC('A'));
         btnOptB.addEventListener('click', () => selectABC('B'));
         btnOptC.addEventListener('click', () => selectABC('C'));
- // PŘESKOČENÍ (TREST -3s S POJISTKOU PROTI SPAMOVÁNÍ)
+ 
+        // PŘESKOČENÍ (TREST -3s NEBO -8s S POJISTKOU PROTI SPAMOVÁNÍ)
         btnQuizPass.addEventListener('click', () => {
             if (gameState.isClickLocked) return;
-            gameState.isClickLocked = true; // 🔒 Uzamknout
+            gameState.isClickLocked = true;
             
             AudioEngine.play('wrong');
             
+            // 🧠 URČENÍ DÉLKY PENALIZACE
+            const penaltySeconds = gameState.isTimeFrozen ? 8 : 3;
+            
             if (gameState.activeTurnPlayer === 1) {
-                gameState.timers.p1 = Math.max(0, gameState.timers.p1 - 3);
+                gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penaltySeconds);
                 p1Timer.innerText = gameState.timers.p1.toFixed(1);
             } else {
-                gameState.timers.p2 = Math.max(0, gameState.timers.p2 - 3);
+                gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penaltySeconds);
                 p2Timer.innerText = gameState.timers.p2.toFixed(1);
             }
             
             gameState.currentQuestionIdx++;
             
-            // Počkáme 1400ms, než ukážeme další otázku a dovolíme znovu kliknout
+            if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) {
+                endDuel();
+                return;
+            }
+            
             setTimeout(() => {
                 showNextQuestion();
-                gameState.isClickLocked = false; // 🔓 Odemknout
+                gameState.isClickLocked = false;
             }, 1400);
         });
-        
         // UKONČENÍ DUELU (ČISTÁ INDEXACE PRO TI PÁDŮM)
         function endDuel(winnerSide) {
             clearInterval(gameState.timerInterval);
@@ -873,6 +900,39 @@
     }
     return false;
 }
+   // ⌨️ OVLÁDÁNÍ ČASU KLÁVESAMI T A R
+        window.addEventListener('keydown', (event) => {
+            // Reagujeme pouze v případě, že je otevřený herní duel (modal není skrytý)
+            if (duelModal.classList.contains('hidden')) return;
+
+            const indicator = document.getElementById('time-lock-indicator');
+
+            if (event.key.toLowerCase() === 't') {
+                // ⏸️ STOP ČAS (T)
+                if (!gameState.isTimeFrozen) {
+                    gameState.isTimeFrozen = true;
+                    clearInterval(gameState.timerInterval);
+                    gameState.timerInterval = null;
+                    
+                    if (indicator) {
+                        indicator.innerText = "PAUZA (T)";
+                        indicator.style.backgroundColor = "var(--danger)";
+                    }
+                }
+            } else if (event.key.toLowerCase() === 'r') {
+                // ▶️ START ČAS (R)
+                if (gameState.isTimeFrozen) {
+                    gameState.isTimeFrozen = false;
+                    
+                    if (indicator) {
+                        indicator.innerText = "ČAS BĚŽÍ";
+                        indicator.style.backgroundColor = "var(--success)";
+                    }
+                    // Znovu nahodíme odpočet
+                    startTimerLoop();
+                }
+            }
+        });     
     </script>
 </body>
 </html>
