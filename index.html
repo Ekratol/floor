@@ -530,19 +530,15 @@
         btnOptB.addEventListener('click', () => selectABC('B'));
         btnOptC.addEventListener('click', () => selectABC('C'));
 
-         // ✖️ PŘESKOČENÍ (S PŘEPNUTÍM RÁMEČKU A PŘEDÁNÍM MYŠI)
+ // ✖️ PŘESKOČENÍ (OPRAVENÁ VERZE - HRÁČ ZŮSTÁVÁ NA TAHU)
         btnQuizPass.addEventListener('click', () => {
             if (gameState.isClickLocked) return; 
             gameState.isClickLocked = true;
             
-            // 🛑 OKAMŽITĚ ZASTAVÍME ČAS (Stejně jako při správné odpovědi)
-            clearInterval(gameState.timerInterval);
-            gameState.timerInterval = null;
-            
             AudioEngine.play('wrong');
             const penalty = gameState.isTimeFrozen ? 8 : 3;
             
-            // 1. Odečteme sekundy tomu, kdo zrovna mačkal "Nevím"
+            // 1. Sekundy se odečtou tomu, kdo zrovna mačkal "Nevím"
             if (gameState.activeTurnPlayer === 1) { 
                 gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penalty); 
                 p1Timer.innerText = gameState.timers.p1.toFixed(1); 
@@ -551,26 +547,21 @@
                 p2Timer.innerText = gameState.timers.p2.toFixed(1); 
             }
             
-            // Kontrola, zda po této penalizaci někdo neprohrál
+            // Kontrola, zda po této penalizaci někdo neprohrál (nedošel mu čas)
             if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) { 
                 endDuel(); 
                 return; 
             }
             
-            // 2. Přepneme hráče na tahu a index otázky v pozadí
+            // 🔥 ZMĚNA: Hráč se NEPŘEPÍNÁ, žádné "Předejte myš" nevyskočí!
+            // Pouze posuneme balíček na další otázku
             gameState.currentQuestionIdx++; 
-            gameState.activeTurnPlayer = gameState.activeTurnPlayer === 1 ? 2 : 1;
             
-            // Zistíme jméno žáka, který má myš převzít
-            const nextPlayerId = (gameState.activeTurnPlayer === 1) ? gameState.attackerIndex : gameState.defenderIndex;
-            const nextPlayerCell = gameState.grid.find(c => c.originalOwner === nextPlayerId);
-            
-            // 3. Počkáme na doznění zvuku a vysuneme nápis pro předání myši (Rámeček se přepne až po kliknutí na Pokračovat)
-            setTimeout(() => {
-                document.getElementById('overlay-title').innerText = "🤝 PŘEDEJTE MYŠ!";
-                document.getElementById('overlay-subtitle').innerText = `Na řadě je: ${nextPlayerCell ? nextPlayerCell.initials : 'Soupeř'}`;
-                document.getElementById('game-overlay').classList.remove('hidden');
-            }, 450);
+            // Krátká pauza (400ms) na doznění zvuku a hned naskočí nová otázka PRO STEJNÉHO HRÁČE
+            setTimeout(() => { 
+                showNextQuestion(); 
+                gameState.isClickLocked = false; 
+            }, 400);
         });
          
           // 3D: UKONČENÍ DUELU (S PERZISTENTNÍM ZACHOVÁNÍM PAUZY)
