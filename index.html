@@ -106,6 +106,13 @@
         <div class="setup-controls">
             <label for="student-count">Počet žáků:</label>
             <select id="student-count">
+                <!-- 🎮 SEM JSME PŘIDALI MOŽNOSTI OD 4 ŽÁKŮ -->
+                <option value="4">4 žáci (Mřížka 2x2)</option>
+                <option value="5">5 žáků (Mřížka 3x2)</option>
+                <option value="6">6 žáků (Mřížka 3x2)</option>
+                <option value="7">7 žáků (Mřížka 3x3)</option>
+                <option value="8">8 žáků (Mřížka 3x3)</option>
+                <option value="9">9 žáků (Mřížka 3x3)</option>
                 <option value="10">10 žáků (Mřížka 4x3)</option>
                 <option value="11">11 žáků (Mřížka 4x3)</option>
                 <option value="12" selected>12 žáků (Mřížka 4x3)</option>
@@ -368,9 +375,18 @@
             const count = parseInt(studentCountSelect.value);
             gameState.totalCells = count;
             
-            if (count <= 12) { gameState.rows = 3; gameState.cols = 4; }
-            else { gameState.rows = 4; gameState.cols = 4; }
-
+             // Dynamické nastavení rozměrů mřížky podle počtu žáků (od 4 do 16)
+            if (count === 4) { 
+                gameState.rows = 2; gameState.cols = 2; // Ideální čtverec pro 4 hráče
+            } else if (count <= 6) { 
+                gameState.rows = 2; gameState.cols = 3; // Pro 5 až 6 hráčů
+            } else if (count <= 9) { 
+                gameState.rows = 3; gameState.cols = 3; // Pro 7 až 9 hráčů
+            } else if (count <= 12) { 
+                gameState.rows = 3; gameState.cols = 4; // Pro 10 až 12 hráčů
+            } else { 
+                gameState.rows = 4; gameState.cols = 4; // Pro 13 až 16 hráčů
+            }
             inputsContainer.innerHTML = '';
             
             for (let i = 0; i < count; i++) {
@@ -723,7 +739,7 @@
                     quizQuestion.style.color = "var(--text-light)";
                     showNextQuestion();
                     gameState.isClickLocked = false; // 🔓 Odemčení tlačítek
-                }, 400);
+                }, 1400);
             }
         }
         
@@ -771,11 +787,11 @@
             
             gameState.currentQuestionIdx++;
             
-            // Počkáme 400ms, než ukážeme další otázku a dovolíme znovu kliknout
+            // Počkáme 1400ms, než ukážeme další otázku a dovolíme znovu kliknout
             setTimeout(() => {
                 showNextQuestion();
                 gameState.isClickLocked = false; // 🔓 Odemknout
-            }, 400);
+            }, 1400);
         });
              
         function endDuel(winnerSide) {
