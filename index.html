@@ -453,7 +453,7 @@
             if (!gameState.isTimeFrozen) startTimerLoop();
         }
 
-             // ZOBRAZENÍ ABC OTÁZKY (S OPRAVOU PROTI ZAMRZNUTÍ PŘI VYČERPÁNÍ)
+        / ZOBRAZENÍ ABC OTÁZKY (S BEZPEČNOSTNÍ POJISTKOU PŘI VYČERPÁNÍ OTÁZEK)
         function showNextQuestion() {
             let defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
             let currentTopic = "Záložní Téma";
@@ -463,27 +463,35 @@
                 currentTopic = duelTopicName.innerText.replace('Téma: ', '').trim();
             }
 
+            // 🚨 KONTROLA VYČERPÁNÍ: Pokud index dosáhne nebo překročí konec pole
             if (gameState.currentQuestionIdx >= gameState.currentRoundQuestions.length) {
                 const remaining = QUIZ_DATABASE[currentTopic] || [];
+                
                 if (remaining.length > 0) {
                     gameState.currentRoundQuestions = [...remaining].sort(() => Math.random() - 0.5); 
                     gameState.currentQuestionIdx = 0;
                 } else {
-                    // 🚨 OPRAVA ZÁSEKU: Pokud otázky došly úplně, vypíšeme text a ODEMKNEME klikání!
-                    quizQuestion.innerText = "Otázky vyčerpány! Pokračujte ústně, rozhodčí kliká na libovolné tlačítko.";
+                    // 🔥 BEZPEČNÁ OPRAVA: Pouze vypíšeme pokyny na obrazovku do tlačítek
+                    // Nikdy nepřepisujeme herní pole v gameState, aby nespadlo vyhodnocení vítěze v endDuel()
+                    quizQuestion.innerText = "Otázky vyčerpány! Pokračujte ústně z hlavy.";
+                    btnOptA.innerText = "A) Správná odpověď (Předat tah)";
+                    btnOptB.innerText = "B) Špatná odpověď (Stejný hráč)";
+                    btnOptC.innerText = "C) Špatná odpověď (Stejný hráč)";
                     
-                    // Nastavíme fiktivní nouzovou otázku, aby kliknutí mělo co vyhodnotit
+                    // Přinutíme systém brát jakékoliv kliknutí na A jako správné pro předání tahu
                     gameState.currentRoundQuestions[gameState.currentQuestionIdx] = {
-                        q: "Otázky vyčerpány! Pokračujte ústně, rozhodčí kliká na libovolné tlačítko.",
-                        optA: "A) Správně", optB: "B) Správně", optC: "C) Správně", a: "A"
+                        q: "Otázky vyčerpány! Pokračujte ústně z hlavy.",
+                        optA: "A) Správná odpověď (Předat tah)", optB: "B) Špatná odpověď", optC: "C) Špatná odpověď", a: "A"
                     };
                     
-                    gameState.isClickLocked = false; // 🔓 Odemčení herního rozhraní
+                    gameState.isClickLocked = false; // 🔓 Odemčení rozhraní pro rozhodčího
                     return;
                 }
             }
             
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
+            
+            // Smazání použité otázky z globální databáze témat, aby se neopakovala v příštích zápasech
             if (QUIZ_DATABASE[currentTopic] && currentQ) {
                 const dbIndex = QUIZ_DATABASE[currentTopic].findIndex(item => item.q === currentQ.q);
                 if (dbIndex !== -1) QUIZ_DATABASE[currentTopic].splice(dbIndex, 1);
@@ -496,7 +504,7 @@
                 btnOptC.innerText = currentQ.optC;
             }
         }
-     
+         
         // ČASOVÁ LOOP
         function startTimerLoop() {
             if (gameState.timerInterval) clearInterval(gameState.timerInterval);
