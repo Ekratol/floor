@@ -530,15 +530,38 @@
         btnOptB.addEventListener('click', () => selectABC('B'));
         btnOptC.addEventListener('click', () => selectABC('C'));
 
+        // ✖️ PŘESKOČENÍ (TREST S PŘESNOU DETEKCÍ HRÁČE NA TAHU)
         btnQuizPass.addEventListener('click', () => {
-            if (gameState.isClickLocked) return; gameState.isClickLocked = true;
+            if (gameState.isClickLocked) return; 
+            gameState.isClickLocked = true;
+            
             AudioEngine.play('wrong');
             const penalty = gameState.isTimeFrozen ? 8 : 3;
-            if (gameState.activeTurnPlayer === 1) { gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penalty); p1Timer.innerText = gameState.timers.p1.toFixed(1); }
-            else { gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penalty); p2Timer.innerText = gameState.timers.p2.toFixed(1); }
+            
+            // 🔥 KLÍČOVÁ OPRAVA: Sekundy se odečtou striktně tomu, kdo je zrovna na tahu!
+            if (gameState.activeTurnPlayer === 1) { 
+                // Pokud je aktivní útočník (Hráč 1)
+                gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penalty); 
+                p1Timer.innerText = gameState.timers.p1.toFixed(1); 
+            } else { 
+                // Pokud je aktivní obránce (Hráč 2)
+                gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penalty); 
+                p2Timer.innerText = gameState.timers.p2.toFixed(1); 
+            }
+            
             gameState.currentQuestionIdx++;
-            if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) { endDuel(); return; }
-            setTimeout(() => { showNextQuestion(); gameState.isClickLocked = false; }, 400);
+            
+            // Kontrola, zda někomu vteřiny neklesly pod nulu
+            if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) { 
+                endDuel(); 
+                return; 
+            }
+            
+            // Krátká pauza na zobrazení nové otázky a odblokování klikání
+            setTimeout(() => { 
+                showNextQuestion(); 
+                gameState.isClickLocked = false; 
+            }, 400);
         });
          
           // 3D: UKONČENÍ DUELU (S PERZISTENTNÍM ZACHOVÁNÍM PAUZY)
