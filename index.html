@@ -712,12 +712,12 @@
                 const nextPlayerCell = gameState.grid.find(c => c.originalOwner === nextPlayerId);
                 const nextPlayerName = nextPlayerCell ? nextPlayerCell.initials : "Soupeř";
 
-                // ⏳ KLÍČOVÁ OPRAVA: Meziobrazovka vyskočí až po 450 milisekundách (až dozní zvuk)
+                // ⏳ KLÍČOVÁ OPRAVA: Meziobrazovka vyskočí až po 1450 milisekundách (až dozní zvuk)
                 setTimeout(() => {
                     document.getElementById('overlay-title').innerText = "🤝 PŘEDEJTE MYŠ!";
                     document.getElementById('overlay-subtitle').innerText = `Na řadě je: ${nextPlayerName}`;
                     document.getElementById('game-overlay').classList.remove('hidden');
-                }, 450);
+                }, 1450);
                 
             } else {
                 // 🔴 ŠPATNĚ -> Zůstává stejné jako předtím (penalizace -3s, pauza 400ms a další otázka)
@@ -738,7 +738,7 @@
                     quizQuestion.style.color = "var(--text-light)";
                     showNextQuestion();
                     gameState.isClickLocked = false;
-                }, 400);
+                }, 1400);
             }
         }
         
