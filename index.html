@@ -6,22 +6,15 @@
     <title>The Floor - Školní Simulátor (ABC)</title>
     <style>
         :root {
-            --bg-dark: #0f172a;
-            --card-bg: #1e293b;
-            --text-light: #f8fafc;
-            --primary: #3b82f6;
-            --success: #22c55e;
-            --warning: #eab308;
-            --danger: #ef4444;
-            --floor-cell: #334155;
+            --bg-dark: #0f172a; --card-bg: #1e293b; --text-light: #f8fafc;
+            --primary: #3b82f6; --success: #22c55e; --warning: #eab308;
+            --danger: #ef4444; --floor-cell: #334155;
         }
-
         * { box-sizing: border-box; margin: 0; padding: 0; font-family: 'Segoe UI', sans-serif; }
         body { background-color: var(--bg-dark); color: var(--text-light); padding: 20px; min-height: 100vh; }
         .container { max-width: 1200px; margin: 0 auto; padding: 20px; }
         h1 { text-align: center; margin-bottom: 10px; text-shadow: 0 0 10px rgba(59, 130, 246, 0.5); }
         .subtitle { text-align: center; color: #94a3b8; margin-bottom: 30px; }
-
         .btn {
             background-color: var(--primary); color: white; border: none; padding: 12px 24px;
             font-size: 1rem; font-weight: bold; border-radius: 8px; cursor: pointer; transition: all 0.2s;
@@ -32,36 +25,25 @@
         .btn-warning { background-color: var(--warning); color: #0f172a; }
         .btn-danger { background-color: var(--danger); }
         .btn-block { width: 100%; margin-bottom: 10px; padding: 15px; }
-
         .btn-abc {
             background-color: #334155; border: 2px solid #475569; color: white;
             padding: 15px; font-size: 1.1rem; text-align: left; border-radius: 8px;
             cursor: pointer; width: 100%; transition: all 0.2s; display: block; margin-bottom: 10px;
         }
         .btn-abc:hover { background-color: #475569; border-color: var(--warning); }
-
-        select, input[type="text"] {
-            padding: 10px 15px; font-size: 1rem; border-radius: 6px;
-            border: 1px solid #475569; background-color: #1e293b; color: white;
-        }
-
-        .setup-controls {
-            display: flex; justify-content: center; align-items: center; gap: 15px;
-            margin-bottom: 30px; background: var(--card-bg); padding: 20px; border-radius: 12px;
-        }
+        select, input[type="text"] { padding: 10px 15px; font-size: 1rem; border-radius: 6px; border: 1px solid #475569; background-color: #1e293b; color: white; }
+        .setup-controls { display: flex; justify-content: center; align-items: center; gap: 15px; margin-bottom: 30px; background: var(--card-bg); padding: 20px; border-radius: 12px; }
         .inputs-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr)); gap: 15px; margin-bottom: 30px; }
         .student-input-card { background: var(--card-bg); padding: 15px; border-radius: 8px; border-left: 4px solid var(--primary); display: flex; flex-direction: column; gap: 8px; }
         .student-input-card label { font-size: 0.85rem; color: #94a3b8; }
         .student-input-card .row { display: flex; gap: 8px; }
         .input-initials { width: 70px; text-transform: uppercase; text-align: center; }
         .select-topic { flex-grow: 1; }
-
         .game-layout { display: grid; grid-template-columns: 300px 1fr; gap: 30px; margin-top: 20px; }
         .control-panel { display: flex; flex-direction: column; gap: 20px; }
         .card { background: var(--card-bg); padding: 20px; border-radius: 12px; border: 1px solid #334155; }
         .card h3 { margin-bottom: 15px; border-bottom: 2px solid #334155; padding-bottom: 5px; }
         .status-box { background: #1e293b; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; border: 1px dashed var(--primary); margin-top: 10px; }
-
         .floor-wrapper { background: #020617; padding: 20px; border-radius: 16px; display: flex; justify-content: center; align-items: center; }
         .floor-grid { display: grid; gap: 8px; width: 100%; max-width: 550px; }
         .floor-cell {
@@ -71,16 +53,13 @@
         }
         .cell-owner { font-size: 1.6rem; font-weight: 900; color: white; text-shadow: 1px 1px 4px black; }
         .cell-topic { font-size: 0.75rem; color: #cbd5e1; text-align: center; margin-top: 4px; }
-
         .floor-cell.active-attacker { background-color: var(--danger) !important; border-color: white; box-shadow: 0 0 15px var(--danger); }
         .floor-cell.valid-target { background-color: var(--primary) !important; border-color: white; cursor: pointer; box-shadow: 0 0 15px var(--primary); }
         .floor-cell.valid-target:hover { transform: scale(1.05); filter: brightness(1.3); }
         .floor-cell.eliminated { background-color: #1e293b !important; opacity: 0.2; border-style: dotted; }
-
         .modal { position: fixed; top: 0; left: 0; width: 100%; height: 100%; background-color: rgba(2, 6, 23, 0.95); display: flex; justify-content: center; align-items: center; z-index: 1000; }
         .modal-content { background: var(--card-bg); padding: 30px; border-radius: 16px; width: 90%; max-width: 750px; border: 2px solid var(--primary); }
         .topic-badge { background: #334155; padding: 8px 16px; border-radius: 20px; width: fit-content; margin: 10px auto 25px auto; font-weight: bold; color: var(--warning); border: 1px solid var(--warning); }
-        
         .duel-arena { display: flex; justify-content: space-between; align-items: center; margin-bottom: 25px; gap: 20px; }
         .player-zone { flex: 1; background: #0f172a; padding: 15px; border-radius: 12px; text-align: center; border: 2px solid transparent; }
         .player-zone.active-turn { border-color: var(--warning); background: #1e1b4b; }
@@ -88,16 +67,14 @@
         .p-timer { font-size: 2.8rem; font-family: monospace; font-weight: bold; }
         .player-zone.active-turn .p-timer { color: var(--warning); }
         .vs-divider { font-size: 1.5rem; font-weight: 900; color: #64748b; }
-
         .quiz-box { background: #0f172a; padding: 20px; border-radius: 12px; border: 1px solid #334155; }
         .question-text { font-size: 1.3rem; text-align: center; margin-bottom: 20px; min-height: 50px; font-weight: 600; }
         .abc-container { margin-bottom: 20px; }
-
         .hidden { display: none !important; }
     </style>
 </head>
 <body>
-  <!-- 1. SETUP SCREEN -->
+     <!-- 1. SETUP SCREEN -->
     <div id="setup-screen" class="container">
         <h1>🎮 THE FLOOR – ŠKOLNÍ DUEL (ABC VERZE)</h1>
         <p class="subtitle">Načítání témat ze společného souboru otazkyf.txt pomocí mřížky #</p>
@@ -184,7 +161,7 @@
                     <button id="btn-opt-B" class="btn-abc">B) ---</button>
                     <button id="btn-opt-C" class="btn-abc">C) ---</button>
                 </div>
-                <button id="btn-quiz-pass" class="btn btn-danger btn-block">✖️ NEVÍM / PŘESKOČIT (DÁLE)</button>
+                <button id="btn-quiz-pass" class="btn btn-danger btn-block">✖️ NEVÍM / PŘESKOČIT</button>
             </div>
         </div>
     </div>
@@ -230,7 +207,7 @@
         const btnOptC = document.getElementById('btn-opt-C');
         const btnQuizPass = document.getElementById('btn-quiz-pass');
 
-        // ZVUKOVÝ ENGINE (Táhlé tóny a velkolepá fanfára)
+        // ZVUKOVÝ ENGINE (Táhlé tóny a fanfára)
         const AudioEngine = {
             ctx: null,
             init() { if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
@@ -258,20 +235,20 @@
                 osc.start(startTime); osc.stop(startTime + duration);
             }
         };
-
-// 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt (BEZCHYBNÁ VERZE)
+         // 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt (ČISTÁ TEXTOVÁ METODA)
         async function loadQuestionsFromTXT() {
             try {
                 const response = await fetch('otazkyf.txt');
                 if (!response.ok) throw new Error('Soubor otazkyf.txt nenalezen');
                 const text = await response.text();
                 
-                // 🔥 ČISTÁ OPRAVA: Rozdělení řádků bez nebezpečných lomítek a regulárních výrazů
+                // Absolutně bezpečné rozdělení řádků podle textového znaku bez regulárních výrazů
                 const lines = text.split('\n');
                 
                 let currentTheme = null; QUIZ_DATABASE = {};
                 lines.forEach(line => {
-                    const trimmedLine = line.trim(); if (!trimmedLine) return;
+                    const trimmedLine = line.replace\(('\r', '').\)trim(); 
+                    if (!trimmedLine) return;
                     if (trimmedLine.startsWith('#')) {
                         currentTheme = trimmedLine.replace('#', '').trim(); QUIZ_DATABASE[currentTheme] = []; return;
                     }
@@ -292,50 +269,7 @@
                 THEMES_LIST = Object.keys(QUIZ_DATABASE);
             }
         }
-        
-        // 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt (BEZCHYBNÁ VERZE)
-        async function loadQuestionsFromTXT() {
-            try {
-                const response = await fetch('otazkyf.txt');
-                if (!response.ok) throw new Error('Soubor otazkyf.txt nenalezen');
-                const text = await response.text();
-                
-                // 🔥 ČISTÁ TEXTOVÁ METODA BEZ REGULÁRNÍCH VÝRAZŮ A LOMÍTEK:
-                const lines = text.split('\n');
-                
-                let currentTheme = null; QUIZ_DATABASE = {};
-                lines.forEach(line => {
-                    // Odstraníme z řádku případné skryté znaky \r ze systému Windows
-                    const trimmedLine = line.replace('\r', '').trim(); 
-                    if (!trimmedLine) return;
-                    
-                    if (trimmedLine.startsWith('#')) {
-                        currentTheme = trimmedLine.replace('#', '').trim(); 
-                        QUIZ_DATABASE[currentTheme] = []; 
-                        return;
-                    }
-                    if (currentTheme && trimmedLine.includes(';')) {
-                        const parts = trimmedLine.split(';');
-                        if (parts.length >= 5) {
-                            QUIZ_DATABASE[currentTheme].push({
-                                q: parts[0].trim(), 
-                                optA: parts[1].trim(), 
-                                optB: parts[2].trim(), 
-                                optC: parts[3].trim(), 
-                                a: parts[4].trim().toUpperCase()
-                            });
-                        }
-                    }
-                });
-                THEMES_LIST = Object.keys(QUIZ_DATABASE);
-                if (THEMES_LIST.length === 0) throw new Error('Nebyla nalezena žádná témata uvozená #');
-            } catch (error) {
-                console.error(error.message);
-                QUIZ_DATABASE["Záložní Téma"] = [{ q: "Chybí soubor otazkyf.txt nebo je špatně uvozen znakem # !", optA: "A) Rozumím", optB: "B) Rozumím", optC: "C) Rozumím", a: "A" }];
-                THEMES_LIST = Object.keys(QUIZ_DATABASE);
-            }
-        }
-        
+
         // GENERÁTOR VSTUPŮ ŽÁKŮ
         btnGenerateInputs.addEventListener('click', async () => {
             btnGenerateInputs.disabled = true; btnGenerateInputs.innerText = "Načítám témata...";
@@ -381,8 +315,7 @@
             setupScreen.classList.add('hidden'); gameScreen.classList.remove('hidden');
             gameStatus.innerText = "Hra načtena. Klikněte na Vylosovat vyzyvatele."; renderFloor();
         });
-        
-         // 3B: VYKRESLENÍ PODLAHY (PŘEHLEDNÁ ZMENŠENÁ VERZE)
+         // 3B: VYKRESLENÍ PODLAHY
         function renderFloor() {
             floorGrid.innerHTML = '';
             floorGrid.style.gridTemplateColumns = `repeat(${gameState.cols}, 1fr)`;
@@ -460,8 +393,7 @@
             }
             renderFloor();
         });
-
-// 3C: SPUŠTĚNÍ DUELU (S OPRAVENÝM ODEMYKÁNÍM KLIKÁNÍ A PERZISTENTNÍ PAUZOU)
+         // 3C: SPUŠTĚNÍ DUELU
         function startDuel(defenderId) {
             gameState.defenderIndex = defenderId;
             const attackerData = gameState.grid.find(c => c.originalOwner === gameState.attackerIndex);
@@ -479,11 +411,7 @@
             gameState.currentQuestionIdx = 0; gameState.timers.p1 = 45.0; gameState.timers.p2 = 45.0;
             p1Timer.innerText = "45.0"; p2Timer.innerText = "45.0";
             
-            gameState.activeTurnPlayer = 2; 
-            
-            // 🔥 AUTOMATICKÉ ODEMČENÍ KLIKÁNÍ PRO NOVÝ DUEL (Odstraňuje zásek ve 2. duelu!)
-            gameState.isClickLocked = false; 
-
+            gameState.activeTurnPlayer = 2; gameState.isClickLocked = false;
             document.getElementById('p2-zone').classList.add('active-turn'); document.getElementById('p1-zone').classList.remove('active-turn');
             const ind = document.getElementById('time-lock-indicator'); if (ind) { 
                 if (gameState.isTimeFrozen) { ind.innerText = "PAUZA (T)"; ind.style.backgroundColor = "var(--danger)"; }
@@ -491,63 +419,42 @@
             }
 
             duelModal.classList.remove('hidden'); showNextQuestion(); 
-            
-            // Čas se spustí pouze pokud ho učitel předem nevypnul klávesou T
             if (!gameState.isTimeFrozen) startTimerLoop();
         }
 
-        / ZOBRAZENÍ ABC OTÁZKY (S BEZPEČNOSTNÍ POJISTKOU PŘI VYČERPÁNÍ OTÁZEK)
+        // ZOBRAZENÍ ABC OTÁZKY (S POJISTKOU PŘI VYČERPÁNÍ OTÁZEK)
         function showNextQuestion() {
             let defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
             let currentTopic = "Záložní Téma";
-            if (defenderData && defenderData.topic) {
-                currentTopic = defenderData.topic;
-            } else {
-                currentTopic = duelTopicName.innerText.replace('Téma: ', '').trim();
-            }
+            if (defenderData && defenderData.topic) { currentTopic = defenderData.topic; }
+            else { currentTopic = duelTopicName.innerText.replace('Téma: ', '').trim(); }
 
-            // 🚨 KONTROLA VYČERPÁNÍ: Pokud index dosáhne nebo překročí konec pole
             if (gameState.currentQuestionIdx >= gameState.currentRoundQuestions.length) {
                 const remaining = QUIZ_DATABASE[currentTopic] || [];
-                
                 if (remaining.length > 0) {
-                    gameState.currentRoundQuestions = [...remaining].sort(() => Math.random() - 0.5); 
-                    gameState.currentQuestionIdx = 0;
+                    gameState.currentRoundQuestions = [...remaining].sort(() => Math.random() - 0.5); gameState.currentQuestionIdx = 0;
                 } else {
-                    // 🔥 BEZPEČNÁ OPRAVA: Pouze vypíšeme pokyny na obrazovku do tlačítek
-                    // Nikdy nepřepisujeme herní pole v gameState, aby nespadlo vyhodnocení vítěze v endDuel()
                     quizQuestion.innerText = "Otázky vyčerpány! Pokračujte ústně z hlavy.";
                     btnOptA.innerText = "A) Správná odpověď (Předat tah)";
-                    btnOptB.innerText = "B) Špatná odpověď (Stejný hráč)";
-                    btnOptC.innerText = "C) Špatná odpověď (Stejný hráč)";
-                    
-                    // Přinutíme systém brát jakékoliv kliknutí na A jako správné pro předání tahu
+                    btnOptB.innerText = "B) Špatná odpověď";
+                    btnOptC.innerText = "C) Špatná odpověď";
                     gameState.currentRoundQuestions[gameState.currentQuestionIdx] = {
-                        q: "Otázky vyčerpány! Pokračujte ústně z hlavy.",
-                        optA: "A) Správná odpověď (Předat tah)", optB: "B) Špatná odpověď", optC: "C) Špatná odpověď", a: "A"
+                        q: "Otázky vyčerpány! Pokračujte ústně z hlavy.", optA: "A) Správná odpověď (Předat tah)", optB: "B) Špatná odpověď", optC: "C) Špatná odpověď", a: "A"
                     };
-                    
-                    gameState.isClickLocked = false; // 🔓 Odemčení rozhraní pro rozhodčího
-                    return;
+                    gameState.isClickLocked = false; return;
                 }
             }
             
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
-            
-            // Smazání použité otázky z globální databáze témat, aby se neopakovala v příštích zápasech
-            if (QUIZ_DATABASE[currentTopic] && currentQ) {
+            if (QUIZ_DATABASE[currentTopic] && currentQ && currentQ.q !== "Otázky vyčerpány! Pokračujte ústně z hlavy.") {
                 const dbIndex = QUIZ_DATABASE[currentTopic].findIndex(item => item.q === currentQ.q);
                 if (dbIndex !== -1) QUIZ_DATABASE[currentTopic].splice(dbIndex, 1);
             }
-            
             if (currentQ) {
-                quizQuestion.innerText = currentQ.q; 
-                btnOptA.innerText = currentQ.optA; 
-                btnOptB.innerText = currentQ.optB; 
-                btnOptC.innerText = currentQ.optC;
+                quizQuestion.innerText = currentQ.q; btnOptA.innerText = currentQ.optA; btnOptB.innerText = currentQ.optB; btnOptC.innerText = currentQ.optC;
             }
         }
-         
+
         // ČASOVÁ LOOP
         function startTimerLoop() {
             if (gameState.timerInterval) clearInterval(gameState.timerInterval);
@@ -597,41 +504,18 @@
         btnOptB.addEventListener('click', () => selectABC('B'));
         btnOptC.addEventListener('click', () => selectABC('C'));
 
- // ✖️ PŘESKOČENÍ (OPRAVENÁ VERZE - HRÁČ ZŮSTÁVÁ NA TAHU)
+        // PŘESKOČENÍ (STEJNÝ HRÁČ DRŽÍ TAH)
         btnQuizPass.addEventListener('click', () => {
-            if (gameState.isClickLocked) return; 
-            gameState.isClickLocked = true;
-            
+            if (gameState.isClickLocked) return; gameState.isClickLocked = true;
             AudioEngine.play('wrong');
             const penalty = gameState.isTimeFrozen ? 8 : 3;
-            
-            // 1. Sekundy se odečtou tomu, kdo zrovna mačkal "Nevím"
-            if (gameState.activeTurnPlayer === 1) { 
-                gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penalty); 
-                p1Timer.innerText = gameState.timers.p1.toFixed(1); 
-            } else { 
-                gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penalty); 
-                p2Timer.innerText = gameState.timers.p2.toFixed(1); 
-            }
-            
-            // Kontrola, zda po této penalizaci někdo neprohrál (nedošel mu čas)
-            if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) { 
-                endDuel(); 
-                return; 
-            }
-            
-            // 🔥 ZMĚNA: Hráč se NEPŘEPÍNÁ, žádné "Předejte myš" nevyskočí!
-            // Pouze posuneme balíček na další otázku
-            gameState.currentQuestionIdx++; 
-            
-            // Krátká pauza (400ms) na doznění zvuku a hned naskočí nová otázka PRO STEJNÉHO HRÁČE
-            setTimeout(() => { 
-                showNextQuestion(); 
-                gameState.isClickLocked = false; 
-            }, 400);
+            if (gameState.activeTurnPlayer === 1) { gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penalty); p1Timer.innerText = gameState.timers.p1.toFixed(1); }
+            else { gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penalty); p2Timer.innerText = gameState.timers.p2.toFixed(1); }
+            gameState.currentQuestionIdx++;
+            if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) { endDuel(); return; }
+            setTimeout(() => { showNextQuestion(); gameState.isClickLocked = false; }, 400);
         });
-         
-          // 3D: UKONČENÍ DUELU (S PERZISTENTNÍM ZACHOVÁNÍM PAUZY)
+         // 3D: UKONČENÍ DUELU
         function endDuel() {
             clearInterval(gameState.timerInterval); gameState.timerInterval = null; duelModal.classList.add('hidden');
             let winnerId = gameState.attackerIndex; let loserId = gameState.defenderIndex;
@@ -658,33 +542,19 @@
             renderFloor();
         }
 
-  // TLAČÍTKO PRO NÁVRAT DO HRY PO PŘEDÁNÍ MYŠI (OPRAVENÉ PŘEPÍNÁNÍ RÁMEČKU)
         document.getElementById('btn-overlay-continue').addEventListener('click', () => {
             document.getElementById('game-overlay').classList.add('hidden');
-            
             if (!duelModal.classList.contains('hidden')) {
-                // 🎨 OPRAVA: Najdeme zóny útočníka a obránce v HTML
-                const z1 = document.getElementById('p1-zone');
-                const z2 = document.getElementById('p2-zone');
+                const z1 = document.getElementById('p1-zone'); const z2 = document.getElementById('p2-zone');
+                if (gameState.activeTurnPlayer === 1) { z1.classList.add('active-turn'); z2.classList.remove('active-turn'); }
+                else { z2.classList.add('active-turn'); z1.classList.remove('active-turn'); }
                 
-                // 🔥 KLÍČOVÝ KROK: Podle aktivního hráče spravedlivě rozsvítíme rámeček!
-                if (gameState.activeTurnPlayer === 1) {
-                    z1.classList.add('active-turn');
-                    z2.classList.remove('active-turn');
-                } else {
-                    z2.classList.add('active-turn');
-                    z1.classList.remove('active-turn');
-                }
-
                 showNextQuestion(); 
-                
-                // Čas se rozběhne pouze, pokud není aktivní manuální pauza (T)
                 if (!gameState.isTimeFrozen) startTimerLoop();
-                
                 gameState.isClickLocked = false;
             }
         });
-        
+
         btnPassTurn.addEventListener('click', () => {
             gameState.attackerIndex = null; btnPassTurn.classList.add('hidden'); btnRandomize.classList.remove('hidden'); renderFloor();
         });
@@ -692,31 +562,25 @@
         function checkGameEnd() {
             const activeOwners = Array.from(new Set(gameState.grid.filter(c => !c.eliminated && c.currentOwner !== -1).map(c => c.currentOwner)));
             if (activeOwners.length === 1) {
-                const absoluteWinner = gameState.grid.find(c => c.originalOwner === activeOwners);
+                const absoluteWinner = gameState.grid.find(c => c.originalOwner === activeOwners[0]);
                 gameStatus.innerHTML = `🏆🏆 <strong>KONEC HRY! Žák [ ${absoluteWinner.initials} ] ovládl celou podlahu!</strong> 🏆🏆`;
                 btnRandomize.classList.add('hidden'); btnPassTurn.classList.add('hidden'); renderFloor(); return true;
             }
             return false;
         }
 
-        // ⌨️ OVLÁDÁNÍ KLÁVESAMI T A R (FUNGUJE KDYKOLIV BĚHEM HRY)
+        // OVLÁDÁNÍ KLÁVESAMI T A R
         window.addEventListener('keydown', (event) => {
             const indicator = document.getElementById('time-lock-indicator');
-            
             if (event.key.toLowerCase() === 't') {
                 if (!gameState.isTimeFrozen) {
-                    gameState.isTimeFrozen = true; 
-                    clearInterval(gameState.timerInterval); 
-                    gameState.timerInterval = null;
+                    gameState.isTimeFrozen = true; clearInterval(gameState.timerInterval); gameState.timerInterval = null;
                     if (indicator) { indicator.innerText = "PAUZA (T)"; indicator.style.backgroundColor = "var(--danger)"; }
-                    gameStatus.innerText += " [Čas celkově pozastaven]";
                 }
             } else if (event.key.toLowerCase() === 'r') {
                 if (gameState.isTimeFrozen) {
                     gameState.isTimeFrozen = false;
                     if (indicator) { indicator.innerText = "ČAS BĚŽÍ"; indicator.style.backgroundColor = "var(--success)"; }
-                    
-                    // Čas znovu nahodíme pouze v případě, že se zrovna nacházíme v rozjetém duelu
                     if (!duelModal.classList.contains('hidden') && document.getElementById('game-overlay').classList.contains('hidden')) {
                         startTimerLoop();
                     }
@@ -726,6 +590,7 @@
     </script>
 </body>
 </html>
+
         
 
 
