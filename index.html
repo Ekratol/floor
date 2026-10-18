@@ -293,6 +293,49 @@
             }
         }
         
+        // 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt (BEZCHYBNÁ VERZE)
+        async function loadQuestionsFromTXT() {
+            try {
+                const response = await fetch('otazkyf.txt');
+                if (!response.ok) throw new Error('Soubor otazkyf.txt nenalezen');
+                const text = await response.text();
+                
+                // 🔥 ČISTÁ TEXTOVÁ METODA BEZ REGULÁRNÍCH VÝRAZŮ A LOMÍTEK:
+                const lines = text.split('\n');
+                
+                let currentTheme = null; QUIZ_DATABASE = {};
+                lines.forEach(line => {
+                    // Odstraníme z řádku případné skryté znaky \r ze systému Windows
+                    const trimmedLine = line.replace('\r', '').trim(); 
+                    if (!trimmedLine) return;
+                    
+                    if (trimmedLine.startsWith('#')) {
+                        currentTheme = trimmedLine.replace('#', '').trim(); 
+                        QUIZ_DATABASE[currentTheme] = []; 
+                        return;
+                    }
+                    if (currentTheme && trimmedLine.includes(';')) {
+                        const parts = trimmedLine.split(';');
+                        if (parts.length >= 5) {
+                            QUIZ_DATABASE[currentTheme].push({
+                                q: parts[0].trim(), 
+                                optA: parts[1].trim(), 
+                                optB: parts[2].trim(), 
+                                optC: parts[3].trim(), 
+                                a: parts[4].trim().toUpperCase()
+                            });
+                        }
+                    }
+                });
+                THEMES_LIST = Object.keys(QUIZ_DATABASE);
+                if (THEMES_LIST.length === 0) throw new Error('Nebyla nalezena žádná témata uvozená #');
+            } catch (error) {
+                console.error(error.message);
+                QUIZ_DATABASE["Záložní Téma"] = [{ q: "Chybí soubor otazkyf.txt nebo je špatně uvozen znakem # !", optA: "A) Rozumím", optB: "B) Rozumím", optC: "C) Rozumím", a: "A" }];
+                THEMES_LIST = Object.keys(QUIZ_DATABASE);
+            }
+        }
+        
         // GENERÁTOR VSTUPŮ ŽÁKŮ
         btnGenerateInputs.addEventListener('click', async () => {
             btnGenerateInputs.disabled = true; btnGenerateInputs.innerText = "Načítám témata...";
