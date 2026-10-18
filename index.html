@@ -258,13 +258,17 @@
                 osc.start(startTime); osc.stop(startTime + duration);
             }
         };
-         // 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt
+         
+           // 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt (OPRAVENÁ VERZE)
         async function loadQuestionsFromTXT() {
             try {
                 const response = await fetch('otazkyf.txt');
                 if (!response.ok) throw new Error('Soubor otazkyf.txt nenalezen');
                 const text = await response.text();
-                const lines = text.split(/\r?\n/);
+                
+                // 🔥 OPRAVENO: Čisté rozdělení řádků podle konců souborů
+                const lines = text.split(\(/\r\)?\n/);
+                
                 let currentTheme = null; QUIZ_DATABASE = {};
                 lines.forEach(line => {
                     const trimmedLine = line.trim(); if (!trimmedLine) return;
@@ -334,6 +338,7 @@
             setupScreen.classList.add('hidden'); gameScreen.classList.remove('hidden');
             gameStatus.innerText = "Hra načtena. Klikněte na Vylosovat vyzyvatele."; renderFloor();
         });
+        
          // 3B: VYKRESLENÍ PODLAHY (PŘEHLEDNÁ ZMENŠENÁ VERZE)
         function renderFloor() {
             floorGrid.innerHTML = '';
@@ -412,7 +417,8 @@
             }
             renderFloor();
         });
-         // 3C: SPUŠTĚNÍ DUELU
+
+// 3C: SPUŠTĚNÍ DUELU (S OPRAVENÝM ODEMYKÁNÍM KLIKÁNÍ A PERZISTENTNÍ PAUZOU)
         function startDuel(defenderId) {
             gameState.defenderIndex = defenderId;
             const attackerData = gameState.grid.find(c => c.originalOwner === gameState.attackerIndex);
@@ -430,17 +436,21 @@
             gameState.currentQuestionIdx = 0; gameState.timers.p1 = 45.0; gameState.timers.p2 = 45.0;
             p1Timer.innerText = "45.0"; p2Timer.innerText = "45.0";
             
-            gameState.activeTurnPlayer = 2; gameState.isTimeFrozen = false;
-            document.getElementById('p2-zone').classList.add('active-turn'); document.getElementById('p1-zone').classList.remove('active-turn');
-            const ind = document.getElementById('time-lock-indicator'); if (ind) { ind.innerText = "ČAS BĚŽÍ"; ind.style.backgroundColor = "var(--success)"; }
-
-              duelModal.classList.remove('hidden'); 
-            showNextQuestion(); 
+            gameState.activeTurnPlayer = 2; 
             
-            // 🔥 KLÍČOVÁ POJISTKA: Časomíru odstartujeme POUZE, pokud není zapnutá manuální pauza (T)
-            if (!gameState.isTimeFrozen) {
-                startTimerLoop();
+            // 🔥 AUTOMATICKÉ ODEMČENÍ KLIKÁNÍ PRO NOVÝ DUEL (Odstraňuje zásek ve 2. duelu!)
+            gameState.isClickLocked = false; 
+
+            document.getElementById('p2-zone').classList.add('active-turn'); document.getElementById('p1-zone').classList.remove('active-turn');
+            const ind = document.getElementById('time-lock-indicator'); if (ind) { 
+                if (gameState.isTimeFrozen) { ind.innerText = "PAUZA (T)"; ind.style.backgroundColor = "var(--danger)"; }
+                else { ind.innerText = "ČAS BĚŽÍ"; ind.style.backgroundColor = "var(--success)"; }
             }
+
+            duelModal.classList.remove('hidden'); showNextQuestion(); 
+            
+            // Čas se spustí pouze pokud ho učitel předem nevypnul klávesou T
+            if (!gameState.isTimeFrozen) startTimerLoop();
         }
 
         // ZOBRAZENÍ ABC OTÁZKY S POJISTKOU PROTI PÁDŮM
