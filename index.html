@@ -688,24 +688,23 @@
                 }
             }, 100);
         }
-  // KONTROLA VYBRANÉ ABC MOŽNOSTI (S COOLDOWNEM PROTI DVOJKLIKU)
+
+  // KONTROLA VYBRANÉ ABC MOŽNOSTI (S ODLOŽENÍM MEZIOBRAZOVKY)
         function selectABC(letter) {
-            // Pokud je hra zrovna uzamčená, kliknutí ignorujeme
             if (gameState.isClickLocked) return;
-            
-            // Okamžitě uzamkneme možnost klikat
             gameState.isClickLocked = true;
             
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
             
             if (letter === currentQ.a) {
-                // 🟢 SPRÁVNĚ -> Stopneme starý časovač a přehrajeme pípnutí
+                // 🛑 OKAMŽITÉ ZASTAVENÍ ČASU - Čas zamrzne na desetinu přesně
                 clearInterval(gameState.timerInterval);
                 gameState.timerInterval = null; 
                 
+                // Spustíme dlouhé táhlé tóny (trvají cca 0.4s)
                 AudioEngine.play('correct');
                 
-                // Přepnutí hráče na tahu
+                // Přepnutí hráče a indexu otázky v pozadí
                 gameState.currentQuestionIdx++;
                 gameState.activeTurnPlayer = gameState.activeTurnPlayer === 1 ? 2 : 1;
                 
@@ -713,15 +712,15 @@
                 const nextPlayerCell = gameState.grid.find(c => c.originalOwner === nextPlayerId);
                 const nextPlayerName = nextPlayerCell ? nextPlayerCell.initials : "Soupeř";
 
-                // Zobrazení meziobrazovky pro předání myši
-                document.getElementById('overlay-title').innerText = "🤝 PŘEDEJTE MYŠ!";
-                document.getElementById('overlay-subtitle').innerText = `Na řadě je: ${nextPlayerName}`;
-                document.getElementById('game-overlay').classList.remove('hidden');
-                
-                // Odemkneme až při stisknutí tlačítka POKRAČOVAT (ošetřeno v btn-overlay-continue)
+                // ⏳ KLÍČOVÁ OPRAVA: Meziobrazovka vyskočí až po 450 milisekundách (až dozní zvuk)
+                setTimeout(() => {
+                    document.getElementById('overlay-title').innerText = "🤝 PŘEDEJTE MYŠ!";
+                    document.getElementById('overlay-subtitle').innerText = `Na řadě je: ${nextPlayerName}`;
+                    document.getElementById('game-overlay').classList.remove('hidden');
+                }, 450);
                 
             } else {
-                // 🔴 ŠPATNĚ -> Zvuk bzučáku, penalizace -3s a bliknutí textu
+                // 🔴 ŠPATNĚ -> Zůstává stejné jako předtím (penalizace -3s, pauza 400ms a další otázka)
                 AudioEngine.play('wrong');
                 quizQuestion.style.color = "var(--danger)";
                 
@@ -735,12 +734,11 @@
                 
                 gameState.currentQuestionIdx++;
                 
-                // Krátká pauza (0.4s) na doznění zvuku a bliknutí, teprve pak skočí nová otázka a odemkne se klikání
                 setTimeout(() => {
                     quizQuestion.style.color = "var(--text-light)";
                     showNextQuestion();
-                    gameState.isClickLocked = false; // 🔓 Odemčení tlačítek
-                }, 1400);
+                    gameState.isClickLocked = false;
+                }, 400);
             }
         }
         
