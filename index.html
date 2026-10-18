@@ -258,16 +258,16 @@
                 osc.start(startTime); osc.stop(startTime + duration);
             }
         };
-         
-           // 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt (OPRAVENÁ VERZE)
+
+// 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt (BEZCHYBNÁ VERZE)
         async function loadQuestionsFromTXT() {
             try {
                 const response = await fetch('otazkyf.txt');
                 if (!response.ok) throw new Error('Soubor otazkyf.txt nenalezen');
                 const text = await response.text();
                 
-                // 🔥 OPRAVENO: Čisté rozdělení řádků podle konců souborů
-                const lines = text.split(/\r?\n/);
+                // 🔥 ČISTÁ OPRAVA: Rozdělení řádků bez nebezpečných lomítek a regulárních výrazů
+                const lines = text.split('\n');
                 
                 let currentTheme = null; QUIZ_DATABASE = {};
                 lines.forEach(line => {
@@ -292,7 +292,7 @@
                 THEMES_LIST = Object.keys(QUIZ_DATABASE);
             }
         }
-
+        
         // GENERÁTOR VSTUPŮ ŽÁKŮ
         btnGenerateInputs.addEventListener('click', async () => {
             btnGenerateInputs.disabled = true; btnGenerateInputs.innerText = "Načítám témata...";
