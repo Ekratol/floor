@@ -1,0 +1,53 @@
+#Geologické vědy
+
+Která věda se zabývá komplexním studiem neživé přírody, složením, stavbou a historickým vývojem Země?;Biologie;Geologie;Ekologie;B
+Která geologická věda zkoumá vnitřní strukturu minerálů, jejich geometrické tvary a krystalovou mřížku?;Mineralogie;Krystalografie;Petrologie;B
+Který vědní obor zkoumá horniny, jejich minerální složení, vznik a strukturu?;Mineralogie;Petrologie;Paleontologie;B
+Jak se nazývá věda o historii života na Zemi, která studuje fosilie (zkameněliny) vymřelých organismů?;Mineralogie;Paleontologie;Geomorfologie;B
+Která aplikovaná geologická věda vyhledává a zkoumá ložiska uhlí, ropy, plynů a rud?;Geofyzika;Inženýrská geologie;Ložisková geologie;C
+Jak se nazývá přírodnina, která je chemickým prvkem nebo sloučeninou, je stejnorodá a má přesné chemické složení?;Hornina;Minerál (nerost);Zkamenělina;B
+Jak se nazývá nestejnorodá přírodnina složená z jednoho nebo více minerálů (např. žula)?;Minerál;Hornina;Krystal;B
+Jak se nazývá uspořádání částic (atomů, iontů) uvnitř minerálu, které určuje jeho pravidelný geometrický tvar?;Amorfní stav;Krystalová mřížka;Geoda;B
+Jak označujeme minerály (např. opál nebo limonit), které nemají částice pravidelně uspořádané a netvoří krystaly?;Krystalické;Amorfní (beztvaré);Polymorfní;B
+Jak se nazývá vlastnost minerálů tvořit různé krystalové tvary podle podmínek (např. uhlík jako grafit i jako diamant)?;Polymorfismus (mnohotvárnost);Izomorfismus;Tvrdost;A
+Kterou pomůcku používají geologové k určování relativní tvrdosti minerálů od 1 do 10?;Mohsovu stupnici tvrdosti;Richterovu stupnici;Celsiusovu stupnici;A
+Který minerál je na úplném začátku Mohsovy stupnice a je nejměkčím minerálem (tvrdost 1)?;Křemen;Mastek;Kalcit;B
+Který minerál je nejtvrdším přírodním materiálem na Zemi a je na vrcholu Mohsovy stupnice (tvrdost 10)?;Korund;Topaz;Diamant;C
+Jak se nazývá barva jemného prášku, kterou minerál zanechá, když jím rýpneme o drsnou porcelánovou destičku?;Vryp;Lesk;Průsvitnost;A
+Která mechanická vlastnost vyjadřuje schopnost minerálu lámat se podle rovných lesklých ploch (např. u slídy nebo kalcitu)?;Lom;Štěpnost;Hustota;B
+Jak označujeme minerály, které nepropouštějí žádné světlo (např. většina rudných minerálů)?;Průhledné;Průsvitné;Neprůhledné (opákní);C
+Jak se nazývá optická vlastnost, která popisuje, jak povrch minerálu odráží světlo (např. kovový, skelný, perleťový)?;Vryp;Lesk;Lom;B
+Která vlastnost vyjadřuje hmotnost určitého objemu minerálu a závisí na hmotnosti atomů v jeho mřížce?;Tvrdost;Hustota;Štěpnost;B
+Který minerál má magnetické vlastnosti a dokáže přitahovat železné předměty?;Křemen;Magnetit (magnetovec);Halit;B
+Který minerál v tlamě dravých měkkýšů nebo na poli poznáme podle toho, že při kontaktu s kyselinou chlorovodíkovou šumí?;Kalcit;Fluorit;Pyrit;A
+Do které skupiny minerálů patří zlato, stříbro, měď, síra nebo grafit?;Halogeny;Prvky;Sulfidy;B
+Který sulfid (sloučenina síry a kovu) má mosazně žlutou barvu, kovový lesk a říká se mu „kočičí zlato“?;Galenit;Pyrit;Sfalerit;B
+Který sulfid olova je hlavní rudou pro získávání tohoto těžkého kovu a má šedočernou barvu a vysokou hustotou?;Pyrit;Galenit;Sfalerit;B
+Jak se chemicky a minerálním názvem nazývá běžná kuchyňská sůl?;Fluorit (kazivec);Halit (sůl kamenná);Sádrovec;B
+Který halogenid svítí pod UV světlem, používá se v hutnictví a mívá krásné krychlové krystaly různých barev?;Halit;Fluorit (kazivec);Sylvín;B
+Mezi které sloučeniny řadíme křemen, korund, magnetit nebo hematit (krvelok)?;Oxidy;Karbonáty;Sulfáty;A
+Který oxid křemičitý je jedním z nejběžnějších minerálů zemské kůry a tvoří základ říčního písku?;Křemen;Korund;Magnetit;A
+Jak se nazývá fialová drahokamová odrůda křemene?;Záhněda;Amethyst;Citřín;B
+Jak se nazývá hnědá nebo kouřová odrůda křemene?;Růženín;Záhněda;Aragonit;B
+Který oxid hliníku má tvrdost 9 a jeho drahokamové odrůdy se nazývají rubín a safír?;Křemen;Korund;Hematit;B
+Který karbonát (uhličitan) tvoří hlavní složku vápenců a mramorů?;Dolomit;Kalcit (vápenec);Siderit;B
+Který sulfát (síran) je velmi měkký (tvrdost 2) a vyrábí se z něj pálením sádra?;Baryt;Sádrovec;Anhydrit;B
+Která skupina minerálů (křemičitany) je nejrozšířenější v zemské kůře a patří sem živce, slídy a křemen?;Silikáty;Oxidy;Halogenidy;A
+Které silikáty se v žule snadno loupou v tenkých průsvitných šupinkách?;Živce;Slídy;Granáty;B
+Které minerály ze skupiny křemičitanů se často používají jako brusný materiál nebo drahokamy a mají dvanáctistěnné krystaly?;Granáty;Olivíny;Augity;A
+Který zelený silikát vzniká v bazických vyvřelinách a jeho drahokamová odrůda se nazývá chrysolit?;Granát;Olivín;Mastek;B
+Který minerál je nejměkčí na Mohsově stupnici a používá se jako plnidlo v kosmetice nebo křída pro krejčí?;Mastek;Fluorit;Kalcit;A
+Jak se nazývají horniny, které vznikají chladnutím a krystalizací žhavého magmatu nebo lávy?;Usazené (sedimentární);Vyvřelé (magmatické);Přeměněné (metamorfované);B
+Která hlubinná vyvřelá hornina tvoří velké masivy, skládá se z křemene, živce a slídy a má všesměrnou strukturu?;Čedič (bazalt);Žula (granit);Andezit;B
+Která výlevná vyvřelá hornina tvoří typické sloupcovité varhany (např. Panská skála) a má tmavou barvu?;Žula;Čedič (bazalt);Ryolit;B
+Jak se nazývají horniny vzniklé usazováním úlomků, zbytků organismů nebo chemickým srážením na zemském povrchu?;Vyvřelé;Usazené (sedimentární);Přeměněné;B
+Který sediment vzniká zpevněním říčního nebo pouštního písku?;Slepenec;Pískovec;Vápenec;B
+Která usazená hornina vzniká nahromaděním schránek mikroorganismů nebo korálů na dně teplých moří?;Pískovec;Vápenec;Slepenec;B
+Které hořlavé sedimenty vznikly prouhelněním zbytků dávných rostlin bez přístupu vzduchu?;Uhlí (černé a hnědé);Ropa;Břidlice;A
+Jak se nazývají horniny, které změnily svou strukturu a složení kvůli vysokému tlaku a teplotě hluboko pod povrchem?;Vyvřelé;Usazené;Přeměněné (metamorfované);C
+Která přeměněná hornina vzniká metamorfózou žuly a má typické proužkování?;Mramor;Fylit;Rula;C
+Která přeměněná hornina vzniká z vápence, je zrnitá a používá se v sochařství a stavebnictví?;Rula;Mramor;Amfibolit;B
+Které geologické děje jsou poháněny vnitřní energií Země (např. sopečná činnost, zemětřesení, pohyb desek)?;Exogenní (vnější);Endogenní (vnitřní);Atmosférické;B
+Které děje jsou poháněny slunečním zářením, gravitací a činností vody a větru (např. eroze, zvětrávání)?;Endogenní;Exogenní (vnější);Sopečné;B
+Která sféra Země je tvořena zemskou kůrou a nejsvrchnější částí pláště a je rozlámaná na litosférické desky?;Atmosféra;Litosféra;Biosféra;B
+
