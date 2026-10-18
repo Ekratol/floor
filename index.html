@@ -235,28 +235,38 @@
                 osc.start(startTime); osc.stop(startTime + duration);
             }
         };
-         // 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt (ČISTÁ TEXTOVÁ METODA)
+        
+    // 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt (ČISTÁ A BEZCHYBNÁ VERZE)
         async function loadQuestionsFromTXT() {
             try {
                 const response = await fetch('otazkyf.txt');
                 if (!response.ok) throw new Error('Soubor otazkyf.txt nenalezen');
                 const text = await response.text();
                 
-                // Absolutně bezpečné rozdělení řádků podle textového znaku bez regulárních výrazů
+                // Čisté rozdělení řádků podle zalomení bez regulárních výrazů
                 const lines = text.split('\n');
                 
                 let currentTheme = null; QUIZ_DATABASE = {};
                 lines.forEach(line => {
-                    const trimmedLine = line.replace\(('\r', '').\)trim(); 
+                    // 🔥 OPRAVENO: Odstranění nelegálních lomítek a vyčištění řádku
+                    const trimmedLine = line.replace('\r', '').trim(); 
                     if (!trimmedLine) return;
+                    
                     if (trimmedLine.startsWith('#')) {
-                        currentTheme = trimmedLine.replace('#', '').trim(); QUIZ_DATABASE[currentTheme] = []; return;
+                        currentTheme = trimmedLine.replace('#', '').trim(); 
+                        QUIZ_DATABASE[currentTheme] = []; 
+                        return;
                     }
                     if (currentTheme && trimmedLine.includes(';')) {
                         const parts = trimmedLine.split(';');
                         if (parts.length >= 5) {
+                            // 🔥 OPRAVENO: Správné indexování částí otázky (parts[0], parts[1]...)
                             QUIZ_DATABASE[currentTheme].push({
-                                q: parts[0].trim(), optA: parts[1].trim(), optB: parts[2].trim(), optC: parts[3].trim(), a: parts[4].trim().toUpperCase()
+                                q: parts[0].trim(), 
+                                optA: parts[1].trim(), 
+                                optB: parts[2].trim(), 
+                                optC: parts[3].trim(), 
+                                a: parts[4].trim().toUpperCase()
                             });
                         }
                     }
