@@ -600,16 +600,33 @@
             renderFloor();
         }
 
+  // TLAČÍTKO PRO NÁVRAT DO HRY PO PŘEDÁNÍ MYŠI (OPRAVENÉ PŘEPÍNÁNÍ RÁMEČKU)
         document.getElementById('btn-overlay-continue').addEventListener('click', () => {
             document.getElementById('game-overlay').classList.add('hidden');
+            
             if (!duelModal.classList.contains('hidden')) {
+                // 🎨 OPRAVA: Najdeme zóny útočníka a obránce v HTML
+                const z1 = document.getElementById('p1-zone');
+                const z2 = document.getElementById('p2-zone');
+                
+                // 🔥 KLÍČOVÝ KROK: Podle aktivního hráče spravedlivě rozsvítíme rámeček!
+                if (gameState.activeTurnPlayer === 1) {
+                    z1.classList.add('active-turn');
+                    z2.classList.remove('active-turn');
+                } else {
+                    z2.classList.add('active-turn');
+                    z1.classList.remove('active-turn');
+                }
+
                 showNextQuestion(); 
-                // 🔥 Čas se po předání myši rozběhne POUZE v případě, že není aktivní manuální pauza (T)
+                
+                // Čas se rozběhne pouze, pokud není aktivní manuální pauza (T)
                 if (!gameState.isTimeFrozen) startTimerLoop();
+                
                 gameState.isClickLocked = false;
             }
         });
-
+        
         btnPassTurn.addEventListener('click', () => {
             gameState.attackerIndex = null; btnPassTurn.classList.add('hidden'); btnRandomize.classList.remove('hidden'); renderFloor();
         });
