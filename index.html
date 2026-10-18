@@ -570,7 +570,7 @@
             renderFloor();
         });
 
- // ZAHÁJENÍ DUELU (ABC VERZE - OPRAVENÝ START)
+          // ZAHÁJENÍ DUELU (S TRVALÝM ODSTRAŇOVÁNÍM OTÁZEK)
         function startDuel(defenderId) {
             gameState.defenderIndex = defenderId;
             const attackerData = gameState.grid.find(c => c.originalOwner === gameState.attackerIndex);
@@ -582,34 +582,67 @@
             p1Name.innerText = `⚔️ Útočník: ${attackerData.initials}`;
             p2Name.innerText = `🛡️ Obránce: ${defenderData.initials}`;
 
-            const baseQuestions = QUIZ_DATABASE[activeTopic];
-            gameState.currentRoundQuestions = [...baseQuestions].sort(() => Math.random() - 0.5);
+            // Zamícháme pouze ty otázky, které v databázi ještě ZBÝVAJÍ
+            const remainingQuestions = QUIZ_DATABASE[activeTopic] || [];
+            
+            if (remainingQuestions.length === 0) {
+                // Pokud už v tématu nic nezbylo, vytvoříme generickou zprávu, aby hra nespadla
+                gameState.currentRoundQuestions = [{ 
+                    q: `V tomto tématu už nezbyly žádné otázky! Klikněte na jakoukoliv možnost pro pokračování.`, 
+                    optA: "A) Pokračovat", optB: "B) Pokračovat", optC: "C) Pokračovat", a: "A" 
+                }];
+            } else {
+                // Náhodně promícháme zbývající otázky
+                gameState.currentRoundQuestions = [...remainingQuestions].sort(() => Math.random() - 0.5);
+            }
+            
             gameState.currentQuestionIdx = 0;
-
             gameState.timers.p1 = 45.0;
             gameState.timers.p2 = 45.0;
             p1Timer.innerText = "45.0";
             p2Timer.innerText = "45.0";
 
-            // V show začíná VŽDY OBRÁNCE (Hráč 2)
-            gameState.activeTurnPlayer = 2; 
+            gameState.activeTurnPlayer = 2; // Začíná obránce
             document.getElementById('p2-zone').classList.add('active-turn');
             document.getElementById('p1-zone').classList.remove('active-turn');
 
             duelModal.classList.remove('hidden');
             showNextQuestion();
-            startTimerLoop(); // 🔥 KLÍČOVÁ OPRAVA: Okamžitě spustíme odpočet obránce!
+            startTimerLoop();
         }
 
-        // ZOBRAZENÍ ABC OTÁZKY
+    // ZOBRAZENÍ ABC OTÁZKY A JEJÍ ODSTRANĚNÍ Z DATABÁZE
         function showNextQuestion() {
+            // Pokud v aktuálním duelu dojdou otázky, zkusíme se podívat, zda v databázi ještě něco nezbylo
             if (gameState.currentQuestionIdx >= gameState.currentRoundQuestions.length) {
                 const defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
-                gameState.currentRoundQuestions = [...QUIZ_DATABASE[defenderData.topic]].sort(() => Math.random() - 0.5);
-                gameState.currentQuestionIdx = 0;
+                const remaining = QUIZ_DATABASE[defenderData.topic] || [];
+                
+                if (remaining.length > 0) {
+                    gameState.currentRoundQuestions = [...remaining].sort(() => Math.random() - 0.5);
+                    gameState.currentQuestionIdx = 0;
+                } else {
+                    // Nouzový řádek, pokud otázky došly úplně
+                    quizQuestion.innerText = "Otázky pro toto téma byly zcela vyčerpány! Stiskněte Nevím / Přeskočit.";
+                    return;
+                }
             }
             
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
+            
+            // --- KLÍČOVÝ KROK: ODSTRANĚNÍ OTÁZKY Z GLOBÁLNÍ DATABÁZE ---
+            const defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
+            if (QUIZ_DATABASE[defenderData.topic]) {
+                // Najdeme index této konkrétní otázky v naší hlavní databázi
+                const dbIndex = QUIZ_DATABASE[defenderData.topic].findIndex(item => item.q === currentQ.q);
+                if (dbIndex !== -1) {
+                    // Smažeme ji, aby ji už žádný jiný hráč v budoucnu nedostal
+                    QUIZ_DATABASE[defenderData.topic].splice(dbIndex, 1);
+                }
+            }
+            // ----------------------------------------------------------
+
+            // Vykreslení otázky na obrazovku
             quizQuestion.innerText = currentQ.q;
             btnOptA.innerText = currentQ.optA;
             btnOptB.innerText = currentQ.optB;
