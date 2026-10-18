@@ -97,16 +97,14 @@
     </style>
 </head>
 <body>
-
-    <!-- 1. CONFIGURATION SCREEN -->
+  <!-- 1. SETUP SCREEN -->
     <div id="setup-screen" class="container">
         <h1>🎮 THE FLOOR – ŠKOLNÍ DUEL (ABC VERZE)</h1>
-        <p class="subtitle">Načítání témat ze souborů otazky1.txt až otazky6.txt</p>
+        <p class="subtitle">Načítání témat ze společného souboru otazkyf.txt pomocí mřížky #</p>
         
         <div class="setup-controls">
             <label for="student-count">Počet žáků:</label>
             <select id="student-count">
-                <!-- 🎮 SEM JSME PŘIDALI MOŽNOSTI OD 4 ŽÁKŮ -->
                 <option value="4">4 žáci (Mřížka 2x2)</option>
                 <option value="5">5 žáků (Mřížka 3x2)</option>
                 <option value="6">6 žáků (Mřížka 3x2)</option>
@@ -149,7 +147,7 @@
         </div>
     </div>
 
-     <!-- OZNAMOVACÍ PROSTŘEDÍ PRO PŘEDÁVÁNÍ MYŠI A KONEC DUELU -->
+    <!-- OZNAMOVACÍ PROSTŘEDÍ PRO PŘEDÁVÁNÍ MYŠI A KONEC DUELU -->
     <div id="game-overlay" class="modal hidden" style="z-index: 2000; text-align: center; background-color: rgba(2, 6, 23, 0.98);">
         <div style="color: white; padding: 40px;">
             <h1 id="overlay-title" style="font-size: 3rem; margin-bottom: 20px; color: var(--warning);">PŘEDEJTE MYŠ!</h1>
@@ -157,31 +155,28 @@
             <button id="btn-overlay-continue" class="btn btn-success" style="font-size: 1.5rem; padding: 20px 40px;">👉 POKRAČOVAT</button>
         </div>
     </div>
-    
+
     <!-- 3. DUEL MODAL SCREEN -->
     <div id="duel-modal" class="modal hidden">
         <div class="modal-content">
             <h2 style="text-align:center;">🔥 VĚDOMOSTNÍ DUEL 🔥</h2>
             <div id="duel-topic-name" class="topic-badge">Téma: ???</div>
 
-           <div class="duel-arena">
+            <div class="duel-arena">
                 <div id="p1-zone" class="player-zone">
                     <div id="p1-name" class="p-name">Útočník</div>
                     <div id="p1-timer" class="p-timer">45.0</div>
                 </div>
-                
-                <!-- ⏱️ ZDE JE UPRAVENÝ STŘED S INDIKÁTOREM PAUZY -->
                 <div class="vs-divider" style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
                     <div>VS</div>
                     <div id="time-lock-indicator" style="font-size: 0.8rem; background: var(--success); color: white; padding: 4px 8px; border-radius: 4px; font-weight: bold; min-width: 80px; text-align: center;">ČAS BĚŽÍ</div>
                 </div>
-                
                 <div id="p2-zone" class="player-zone">
                     <div id="p2-name" class="p-name">Obránce</div>
                     <div id="p2-timer" class="p-timer">45.0</div>
                 </div>
             </div>
-            
+
             <div class="quiz-box">
                 <div id="quiz-question" class="question-text">Načítám otázku...</div>
                 <div class="abc-container">
@@ -189,107 +184,30 @@
                     <button id="btn-opt-B" class="btn-abc">B) ---</button>
                     <button id="btn-opt-C" class="btn-abc">C) ---</button>
                 </div>
-                <button id="btn-quiz-pass" class="btn btn-danger btn-block">✖️ NEVÍM / PŘESKOČIT (DÁLE -3s)</button>
+                <button id="btn-quiz-pass" class="btn btn-danger btn-block">✖️ NEVÍM / PŘESKOČIT (DÁLE)</button>
             </div>
         </div>
     </div>
-    
- <!-- 4. ČÁST: JAVASCRIPT LOGIKA -->
-    <script>
 
- // Globální databáze, která se dynamicky naplní ze souboru otazkyf.txt
+    <script>
+        // Globální databáze a proměnné
         let QUIZ_DATABASE = {};
         let THEMES_LIST = [];
 
-        // 🎨 ROZŠÍŘENÁ PALETA 12 UNIKÁTNÍCH BAREV
         let PLAYER_COLORS = [
-            "#1e3a8a", // 1. Tmavě modrá
-            "#065f46", // 2. Tmavě zelená
-            "#7c2d12", // 3. Cihlová
-            "#581c87", // 4. Fialová
-            "#a21caf", // 5. Purpurová
-            "#0f766e", // 6. Tyrkysová
-            "#4d7c0f", // 7. Olivová
-            "#b45309", // 8. Jantarová
-            "#1d4ed8", // 9. Královská modrá
-            "#6b7280", // 10. Břidlicově šedá
-            "#be185d", // 11. Tmavě růžová
-            "#374151"  // 12. Antracitová
+            "#1e3a8a", "#065f46", "#7c2d12", "#581c87", "#a21caf", "#0f766e",
+            "#4d7c0f", "#b45309", "#1d4ed8", "#6b7280", "#be185d", "#374151"
         ];
-                
- // 🎵 MAJESTÁTNÍ ZVUKOVÝ ENGINE (DLOUHÉ, TÁHLÉ TÓNY A VELKOLEPÁ SHOW)
-        const AudioEngine = {
-            ctx: null,
-            init() { if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
-            play(type) {
-                this.init();
-                const now = this.ctx.currentTime;
-                
-                if (type === 'correct') { 
-                    // 🟢 SPRÁVNÁ ODPOVĚĎ - Dlouhé, čisté a slavnostní tóny, které krásně doznívají
-                    this.playTone(523.25, now, 0.40);       // C5 (táhlý)
-                    this.playTone(659.25, now + 0.15, 0.45); // E5 (táhlý)
-                    this.playTone(783.99, now + 0.30, 0.60); // G5 (dlouhý konec)
-                    
-                } else if (type === 'wrong') { 
-                    // 🔴 ŠPATNĚ / PASS - Mohutné, hluboké a dlouhé klesající mručení
-                    this.playTone(196.00, now, 0.50, 'sawtooth');        // G3 (dlouhý bzučák)
-                    this.playTone(164.81, now + 0.30, 0.55, 'sawtooth'); // E3
-                    this.playTone(130.81, now + 0.60, 0.80, 'sawtooth'); // C3 (velmi hluboký dlouhý konec)
-                    
-                } else if (type === 'victory') { 
-                    // 🏆 VÍTĚZSTVÍ V DUELU - Obří, dlouhá 10tónová televizní fanfára (trvá přes 2.5 sekundy)
-                    this.playTone(261.63, now, 0.50);        // C4
-                    this.playTone(329.63, now + 0.15, 0.50); // E4
-                    this.playTone(392.00, now + 0.30, 0.50); // G4
-                    this.playTone(523.25, now + 0.45, 0.60); // C5
-                    this.playTone(659.25, now + 0.60, 0.60); // E5
-                    this.playTone(783.99, now + 0.75, 0.70); // G5
-                    this.playTone(1046.50, now + 0.90, 0.80); // C6
-                    this.playTone(1318.51, now + 1.05, 0.90); // E6
-                    this.playTone(1567.98, now + 1.20, 1.20); // G6 (masivní vysoký tón)
-                    this.playTone(2093.00, now + 1.35, 1.50); // C7 (ultimátní triumfální konec)
-                }
-            },
-            // Vylepšená metoda s delším a plynulejším dozníváním zvuku (linearRamp)
-            playTone(freq, startTime, duration, waveType = 'sine') {
-                const osc = this.ctx.createOscillator();
-                const gain = this.ctx.createGain();
-                
-                osc.type = waveType;
-                osc.frequency.setValueAtTime(freq, startTime);
-                
-                // Mírně zesíleno pro zaplnění třídy a nastaven pozvolný fade-out
-                gain.gain.setValueAtTime(0.15, startTime);
-                gain.gain.linearRampToValueAtTime(0.15, startTime + (duration * 0.4)); // Drží plnou hlasitost
-                gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);  // Pak plynule utichne
-                
-                osc.connect(gain);
-                gain.connect(this.ctx.destination);
-                
-                osc.start(startTime);
-                osc.stop(startTime + duration);
-            }
-        };
-
-        // STAV HRY
+        
         let gameState = {
-            totalCells: 12,
-            rows: 3,
-            cols: 4,
-            grid: [],
-            attackerIndex: null,
-            defenderIndex: null,
-            currentRoundQuestions: [],
-            currentQuestionIdx: 0,
-            activeTurnPlayer: null, // 1 = útočník, 2 = obránce
-            timers: { p1: 45, p2: 45 },
-            timerInterval: null,
-            isClickLocked: false,
-            isTimeFrozen: false // ⏸️ Nový stav: true = čas je manuálně stopnutý tlačítkem T
+            totalCells: 12, rows: 3, cols: 4, grid: [],
+            attackerIndex: null, defenderIndex: null,
+            currentRoundQuestions: [], currentQuestionIdx: 0,
+            activeTurnPlayer: null, timers: { p1: 45, p2: 45 },
+            timerInterval: null, isClickLocked: false, isTimeFrozen: false
         };
 
-        // DOM ELEMENTY
+        // DOM Elementy
         const setupScreen = document.getElementById('setup-screen');
         const gameScreen = document.getElementById('game-screen');
         const duelModal = document.getElementById('duel-modal');
@@ -301,172 +219,122 @@
         const gameStatus = document.getElementById('game-status');
         const btnRandomize = document.getElementById('btn-randomize');
         const btnPassTurn = document.getElementById('btn-pass-turn');
-
         const duelTopicName = document.getElementById('duel-topic-name');
         const p1Name = document.getElementById('p1-name');
         const p2Name = document.getElementById('p2-name');
         const p1Timer = document.getElementById('p1-timer');
         const p2Timer = document.getElementById('p2-timer');
         const quizQuestion = document.getElementById('quiz-question');
-        
         const btnOptA = document.getElementById('btn-opt-A');
         const btnOptB = document.getElementById('btn-opt-B');
         const btnOptC = document.getElementById('btn-opt-C');
         const btnQuizPass = document.getElementById('btn-quiz-pass');
 
-        // 1. ASYNCHRONNÍ NAČTENÍ JEDNOHO SOUBORU otazkyf.txt
+        // ZVUKOVÝ ENGINE (Táhlé tóny a velkolepá fanfára)
+        const AudioEngine = {
+            ctx: null,
+            init() { if (!this.ctx) this.ctx = new (window.AudioContext || window.webkitAudioContext)(); },
+            play(type) {
+                this.init();
+                const now = this.ctx.currentTime;
+                if (type === 'correct') { 
+                    this.playTone(523.25, now, 0.40); this.playTone(659.25, now + 0.15, 0.45); this.playTone(783.99, now + 0.30, 0.60);
+                } else if (type === 'wrong') { 
+                    this.playTone(196.00, now, 0.50, 'sawtooth'); this.playTone(164.81, now + 0.30, 0.55, 'sawtooth'); this.playTone(130.81, now + 0.60, 0.80, 'sawtooth');
+                } else if (type === 'victory') { 
+                    this.playTone(261.63, now, 0.50); this.playTone(329.63, now + 0.15, 0.50); this.playTone(392.00, now + 0.30, 0.50);
+                    this.playTone(523.25, now + 0.45, 0.60); this.playTone(659.25, now + 0.60, 0.60); this.playTone(783.99, now + 0.75, 0.70);
+                    this.playTone(1046.50, now + 0.90, 0.80); this.playTone(1318.51, now + 1.05, 0.90); this.playTone(1567.98, now + 1.20, 1.20);
+                    this.playTone(2093.00, now + 1.35, 1.50);
+                }
+            },
+            playTone(freq, startTime, duration, waveType = 'sine') {
+                const osc = this.ctx.createOscillator(); const gain = this.ctx.createGain();
+                osc.type = waveType; osc.frequency.setValueAtTime(freq, startTime);
+                gain.gain.setValueAtTime(0.15, startTime);
+                gain.gain.linearRampToValueAtTime(0.15, startTime + (duration * 0.4));
+                gain.gain.exponentialRampToValueAtTime(0.0001, startTime + duration);
+                osc.connect(gain); gain.connect(this.ctx.destination);
+                osc.start(startTime); osc.stop(startTime + duration);
+            }
+        };
+         // 3A: ASYNCHRONNÍ NAČTENÍ OTÁZEK Z otazkyf.txt
         async function loadQuestionsFromTXT() {
             try {
                 const response = await fetch('otazkyf.txt');
                 if (!response.ok) throw new Error('Soubor otazkyf.txt nenalezen');
-                
                 const text = await response.text();
-                // Rozdělení textu na řádky (ošetření pro různé typy konců řádků)
-                const lines = text.split(/\r?\n/);
-                
-                let currentTheme = null;
-                QUIZ_DATABASE = {}; // Vyčistíme starou databázi
-                
+                const lines = text.split(\(/\r\)?\n/);
+                let currentTheme = null; QUIZ_DATABASE = {};
                 lines.forEach(line => {
-                    const trimmedLine = line.trim();
-                    if (!trimmedLine) return; // Přeskočit prázdné řádky
-                    
-                    // Pokud řádek začíná mřížkou #, jedná se o NOVÉ TÉMA
+                    const trimmedLine = line.trim(); if (!trimmedLine) return;
                     if (trimmedLine.startsWith('#')) {
-                        currentTheme = trimmedLine.replace('#', '').trim();
-                        QUIZ_DATABASE[currentTheme] = []; // Inicializujeme pole pro otázky
-                        return;
+                        currentTheme = trimmedLine.replace('#', '').trim(); QUIZ_DATABASE[currentTheme] = []; return;
                     }
-                    
-                    // Pokud už máme aktivní téma a řádek obsahuje středníky, parsujeme otázku
                     if (currentTheme && trimmedLine.includes(';')) {
                         const parts = trimmedLine.split(';');
                         if (parts.length >= 5) {
                             QUIZ_DATABASE[currentTheme].push({
-                                q: parts[0].trim(),
-                                optA: parts[1].trim(),
-                                optB: parts[2].trim(),
-                                optC: parts[3].trim(),
-                                a: parts[4].trim().toUpperCase() // Očekává A, B nebo C
+                                q: parts[0].trim(), optA: parts[1].trim(), optB: parts[2].trim(), optC: parts[3].trim(), a: parts[4].trim().toUpperCase()
                             });
                         }
                     }
                 });
-                
-                // Aktualizujeme seznam nalezených témat
                 THEMES_LIST = Object.keys(QUIZ_DATABASE);
-                
-                if (THEMES_LIST.length === 0) {
-                    throw new Error('V souboru otazkyf.txt nebyla nalezena žádná témata uvozená #');
-                }
-                
+                if (THEMES_LIST.length === 0) throw new Error('Nebyla nalezena žádná témata uvozená #');
             } catch (error) {
                 console.error(error.message);
-                // Záložní nouzové téma, pokud soubor chybí nebo je poškozený
-                QUIZ_DATABASE["Záložní Téma"] = [{
-                    q: "Chybí nebo je poškozen soubor otazkyf.txt! Pokračovat?",
-                    optA: "Ano", optB: "Ne", optC: "Nevím", a: "A"
-                }];
+                QUIZ_DATABASE["Záložní Téma"] = [{ q: "Chybí soubor otazkyf.txt nebo je špatně uvozen znakem # !", optA: "A) Rozumím", optB: "B) Rozumím", optC: "C) Rozumím", a: "A" }];
                 THEMES_LIST = Object.keys(QUIZ_DATABASE);
             }
         }
 
-           // GENERÁTOR POLÍ PRO SEZNAM ŽÁKŮ (S DYNAMICKÝM NAČTENÍM TÉMAT)
+        // GENERÁTOR VSTUPŮ ŽÁKŮ
         btnGenerateInputs.addEventListener('click', async () => {
-            btnGenerateInputs.disabled = true;
-            btnGenerateInputs.innerText = "Načítám témata...";
-            
-            // Nejdříve prozkoumáme soubor a vytáhneme témata
+            btnGenerateInputs.disabled = true; btnGenerateInputs.innerText = "Načítám témata...";
             await loadQuestionsFromTXT();
+            const count = parseInt(studentCountSelect.value); gameState.totalCells = count;
             
-            const count = parseInt(studentCountSelect.value);
-            gameState.totalCells = count;
-            
-             // Dynamické nastavení rozměrů mřížky podle počtu žáků (od 4 do 16)
-            if (count === 4) { 
-                gameState.rows = 2; gameState.cols = 2; // Ideální čtverec pro 4 hráče
-            } else if (count <= 6) { 
-                gameState.rows = 2; gameState.cols = 3; // Pro 5 až 6 hráčů
-            } else if (count <= 9) { 
-                gameState.rows = 3; gameState.cols = 3; // Pro 7 až 9 hráčů
-            } else if (count <= 12) { 
-                gameState.rows = 3; gameState.cols = 4; // Pro 10 až 12 hráčů
-            } else { 
-                gameState.rows = 4; gameState.cols = 4; // Pro 13 až 16 hráčů
-            }
-            inputsContainer.innerHTML = '';
-            
-            for (let i = 0; i < count; i++) {
-                const card = document.createElement('div');
-                card.className = 'student-input-card';
-                
-                const label = document.createElement('label');
-                label.innerText = `Žák č. ${i + 1}`;
-                
-                const row = document.createElement('div');
-                row.className = 'row';
-                
-                const input = document.createElement('input');
-                input.type = 'text';
-                input.maxLength = 3;
-                input.className = 'input-initials';
-                input.value = String.fromCharCode(65 + (i % 26)) + String.fromCharCode(66 + (i % 26));
-                
-                const select = document.createElement('select');
-                select.className = 'select-topic';
-                
-                // Vygenerujeme možnosti podle témat z otazkyf.txt
-                THEMES_LIST.forEach(t => {
-                    const opt = document.createElement('option');
-                    opt.value = t; opt.innerText = t;
-                    select.appendChild(opt);
-                });
-                
-                // Spravedlivě rozdělíme nalezená témata mezi žáky
-                select.value = THEMES_LIST[i % THEMES_LIST.length];
+            if (count === 4) { gameState.rows = 2; gameState.cols = 2; }
+            else if (count <= 6) { gameState.rows = 2; gameState.cols = 3; }
+            else if (count <= 9) { gameState.rows = 3; gameState.cols = 3; }
+            else if (count <= 12) { gameState.rows = 3; gameState.cols = 4; }
+            else { gameState.rows = 4; gameState.cols = 4; }
 
-                row.appendChild(input);
-                row.appendChild(select);
-                card.appendChild(label);
-                card.appendChild(row);
-                inputsContainer.appendChild(card);
+            inputsContainer.innerHTML = '';
+            for (let i = 0; i < count; i++) {
+                const card = document.createElement('div'); card.className = 'student-input-card';
+                const label = document.createElement('label'); label.innerText = `Žák č. ${i + 1}`;
+                const row = document.createElement('div'); row.className = 'row';
+                const input = document.createElement('input'); input.type = 'text'; input.maxLength = 3; input.className = 'input-initials';
+                input.value = String.fromCharCode(65 + (i % 26)) + String.fromCharCode(66 + (i % 26));
+                const select = document.createElement('select'); select.className = 'select-topic';
+                THEMES_LIST.forEach(t => {
+                    const opt = document.createElement('option'); opt.value = t; opt.innerText = t; select.appendChild(opt);
+                });
+                select.value = THEMES_LIST[i % THEMES_LIST.length];
+                row.appendChild(input); row.appendChild(select); card.appendChild(label); card.appendChild(row); inputsContainer.appendChild(card);
             }
-            
-            btnGenerateInputs.disabled = false;
-            btnGenerateInputs.innerText = "Připravit jmenný seznam";
+            btnGenerateInputs.disabled = false; btnGenerateInputs.innerText = "Připravit jmenný seznam";
             btnStartGame.classList.remove('hidden');
         });
-        
-         // SPUŠTĚNÍ HRY
+
+        // SPUŠTĚNÍ HRY
         btnStartGame.addEventListener('click', () => {
             const initInputs = document.querySelectorAll('.input-initials');
             const topicSelects = document.querySelectorAll('.select-topic');
-            gameState.grid = [];
-            const cellsCount = gameState.rows * gameState.cols;
-
+            gameState.grid = []; const cellsCount = gameState.rows * gameState.cols;
             for (let i = 0; i < cellsCount; i++) {
                 if (i < gameState.totalCells) {
-                    gameState.grid.push({
-                        id: i,
-                        initials: initInputs[i].value.toUpperCase() || `Ž${i+1}`,
-                        originalOwner: i,
-                        currentOwner: i,
-                        topic: topicSelects[i].value,
-                        eliminated: false
-                    });
+                    gameState.grid.push({ id: i, initials: initInputs[i].value.toUpperCase() || `Ž${i+1}`, originalOwner: i, currentOwner: i, topic: topicSelects[i].value, eliminated: false });
                 } else {
-                    gameState.grid.push({
-                        id: i, initials: "-", originalOwner: -1, currentOwner: -1, topic: "", eliminated: true
-                    });
+                    gameState.grid.push({ id: i, initials: "-", originalOwner: -1, currentOwner: -1, topic: "", eliminated: true });
                 }
             }
-            setupScreen.classList.add('hidden');
-            gameScreen.classList.remove('hidden');
-            gameStatus.innerText = "Hra načtena. Klikněte na Losovat vyzyvatele.";
-            renderFloor();
-        }); 
-        
-// JEDNOTNÉ VYKRESLENÍ MŘÍŽKY A ZVÝRAZNĚNÍ (PŘEHLEDNÁ VERZE)
+            setupScreen.classList.add('hidden'); gameScreen.classList.remove('hidden');
+            gameStatus.innerText = "Hra načtena. Klikněte na Vylosovat vyzyvatele."; renderFloor();
+        });
+         // 3B: VYKRESLENÍ PODLAHY (PŘEHLEDNÁ ZMENŠENÁ VERZE)
         function renderFloor() {
             floorGrid.innerHTML = '';
             floorGrid.style.gridTemplateColumns = `repeat(${gameState.cols}, 1fr)`;
@@ -474,466 +342,259 @@
             floorGrid.style.aspectRatio = `${gameState.cols} / ${gameState.rows}`;
 
             let validOpponents = [];
-            if (gameState.attackerIndex !== null && gameState.defenderIndex === null) {
-                validOpponents = getNeighbors(gameState.attackerIndex);
+            if (gameState.attackerIndex !== null && gameState.defenderIndex === null) { 
+                validOpponents = getNeighbors(gameState.attackerIndex); 
             }
 
             gameState.grid.forEach((cell, idx) => {
-                const div = document.createElement('div');
-                div.className = 'floor-cell';
-                
-                if (cell.currentOwner === -1) {
-                    div.classList.add('eliminated');
-                    div.innerHTML = `<span class="cell-owner">❌</span>`;
+                const div = document.createElement('div'); div.className = 'floor-cell';
+                if (cell.eliminated || cell.currentOwner === -1) {
+                    div.classList.add('eliminated'); div.innerHTML = `<span class="cell-owner">❌</span>`;
                 } else {
                     const ownerData = gameState.grid.find(c => c.originalOwner === cell.currentOwner);
                     const isEliminated = cell.originalOwner !== cell.currentOwner;
 
-                       // Pokud žák na tomto políčku vypadl (pole je obsazené útočníkem)
                     if (isEliminated) {
                         div.innerHTML = `
-                            <!-- Původní poražený žák (přeškrtnutý a malý) -->
                             <span class="cell-owner" style="font-size: 0.8rem; opacity: 0.3; font-weight: normal; text-decoration: line-through;">${cell.initials}</span>
-                            
-                            <!-- 👑 NOVÝ MAJITEL (ÚTOČNÍK) - ZDE JSME ZVĚTŠILI PÍSMO NA 1.2rem A DALI TUČNOST -->
-                            <span class="cell-topic" style="font-size: 1.2rem; font-weight: 900; opacity: 1; color: #ffffff; text-shadow: 0 0 8px rgba(255,255,255,0.3);">👑 ${ownerData ? ownerData.initials : ''}</span>
+                            <span class="cell-topic" style="font-size: 1.2rem; font-weight: 900; opacity: 1; color: #ffffff;">👑 ${ownerData ? ownerData.initials : ''}</span>
                         `;
-                        div.style.borderStyle = "dashed"; // Vyřazená pole mají přerušovaný okraj
+                        div.style.borderStyle = "dashed";
                     } else {
-                        // Žijící hráč - velké tučné písmo
                         div.innerHTML = `
                             <span class="cell-owner" style="font-size: 1.6rem; font-weight: 900;">${cell.initials}</span>
                             <span class="cell-topic" style="font-size: 0.75rem; color: #cbd5e1;">${ownerData ? ownerData.topic : ''}</span>
                         `;
                         div.style.borderStyle = "solid";
                     }
-                    
-                    // Obarvení podlahy podle AKTUÁLNÍHO majitele (území se spojují)
                     const colorIdx = cell.currentOwner % PLAYER_COLORS.length;
                     div.style.backgroundColor = PLAYER_COLORS[colorIdx];
-                    div.style.borderColor = isEliminated ? "rgba(255, 255, 255, 0.1)" : "rgba(255, 255, 255, 0.4)";
-                    
-                    // 🔴 Aktivní území útočníka
                     if (gameState.attackerIndex !== null && cell.currentOwner === gameState.attackerIndex) {
-                        div.classList.add('active-attacker');
-                        div.style.backgroundColor = ""; 
+                        div.classList.add('active-attacker'); div.style.backgroundColor = "";
                     }
-                    
-                    // 🔵 Platné cíle k útoku
                     if (validOpponents.includes(cell.currentOwner)) {
-                        div.classList.add('valid-target');
-                        div.style.backgroundColor = ""; 
+                        div.classList.add('valid-target'); div.style.backgroundColor = "";
                         div.onclick = () => startDuel(cell.currentOwner);
                     }
                 }
                 floorGrid.appendChild(div);
             });
         }
-        
-        // GEOGRAFICKÝ SOUSEDÉ
+
         function getNeighbors(ownerId) {
             const neighbors = new Set();
             gameState.grid.forEach((cell, idx) => {
                 if (cell.currentOwner === ownerId && !cell.eliminated) {
-                    const r = Math.floor(idx / gameState.cols);
-                    const c = idx % gameState.cols;
-                    const directions = [
-                        { r: r - 1, c: c }, { r: r + 1, c: c },
-                        { r: r, c: c - 1 }, { r: r, c: c + 1 }
-                    ];
+                    const r = Math.floor(idx / gameState.cols); const c = idx % gameState.cols;
+                    const directions = [{ r: r - 1, c: c }, { r: r + 1, c: c }, { r: r, c: c - 1 }, { r: r, c: c + 1 }];
                     directions.forEach(d => {
                         if (d.r >= 0 && d.r < gameState.rows && d.c >= 0 && d.c < gameState.cols) {
-                            const nIdx = d.r * gameState.cols + d.c;
-                            const targetCell = gameState.grid[nIdx];
-                            if (targetCell.currentOwner !== -1 && targetCell.currentOwner !== ownerId && !targetCell.eliminated) {
-                                neighbors.add(targetCell.currentOwner);
-                            }
+                            const nIdx = d.r * gameState.cols + d.c; const targetCell = gameState.grid[nIdx];
+                            if (targetCell.currentOwner !== -1 && targetCell.currentOwner !== ownerId && !targetCell.eliminated) neighbors.add(targetCell.currentOwner);
                         }
                     });
                 }
             });
             return Array.from(neighbors);
         }
-// RANDOMIZÉR
+
+        // RANDOMIZÉR
         btnRandomize.addEventListener('click', () => {
             btnPassTurn.classList.add('hidden');
-            const activeOwners = Array.from(new Set(
-                gameState.grid.filter(c => !c.eliminated && c.currentOwner !== -1).map(c => c.currentOwner)
-            ));
-
-            if (activeOwners.length <= 1) {
-                checkGameEnd();
-                return;
-            }
-
+            const activeOwners = Array.from(new Set(gameState.grid.filter(c => !c.eliminated && c.currentOwner !== -1).map(c => c.currentOwner)));
+            if (activeOwners.length <= 1) { checkGameEnd(); return; }
             const pickedOwner = activeOwners[Math.floor(Math.random() * activeOwners.length)];
-            gameState.attackerIndex = pickedOwner;
-            gameState.defenderIndex = null; // Vynulujeme starého obránce
-            
+            gameState.attackerIndex = pickedOwner; gameState.defenderIndex = null;
             const attackerData = gameState.grid.find(c => c.originalOwner === pickedOwner);
             gameStatus.innerText = `🎲 Randomizér vybral žáka [ ${attackerData.initials} ]. Vyberte souseda kliknutím na podlahu!`;
-            
-            // Ověříme, zda má vůbec koho napadnout
             if (getNeighbors(pickedOwner).length === 0) {
-                gameStatus.innerText = `Žák nemá žádné sousedy k útoku. Losujeme automaticky znovu...`;
-                gameState.attackerIndex = null;
-                // Malá pauza, aby se skript nezacyklil, a zkusíme znovu
-                setTimeout(() => btnRandomize.click(), 500);
-                return;
+                gameState.attackerIndex = null; setTimeout(() => btnRandomize.click(), 500); return;
             }
-
-            renderFloor(); // Vykreslí plochu a rovnou modře nasvítí cíle
-        });
-
-        // PŘEDÁNÍ SLOVA RANDOMIZÉRU
-        btnPassTurn.addEventListener('click', () => {
-            gameState.attackerIndex = null;
-            gameState.defenderIndex = null;
-            btnPassTurn.classList.add('hidden');
-            btnRandomize.classList.remove('hidden');
-            gameStatus.innerText = `Slovo předáno. Klikněte na Losovat vyzyvatele pro určení nového útočníka.`;
             renderFloor();
         });
-
-          // ZAHÁJENÍ DUELU (S TRVALÝM ODSTRAŇOVÁNÍM OTÁZEK)
+         // 3C: SPUŠTĚNÍ DUELU
         function startDuel(defenderId) {
             gameState.defenderIndex = defenderId;
             const attackerData = gameState.grid.find(c => c.originalOwner === gameState.attackerIndex);
             const defenderData = gameState.grid.find(c => c.originalOwner === defenderId);
-
             const activeTopic = defenderData.topic;
             duelTopicName.innerText = `Téma: ${activeTopic}`;
-            
-            p1Name.innerText = `⚔️ Útočník: ${attackerData.initials}`;
-            p2Name.innerText = `🛡️ Obránce: ${defenderData.initials}`;
+            p1Name.innerText = `⚔️ Útočník: ${attackerData.initials}`; p2Name.innerText = `🛡️ Obránce: ${defenderData.initials}`;
 
-            // Zamícháme pouze ty otázky, které v databázi ještě ZBÝVAJÍ
             const remainingQuestions = QUIZ_DATABASE[activeTopic] || [];
-            
             if (remainingQuestions.length === 0) {
-                // Pokud už v tématu nic nezbylo, vytvoříme generickou zprávu, aby hra nespadla
-                gameState.currentRoundQuestions = [{ 
-                    q: `V tomto tématu už nezbyly žádné otázky! Klikněte na jakoukoliv možnost pro pokračování.`, 
-                    optA: "A) Pokračovat", optB: "B) Pokračovat", optC: "C) Pokračovat", a: "A" 
-                }];
+                gameState.currentRoundQuestions = [{ q: "V tomto tématu již nejsou otázky!", optA: "A) Pokračovat", optB: "B) Pokračovat", optC: "C) Pokračovat", a: "A" }];
             } else {
-                // Náhodně promícháme zbývající otázky
                 gameState.currentRoundQuestions = [...remainingQuestions].sort(() => Math.random() - 0.5);
             }
+            gameState.currentQuestionIdx = 0; gameState.timers.p1 = 45.0; gameState.timers.p2 = 45.0;
+            p1Timer.innerText = "45.0"; p2Timer.innerText = "45.0";
             
-            gameState.currentQuestionIdx = 0;
-            gameState.timers.p1 = 45.0;
-            gameState.timers.p2 = 45.0;
-            p1Timer.innerText = "45.0";
-            p2Timer.innerText = "45.0";
+            gameState.activeTurnPlayer = 2; gameState.isTimeFrozen = false;
+            document.getElementById('p2-zone').classList.add('active-turn'); document.getElementById('p1-zone').classList.remove('active-turn');
+            const ind = document.getElementById('time-lock-indicator'); if (ind) { ind.innerText = "ČAS BĚŽÍ"; ind.style.backgroundColor = "var(--success)"; }
 
-            gameState.activeTurnPlayer = 2; // Začíná obránce
-            document.getElementById('p2-zone').classList.add('active-turn');
-            document.getElementById('p1-zone').classList.remove('active-turn');
-
-            duelModal.classList.remove('hidden');
-            showNextQuestion();
-            startTimerLoop();
-            // Vynulování pauzy pro nový zápas
-            gameState.isTimeFrozen = false;
-            const indicator = document.getElementById('time-lock-indicator');
-            if (indicator) { indicator.innerText = "ČAS BĚŽÍ"; indicator.style.backgroundColor = "var(--success)"; }
+            duelModal.classList.remove('hidden'); showNextQuestion(); startTimerLoop();
         }
-        
- // ZOBRAZENÍ ABC OTÁZKY S BEZPEČNOSTNÍ POJISTKOU PROTI PÁDU
+
+        // ZOBRAZENÍ ABC OTÁZKY S POJISTKOU PROTI PÁDŮM
         function showNextQuestion() {
-            // Najdeme data obránce podle jeho ID
             let defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
-            
-            // 🛡️ KLÍČOVÁ POJISTKA: Pokud data chybí, vytáhneme téma textově z modalu, aby program nespadl
             let currentTopic = "Záložní Téma";
             if (defenderData && defenderData.topic) {
                 currentTopic = defenderData.topic;
             } else {
-                // Nouzový záchranný pokus: přečteme téma z badge v HTML
                 currentTopic = duelTopicName.innerText.replace('Téma: ', '').trim();
             }
 
-            // Pokud v aktuálním duelu dojdou otázky, zkusíme načíst zbývající z databáze
             if (gameState.currentQuestionIdx >= gameState.currentRoundQuestions.length) {
                 const remaining = QUIZ_DATABASE[currentTopic] || [];
-                
                 if (remaining.length > 0) {
-                    gameState.currentRoundQuestions = [...remaining].sort(() => Math.random() - 0.5);
-                    gameState.currentQuestionIdx = 0;
+                    gameState.currentRoundQuestions = [...remaining].sort(() => Math.random() - 0.5); gameState.currentQuestionIdx = 0;
                 } else {
-                    quizQuestion.innerText = "Otázky pro toto téma byly zcela vyčerpány! Stiskněte Nevím / Přeskočit.";
-                    return;
+                    quizQuestion.innerText = "Otázky vyčerpány! Stiskněte Nevím / Přeskočit."; return;
                 }
             }
-            
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
-            
-            // ODSTRANĚNÍ OTÁZKY Z GLOBÁLNÍ DATABÁZE (Bezpečné provedení)
-            if (QUIZ_DATABASE[currentTopic]) {
+            if (QUIZ_DATABASE[currentTopic] && currentQ) {
                 const dbIndex = QUIZ_DATABASE[currentTopic].findIndex(item => item.q === currentQ.q);
-                if (dbIndex !== -1) {
-                    QUIZ_DATABASE[currentTopic].splice(dbIndex, 1);
-                }
+                if (dbIndex !== -1) QUIZ_DATABASE[currentTopic].splice(dbIndex, 1);
             }
-
-            // Bezpečné vykreslení textů na obrazovku
             if (currentQ) {
-                quizQuestion.innerText = currentQ.q;
-                btnOptA.innerText = currentQ.optA;
-                btnOptB.innerText = currentQ.optB;
-                btnOptC.innerText = currentQ.optC;
+                quizQuestion.innerText = currentQ.q; btnOptA.innerText = currentQ.optA; btnOptB.innerText = currentQ.optB; btnOptC.innerText = currentQ.optC;
             }
         }
-    
+
         // ČASOVÁ LOOP
         function startTimerLoop() {
-            clearInterval(gameState.timerInterval);
+            if (gameState.timerInterval) clearInterval(gameState.timerInterval);
             gameState.timerInterval = setInterval(() => {
                 if (gameState.activeTurnPlayer === 1) {
                     gameState.timers.p1 -= 0.1;
-                    if (gameState.timers.p1 <= 0) {
-                        gameState.timers.p1 = 0;
-                        endDuel(2); // Čas vypršel útočníkovi -> vyhrává obránce
-                    }
+                    if (gameState.timers.p1 <= 0) { gameState.timers.p1 = 0; p1Timer.innerText = "0.0"; endDuel(); }
                     p1Timer.innerText = gameState.timers.p1.toFixed(1);
                 } else {
                     gameState.timers.p2 -= 0.1;
-                    if (gameState.timers.p2 <= 0) {
-                        gameState.timers.p2 = 0;
-                        endDuel(1); // Čas vypršel obránci -> vyhrává útočník
-                    }
+                    if (gameState.timers.p2 <= 0) { gameState.timers.p2 = 0; p2Timer.innerText = "0.0"; endDuel(); }
                     p2Timer.innerText = gameState.timers.p2.toFixed(1);
                 }
             }, 100);
         }
 
-  // KONTROLA VYBRANÉ ABC MOŽNOSTI (S ODLOŽENÍM MEZIOBRAZOVKY)
+        // KONTROLA ODPOVĚDI (S PŘEDÁVACÍ PAUZOU)
         function selectABC(letter) {
             if (gameState.isClickLocked) return;
             gameState.isClickLocked = true;
-            
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
             
             if (letter === currentQ.a) {
-                // 🛑 OKAMŽITÉ ZASTAVENÍ ČASU - Čas zamrzne na desetinu přesně
-                clearInterval(gameState.timerInterval);
-                gameState.timerInterval = null; 
-                
-                // Spustíme dlouhé táhlé tóny (trvají cca 0.4s)
+                clearInterval(gameState.timerInterval); gameState.timerInterval = null;
                 AudioEngine.play('correct');
-                
-                // Přepnutí hráče a indexu otázky v pozadí
-                gameState.currentQuestionIdx++;
-                gameState.activeTurnPlayer = gameState.activeTurnPlayer === 1 ? 2 : 1;
-                
+                gameState.currentQuestionIdx++; gameState.activeTurnPlayer = gameState.activeTurnPlayer === 1 ? 2 : 1;
                 const nextPlayerId = (gameState.activeTurnPlayer === 1) ? gameState.attackerIndex : gameState.defenderIndex;
                 const nextPlayerCell = gameState.grid.find(c => c.originalOwner === nextPlayerId);
-                const nextPlayerName = nextPlayerCell ? nextPlayerCell.initials : "Soupeř";
-
-                // ⏳ KLÍČOVÁ OPRAVA: Meziobrazovka vyskočí až po 1450 milisekundách (až dozní zvuk)
+                
                 setTimeout(() => {
                     document.getElementById('overlay-title').innerText = "🤝 PŘEDEJTE MYŠ!";
-                    document.getElementById('overlay-subtitle').innerText = `Na řadě je: ${nextPlayerName}`;
+                    document.getElementById('overlay-subtitle').innerText = `Na řadě je: ${nextPlayerCell ? nextPlayerCell.initials : 'Soupeř'}`;
                     document.getElementById('game-overlay').classList.remove('hidden');
-                }, 1450);
-                
-               } else {
-                // 🔴 ŠPATNĚ -> Zvuk bzučáku a dynamická penalizace
-                AudioEngine.play('wrong');
-                quizQuestion.style.color = "var(--danger)";
-                
-                // 🧠 URČENÍ DÉLKY PENALIZACE (Pokud je čas vypnutý klávesou T, trest je -8s, jinak -3s)
-                const penaltySeconds = gameState.isTimeFrozen ? 8 : 3;
-                
-                if (gameState.activeTurnPlayer === 1) {
-                    gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penaltySeconds);
-                    p1Timer.innerText = gameState.timers.p1.toFixed(1);
-                } else {
-                    gameState.timers.p2 = Math.max(0, gameState.timers.p2 - 45); // ošetření pod nulu
-                    gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penaltySeconds);
-                    p2Timer.innerText = gameState.timers.p2.toFixed(1);
-                }
-                
+                }, 450);
+            } else {
+                AudioEngine.play('wrong'); quizQuestion.style.color = "var(--danger)";
+                const penalty = gameState.isTimeFrozen ? 8 : 3;
+                if (gameState.activeTurnPlayer === 1) { gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penalty); p1Timer.innerText = gameState.timers.p1.toFixed(1); }
+                else { gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penalty); p2Timer.innerText = gameState.timers.p2.toFixed(1); }
                 gameState.currentQuestionIdx++;
-                
-                // Kontrola, zda hráči okamžitě nedošel čas kvůli vysoké penalizaci
-                if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) {
-                    endDuel();
-                    return;
-                }
-                
-                setTimeout(() => {
-                    quizQuestion.style.color = "var(--text-light)";
-                    showNextQuestion();
-                    gameState.isClickLocked = false;
-                }, 1400);
+                if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) { endDuel(); return; }
+                setTimeout(() => { quizQuestion.style.color = "var(--text-light)"; showNextQuestion(); gameState.isClickLocked = false; }, 400);
             }
-        
-  // TLAČÍTKO PRO NÁVRAT DO HRY PO PŘEDÁNÍ MYŠI
-        document.getElementById('btn-overlay-continue').addEventListener('click', () => {
-            document.getElementById('game-overlay').classList.add('hidden');
-            
-            if (!duelModal.classList.contains('hidden')) {
-                const z1 = document.getElementById('p1-zone');
-                const z2 = document.getElementById('p2-zone');
-                
-                if (gameState.activeTurnPlayer === 1) {
-                    z1.classList.add('active-turn');
-                    z2.classList.remove('active-turn');
-                } else {
-                    z2.classList.add('active-turn');
-                    z1.classList.remove('active-turn');
-                }
-                
-                showNextQuestion();
-                startTimerLoop();
-                
-                // 🔥 Odemkneme klikání až v momentě, kdy nový hráč potvrdil, že má myš v ruce!
-                gameState.isClickLocked = false; 
-            }
-        });
-      
+        }
+
         btnOptA.addEventListener('click', () => selectABC('A'));
         btnOptB.addEventListener('click', () => selectABC('B'));
         btnOptC.addEventListener('click', () => selectABC('C'));
- 
-        // PŘESKOČENÍ (TREST -3s NEBO -8s S POJISTKOU PROTI SPAMOVÁNÍ)
+
         btnQuizPass.addEventListener('click', () => {
-            if (gameState.isClickLocked) return;
-            gameState.isClickLocked = true;
-            
+            if (gameState.isClickLocked) return; gameState.isClickLocked = true;
             AudioEngine.play('wrong');
-            
-            // 🧠 URČENÍ DÉLKY PENALIZACE
-            const penaltySeconds = gameState.isTimeFrozen ? 8 : 3;
-            
-            if (gameState.activeTurnPlayer === 1) {
-                gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penaltySeconds);
-                p1Timer.innerText = gameState.timers.p1.toFixed(1);
-            } else {
-                gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penaltySeconds);
-                p2Timer.innerText = gameState.timers.p2.toFixed(1);
-            }
-            
+            const penalty = gameState.isTimeFrozen ? 8 : 3;
+            if (gameState.activeTurnPlayer === 1) { gameState.timers.p1 = Math.max(0, gameState.timers.p1 - penalty); p1Timer.innerText = gameState.timers.p1.toFixed(1); }
+            else { gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penalty); p2Timer.innerText = gameState.timers.p2.toFixed(1); }
             gameState.currentQuestionIdx++;
-            
-            if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) {
-                endDuel();
-                return;
-            }
-            
-            setTimeout(() => {
-                showNextQuestion();
-                gameState.isClickLocked = false;
-            }, 1400);
+            if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) { endDuel(); return; }
+            setTimeout(() => { showNextQuestion(); gameState.isClickLocked = false; }, 400);
         });
-        // UKONČENÍ DUELU (ČISTÁ INDEXACE PRO TI PÁDŮM)
-        function endDuel(winnerSide) {
-            clearInterval(gameState.timerInterval);
-            gameState.timerInterval = null;
-            duelModal.classList.add('hidden');
-
-            let winnerId = gameState.attackerIndex;
-            let loserId = gameState.defenderIndex;
-
-            if (gameState.timers.p1 <= 0) {
-                winnerId = gameState.defenderIndex;
-                loserId = gameState.attackerIndex;
-            } else if (gameState.timers.p2 <= 0) {
-                winnerId = gameState.attackerIndex;
-                loserId = gameState.defenderIndex;
-            }
+          // 3D: UKONČENÍ DUELU
+        function endDuel() {
+            clearInterval(gameState.timerInterval); gameState.timerInterval = null; duelModal.classList.add('hidden');
+            let winnerId = gameState.attackerIndex; let loserId = gameState.defenderIndex;
+            if (gameState.timers.p1 <= 0) { winnerId = gameState.defenderIndex; loserId = gameState.attackerIndex; }
+            else if (gameState.timers.p2 <= 0) { winnerId = gameState.attackerIndex; loserId = gameState.defenderIndex; }
 
             const winnerData = gameState.grid.find(c => c.originalOwner === winnerId);
             const loserData = gameState.grid.find(c => c.originalOwner === loserId);
 
-            // Územní posun: Vítěz přebírá vlastnictví (currentOwner)
-            gameState.grid.forEach(cell => {
-                if (cell.currentOwner === loserId && cell.currentOwner !== -1) {
-                    cell.currentOwner = winnerId;
-                }
-            });
-
+            gameState.grid.forEach(cell => { if (cell.currentOwner === loserId && cell.currentOwner !== -1) cell.currentOwner = winnerId; });
             const isAttackerWinner = (winnerId === gameState.attackerIndex);
-            const titleRoleText = isAttackerWinner ? "⚔️ ÚTOČNÍK VYHRÁVÁ!" : "🛡️ OBRÁNCE SE UBRÁNIL!";
-
-            // Zobrazení velkého oznamovacího nápisu
+            
             AudioEngine.play('victory');
-            document.getElementById('overlay-title').innerText = titleRoleText;
+            document.getElementById('overlay-title').innerText = isAttackerWinner ? "⚔️ ÚTOČNÍK VYHRÁVÁ!" : "🛡️ OBRÁNCE SE UBRÁNIL!";
             document.getElementById('overlay-subtitle').innerText = `Žák [ ${winnerData.initials} ] ovládl území žáka [ ${loserData.initials} ]!`;
             document.getElementById('game-overlay').classList.remove('hidden');
 
-            gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ] a zabral jeho území.`;
-            
+            gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ].`;
             gameState.defenderIndex = null;
-
             if (checkGameEnd()) return;
 
-            if (isAttackerWinner) {
-                btnRandomize.classList.add('hidden');
-                btnPassTurn.classList.remove('hidden');
-            } else {
-                gameState.attackerIndex = null;
-                btnPassTurn.classList.add('hidden');
-                btnRandomize.classList.remove('hidden');
-                gameStatus.innerText += ` Obránce se úspěšně ubránil. Vylosujte nového vyzyvatele.`;
-            }
-            
+            if (isAttackerWinner) { btnRandomize.classList.add('hidden'); btnPassTurn.classList.remove('hidden'); }
+            else { gameState.attackerIndex = null; btnPassTurn.classList.add('hidden'); btnRandomize.classList.remove('hidden'); }
             renderFloor();
-        }        
-        
-       function checkGameEnd() {
-    // Spočítáme unikátní vlastníky, kteří na podlaze ještě drží nějaké území
-    const activeOwners = Array.from(new Set(
-        gameState.grid.filter(c => c.currentOwner !== -1).map(c => c.currentOwner)
-    ));
+        }
 
-    // Pokud zbývá už jen 1 jediný vlastník všech polí, máme vítěze!
-    if (activeOwners.length === 1) {
-        const absoluteWinner = gameState.grid.find(c => c.originalOwner === activeOwners[0]);
-        gameStatus.innerHTML = `🏆🏆 <strong>KONEC HRY! Žák [ ${absoluteWinner.initials} ] ovládl celou podlahu!</strong> 🏆🏆`;
-        btnRandomize.classList.add('hidden');
-        btnPassTurn.classList.add('hidden');
-        renderFloor();
-        return true;
-    }
-    return false;
-}
-   // ⌨️ OVLÁDÁNÍ ČASU KLÁVESAMI T A R
+        document.getElementById('btn-overlay-continue').addEventListener('click', () => {
+            document.getElementById('game-overlay').classList.add('hidden');
+            if (!duelModal.classList.contains('hidden')) {
+                showNextQuestion(); if (!gameState.isTimeFrozen) startTimerLoop();
+                gameState.isClickLocked = false;
+            }
+        });
+
+        btnPassTurn.addEventListener('click', () => {
+            gameState.attackerIndex = null; btnPassTurn.classList.add('hidden'); btnRandomize.classList.remove('hidden'); renderFloor();
+        });
+
+        function checkGameEnd() {
+            const activeOwners = Array.from(new Set(gameState.grid.filter(c => !c.eliminated && c.currentOwner !== -1).map(c => c.currentOwner)));
+            if (activeOwners.length === 1) {
+                const absoluteWinner = gameState.grid.find(c => c.originalOwner === activeOwners[0]);
+                gameStatus.innerHTML = `🏆🏆 <strong>KONEC HRY! Žák [ ${absoluteWinner.initials} ] ovládl celou podlahu!</strong> 🏆🏆`;
+                btnRandomize.classList.add('hidden'); btnPassTurn.classList.add('hidden'); renderFloor(); return true;
+            }
+            return false;
+        }
+
+        // OVLÁDÁNÍ KLÁVESAMI T A R
         window.addEventListener('keydown', (event) => {
-            // Reagujeme pouze v případě, že je otevřený herní duel (modal není skrytý)
             if (duelModal.classList.contains('hidden')) return;
-
             const indicator = document.getElementById('time-lock-indicator');
-
             if (event.key.toLowerCase() === 't') {
-                // ⏸️ STOP ČAS (T)
                 if (!gameState.isTimeFrozen) {
-                    gameState.isTimeFrozen = true;
-                    clearInterval(gameState.timerInterval);
-                    gameState.timerInterval = null;
-                    
-                    if (indicator) {
-                        indicator.innerText = "PAUZA (T)";
-                        indicator.style.backgroundColor = "var(--danger)";
-                    }
+                    gameState.isTimeFrozen = true; clearInterval(gameState.timerInterval); gameState.timerInterval = null;
+                    if (indicator) { indicator.innerText = "PAUZA (T)"; indicator.style.backgroundColor = "var(--danger)"; }
                 }
             } else if (event.key.toLowerCase() === 'r') {
-                // ▶️ START ČAS (R)
                 if (gameState.isTimeFrozen) {
                     gameState.isTimeFrozen = false;
-                    
-                    if (indicator) {
-                        indicator.innerText = "ČAS BĚŽÍ";
-                        indicator.style.backgroundColor = "var(--success)";
-                    }
-                    // Znovu nahodíme odpočet
+                    if (indicator) { indicator.innerText = "ČAS BĚŽÍ"; indicator.style.backgroundColor = "var(--success)"; }
                     startTimerLoop();
                 }
             }
-        });  
-     }
+        });
     </script>
 </body>
 </html>
+
+
+
+
+    
