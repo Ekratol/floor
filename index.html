@@ -63,7 +63,7 @@
         .status-box { background: #1e293b; padding: 12px; border-radius: 8px; text-align: center; font-weight: bold; border: 1px dashed var(--primary); margin-top: 10px; }
 
         .floor-wrapper { background: #020617; padding: 20px; border-radius: 16px; display: flex; justify-content: center; align-items: center; }
-        .floor-grid { display: grid; gap: 8px; width: 100%; max-width: 700px; aspect-ratio: 4/3; }
+        .floor-grid { display: grid; gap: 8px; width: 100%; max-width: 550px; }
         .floor-cell {
             background-color: var(--floor-cell); border: 2px solid #475569; border-radius: 6px;
             display: flex; flex-direction: column; justify-content: center; align-items: center;
@@ -464,6 +464,7 @@
             floorGrid.innerHTML = '';
             floorGrid.style.gridTemplateColumns = `repeat(${gameState.cols}, 1fr)`;
             floorGrid.style.gridTemplateRows = `repeat(${gameState.rows}, 1fr)`;
+            floorGrid.style.aspectRatio = `${gameState.cols} / ${gameState.rows}`;
 
             let validOpponents = [];
             if (gameState.attackerIndex !== null && gameState.defenderIndex === null) {
