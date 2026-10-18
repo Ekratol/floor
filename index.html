@@ -628,19 +628,29 @@
             showNextQuestion();
             startTimerLoop();
         }
-
-    // ZOBRAZENÍ ABC OTÁZKY A JEJÍ ODSTRANĚNÍ Z DATABÁZE
+        
+ // ZOBRAZENÍ ABC OTÁZKY S BEZPEČNOSTNÍ POJISTKOU PROTI PÁDU
         function showNextQuestion() {
-            // Pokud v aktuálním duelu dojdou otázky, zkusíme se podívat, zda v databázi ještě něco nezbylo
+            // Najdeme data obránce podle jeho ID
+            let defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
+            
+            // 🛡️ KLÍČOVÁ POJISTKA: Pokud data chybí, vytáhneme téma textově z modalu, aby program nespadl
+            let currentTopic = "Záložní Téma";
+            if (defenderData && defenderData.topic) {
+                currentTopic = defenderData.topic;
+            } else {
+                // Nouzový záchranný pokus: přečteme téma z badge v HTML
+                currentTopic = duelTopicName.innerText.replace('Téma: ', '').trim();
+            }
+
+            // Pokud v aktuálním duelu dojdou otázky, zkusíme načíst zbývající z databáze
             if (gameState.currentQuestionIdx >= gameState.currentRoundQuestions.length) {
-                const defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
-                const remaining = QUIZ_DATABASE[defenderData.topic] || [];
+                const remaining = QUIZ_DATABASE[currentTopic] || [];
                 
                 if (remaining.length > 0) {
                     gameState.currentRoundQuestions = [...remaining].sort(() => Math.random() - 0.5);
                     gameState.currentQuestionIdx = 0;
                 } else {
-                    // Nouzový řádek, pokud otázky došly úplně
                     quizQuestion.innerText = "Otázky pro toto téma byly zcela vyčerpány! Stiskněte Nevím / Přeskočit.";
                     return;
                 }
@@ -648,25 +658,23 @@
             
             const currentQ = gameState.currentRoundQuestions[gameState.currentQuestionIdx];
             
-            // --- KLÍČOVÝ KROK: ODSTRANĚNÍ OTÁZKY Z GLOBÁLNÍ DATABÁZE ---
-            const defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
-            if (QUIZ_DATABASE[defenderData.topic]) {
-                // Najdeme index této konkrétní otázky v naší hlavní databázi
-                const dbIndex = QUIZ_DATABASE[defenderData.topic].findIndex(item => item.q === currentQ.q);
+            // ODSTRANĚNÍ OTÁZKY Z GLOBÁLNÍ DATABÁZE (Bezpečné provedení)
+            if (QUIZ_DATABASE[currentTopic]) {
+                const dbIndex = QUIZ_DATABASE[currentTopic].findIndex(item => item.q === currentQ.q);
                 if (dbIndex !== -1) {
-                    // Smažeme ji, aby ji už žádný jiný hráč v budoucnu nedostal
-                    QUIZ_DATABASE[defenderData.topic].splice(dbIndex, 1);
+                    QUIZ_DATABASE[currentTopic].splice(dbIndex, 1);
                 }
             }
-            // ----------------------------------------------------------
 
-            // Vykreslení otázky na obrazovku
-            quizQuestion.innerText = currentQ.q;
-            btnOptA.innerText = currentQ.optA;
-            btnOptB.innerText = currentQ.optB;
-            btnOptC.innerText = currentQ.optC;
+            // Bezpečné vykreslení textů na obrazovku
+            if (currentQ) {
+                quizQuestion.innerText = currentQ.q;
+                btnOptA.innerText = currentQ.optA;
+                btnOptB.innerText = currentQ.optB;
+                btnOptC.innerText = currentQ.optC;
+            }
         }
-
+    
         // ČASOVÁ LOOP
         function startTimerLoop() {
             clearInterval(gameState.timerInterval);
@@ -792,9 +800,11 @@
                 gameState.isClickLocked = false; // 🔓 Odemknout
             }, 1400);
         });
-             
+        
+        // UKONČENÍ DUELU (ČISTÁ INDEXACE PRO TI PÁDŮM)
         function endDuel(winnerSide) {
             clearInterval(gameState.timerInterval);
+            gameState.timerInterval = null;
             duelModal.classList.add('hidden');
 
             let winnerId = gameState.attackerIndex;
@@ -811,29 +821,28 @@
             const winnerData = gameState.grid.find(c => c.originalOwner === winnerId);
             const loserData = gameState.grid.find(c => c.originalOwner === loserId);
 
-            // Územní posun na pozadí
+            // Územní posun: Vítěz přebírá vlastnictví (currentOwner)
             gameState.grid.forEach(cell => {
-                if (cell.currentOwner === loserId) {
+                if (cell.currentOwner === loserId && cell.currentOwner !== -1) {
                     cell.currentOwner = winnerId;
                 }
             });
 
-            // Určení role pro text nápisu
             const isAttackerWinner = (winnerId === gameState.attackerIndex);
             const titleRoleText = isAttackerWinner ? "⚔️ ÚTOČNÍK VYHRÁVÁ!" : "🛡️ OBRÁNCE SE UBRÁNIL!";
 
-            // 🏆 SPUŠTĚNÍ VÍTĚZNÉHO OZNÁMENÍ (Zamezí prokliknutí na mapu)
+            // Zobrazení velkého oznamovacího nápisu
             AudioEngine.play('victory');
             document.getElementById('overlay-title').innerText = titleRoleText;
             document.getElementById('overlay-subtitle').innerText = `Žák [ ${winnerData.initials} ] ovládl území žáka [ ${loserData.initials} ]!`;
             document.getElementById('game-overlay').classList.remove('hidden');
 
             gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ] a zabral jeho území.`;
+            
             gameState.defenderIndex = null;
 
             if (checkGameEnd()) return;
 
-            // Vyhodnocení stavu herní plochy
             if (isAttackerWinner) {
                 btnRandomize.classList.add('hidden');
                 btnPassTurn.classList.remove('hidden');
@@ -844,9 +853,8 @@
                 gameStatus.innerText += ` Obránce se úspěšně ubránil. Vylosujte nového vyzyvatele.`;
             }
             
-            // Mapu překreslíme rovnou na pozadí, ale uživatel ji plně uvidí až po zavření overlay nápisu
             renderFloor();
-        }
+        }        
         
        function checkGameEnd() {
     // Spočítáme unikátní vlastníky, kteří na podlaze ještě drží nějaké území
