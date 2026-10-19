@@ -403,6 +403,7 @@
             }
             renderFloor();
         });
+        
          // 3C: SPUŠTĚNÍ DUELU
         function startDuel(defenderId) {
             gameState.defenderIndex = defenderId;
@@ -418,6 +419,7 @@
             } else {
                 gameState.currentRoundQuestions = [...remainingQuestions].sort(() => Math.random() - 0.5);
             }
+            // Zde máš správně nastaveno tvých nových 30 sekund!
             gameState.currentQuestionIdx = 0; gameState.timers.p1 = 30.0; gameState.timers.p2 = 30.0;
             p1Timer.innerText = "30.0"; p2Timer.innerText = "30.0";
             
@@ -428,15 +430,20 @@
                 else { ind.innerText = "ČAS BĚŽÍ"; ind.style.backgroundColor = "var(--success)"; }
             }
 
-            duelModal.classList.remove('hidden'); showNextQuestion(); 
-            if (!gameState.isTimeFrozen) startTimerLoop();
+            duelModal.classList.remove('hidden'); 
+            
+            // 🔥 OPRAVENO: Pouze ukážeme otázku (která si sama čas zastaví).
+            // Příkaz pro okamžitý startTimerLoop() odsud kompletně vyhazujeme!
+            showNextQuestion(); 
         }
-
-          // ZOBRAZENÍ ABC OTÁZKY (S 3VTEŘINOVÝM ZÁMRZEM ČASU I TLAČÍTEK)
+        
+        // ZOBRAZENÍ ABC OTÁZKY (S ABSOLUTNÍM ZASTAVENÍM ČASU I TLAČÍTEK NA 3 VTEŘINY)
         function showNextQuestion() {
-            // 🛑 OKAMŽITĚ ZASTAVÍME ODPOČÍTÁVÁNÍ ČASU pro čtení otázky
-            clearInterval(gameState.timerInterval);
-            gameState.timerInterval = null;
+            // 🛑 ABSOLUTNÍ ZASTAVENÍ ČASU - Vymažeme interval a vynulujeme ho, aby nemohl běžet na pozadí
+            if (gameState.timerInterval) {
+                clearInterval(gameState.timerInterval);
+                gameState.timerInterval = null;
+            }
 
             let defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
             let currentTopic = "Záložní Téma";
@@ -483,6 +490,7 @@
                 const originalText = currentQ.q;
                 quizQuestion.innerHTML = `${originalText}<br><span style="color:var(--warning); font-size:1rem; font-weight:bold;">⏱️ Čtení zadání... (Odemčení za ${secondsLeft}s)</span>`;
                 
+                // Vytvoříme odpočítávací interval pro pauzu čtení
                 const countdownInterval = setInterval(() => {
                     secondsLeft--;
                     if (secondsLeft > 0) {
@@ -491,7 +499,7 @@
                         clearInterval(countdownInterval);
                         quizQuestion.innerText = originalText;
                         
-                        // 🔓 ODEMČENÍ TLAČÍTEK
+                        // 🔓 ODEMČENÍ TLAČÍTEK PRO KLIKÁNÍ
                         buttons.forEach(btn => {
                             btn.disabled = false;
                             btn.style.opacity = "1";
@@ -499,14 +507,13 @@
                         });
                         gameState.isClickLocked = false;
 
-                        // ▶️ ODMRAZENÍ ČASU: Časovač se rozběhne jen tehdy, pokud rozhodčí nezmrazil čas klávesou T
+                        // ▶️ TEPY TEĎ ODMRAZÍME A ODSTARTUJEME ČAS (pokud není zapnutá celková pauza klávesou T)
                         if (!gameState.isTimeFrozen) {
                             startTimerLoop();
                         }
                     }
                 }, 1000);
             }
-        }
         
         // ČASOVÁ LOOP
         function startTimerLoop() {
