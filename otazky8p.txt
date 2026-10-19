@@ -1,0 +1,373 @@
+#Etologie
+
+Která věda se zabývá studiem chování živočichů, jeho vývojem a významem pro přežití?;Ekologie;Etologie;Anatomie;B
+Který rakouský vědec je považován za zakladatele moderní etologie a získal Nobelovu cenu za výzkum chování zvířat?;Charles Darwin;Konrad Lorenz;Ivan Petrovič Pavlov;B
+Jak označujeme chování, které má živočich zakódované v genetické informaci od narození a nemusí se ho učit?;Naučené chování;Vrozené chování;Získané chování;B
+Jak se nazývá vrozená reakce organismu (např. ucuknutí ruky před horkým předmětem nebo stažení zornice před světlem)?;Instinkt;Reflex;Vtištění;B
+Co je to instinkt u živočichů?;Složitý vrozený řetězec chování, který pomáhá přežít (např. stavba hnízda);Schopnost mluvit lidskou řečí;Chování, které zvíře okopíruje od člověka;A
+Jak se nazývá vnitřní stav živočicha (např. hlad, strach nebo touha po rozmnožování), který spouští určité chování?;Klíčový podnět;Motivace (pud);Zvykání;B
+Jak označujeme podnět z okolí (např. silný zvuk nebo silueta dravce), který okamžitě vyvolá vrozenou reakci zvířete?;Klíčový (spouštěcí) podnět;Vnitřní napětí;Zkušenost;A
+Jak označujeme chování, které zvíře získá během svého života na základě zkušeností a učení?;Vrozené chování;Získané (naučené) chování;Instinktivní chování;B
+Jak se nazývá nejjednodušší forma učení, kdy zvíře přestane reagovat na podněty, které pro něj nejsou nebezpečné ani užitečné (např. strašák na poli)?;Zvykání (habituace);Vtištění;Podmiňování;A
+Který typ učení objevil I. P. Pavlov, když zjistil, že psi začnou slinit už při zazvonění zvonku, který doprovázel krmení?;Nepodmíněný reflex;Podmíněný reflex (klasické podmiňování);Vtištění;B
+Jak se nazývá proces, kdy si mládě těsně po vylíhnutí či narození nesmazatelně zapamatuje podobu svého prvního rodiče (nebo objektu, který vidí)?;Zvykání;Vtištění (imprinting);Vhled;B
+Který typ pokročilého učení se projevuje u šimpanzů, kteří dokáží spojit bedny a klacek, aby dosáhli na vysoko pověšený banán?;Vhled (pochopení situace);Zvykání;Napodobování;A
+Když mladý pták odposlouchává zpěv starších jedinců a učí se podle nich zpívat, o jaký typ učení se jedná?;Vtištění;Napodobování (učením nápodobou);Reflex;B
+Může se získané (naučené) chování přenášet geneticky na další generace (z rodičů na potomky)?;Ano, děti umí hned od narození vše, co rodiče;Ne, naučené chování musí každý jedinec získat během svého života znovu;Přenáší se pouze v zimě;B
+Jak se nazývá dorozumívání mezi živočichy pomocí pachů, zvuků, postojů nebo doteků?;Etologie;Biokomunikace;Hierarchie;B
+Které chemické látky vylučují živočichové do okolí, aby jimi označili své území nebo přilákali partnera?;Hormony;Feromony;Enzymy;B
+Jaký typ komunikace používá pes, když vrčí, cení zuby a má naježenou srst na hřbetě?;Chemickou komunikaci;Vizuální (optickou) a akustickou komunikaci;Dotekovou komunikaci;B
+Který hmyz je známý tím, že ostatním členům v úlu sděluje směr a vzdálenost k potravě pomocí složitého „tance“?;Mravenci;Včely medonosné;Komáři;B
+Jak se nazývá uspořádání a určení pozic (nadřazenosti a podřízenosti) ve zvířecí skupině (např. ve vlčí smečce)?;Teritorialita;Hierarchie (společenský žebříček);Vtištění;B
+Který jedinec stojí na samotném vrcholu hierarchie ve vlčí smečce a vede celou skupinu?;Alfa jedinec;Beta jedinec;Omega jedinec;A
+Jak označujeme zvíře, které je v hierarchii skupiny na posledním místě a ostatní ho často odhánějí od potravy?;Alfa jedinec;Gama jedinec;Omega jedinec;C
+Jak se nazývá chování, při kterém si zvíře obhajuje své území (teritorium) před ostatními jedinci stejného druhu?;Teritoriální chování;Komfortní chování;Agonistické chování;A
+Jak se nazývá chování, které souvisí s vyhledáváním potravy, jejím lovem a konzumací?;Rozmnožovací chování;Potravní chování;Obranné chování;B
+Které chování zahrnuje péči o tělo, jako je čištění srsti, koupání v prachu nebo protahování těla?;Potravní chování;Komfortní chování;Teritoriální chování;B
+Jak se nazývá chování, při kterém se zvíře snaží zastrašit soupeře, utéct před ním nebo s ním bojovat?;Agonistické chování (chování při střetech);Komfortní chování;Hravé chování;A
+Která fáze rozmnožovacího chování zahrnuje dvoření se samici, svatební tance ptáků nebo barevné předvádění?;Péče o potomstvo;Tok (námluvy);Porod;B
+Jak se nazývá chování, kdy dospělá zvířata krmí, zahřívají a chrání svá mláďata před dravci?;Tok;Péče o potomstvo (rodičovské chování);Potravní chování;B
+U které skupiny obratlovců se setkáváme s nejvíce rozvinutým a nejsložitějším rodičovským chováním?;U ryb;U ptáků a savců;U obojživelníků;B
+Které chování je typické pro mláďata savců a ptáků, nemá okamžitý praktický účel, ale slouží k procvičování dovedností a svalů?;Hravé chování (hry zvířat);Obranné chování;Komfortní chování;A
+Jak se nazývá vrozené chování, kdy živočich v případě nebezpečí „hraje mrtvého“, aby ztratil atraktivitu pro dravce (např. užovka nebo vačice)?;Akrece;Thanatóza (předstírání smrti);Agonismus;B
+Jak reaguje většina zvířat jako první, když spatří nebezpečí na velkou vzdálenost?;Okamžitě útočí na dravce;Útěkem do bezpečí nebo znehybněním (maskováním);Upadne do spánku;B
+Jak se nazývá pravidelné přemisťování zvířat na velké vzdálenosti za potravou nebo kvůli rozmnožování (např. odlet vlaštovek na jih)?;Teritorialita;Migrace (tahy zvířat);Učení;B
+Které zvíře používá k orientaci a lovu v naprosté tmě echolokaci (vysílání ultrazvukových vln, které se odrážejí od překážek)?;Netopýr;Kapr;Srnka;A
+Kteří mořští savci jsou kromě netopýrů známí používáním dokonalé echolokace pod vodní hladinou?;Delfíni a velryby;Žraloci;Mořské želvy;A
+Podle čeho se orientují tažní ptáci při svých dlouhých nočních přeletech do Afriky?;Podle lidských silnic;Podle hvězd, polohy Slunce a magnetického pole Země;Podle vůně květin;B
+Jak označujeme zvířata, která jsou aktivní především v noci a mají k tomu přizpůsobené velké oči a sluch (např. sovy)?;Denní živočichové;Noční živočichové;Zimní živočichové;B
+Co provádějí etologové, když v přírodě sedí v krytu a zapisují si každý krok a projev zkoumaného zvířete?;Experiment;Pozorování (monitoring);Přírodopisný diktát;B
+Jak se nazývá etologický pokus, při kterém vědci záměrně změní podmínky v prostředí zvířete, aby sledovali jeho reakci?;Pozorování;Experiment (pokus);Anatomická pitva;B
+Když kukačka obecná naklade své vejce do hnízda cizích ptáků a nechá je se o mládě starat, o jaký typ chování se jedná?;Péče o potomstvo;Hnízdní parazitismus;Komfortní chování;B
+Jak se projevuje vtištění u housat, která po vylíhnutí uviděla jako prvního etologa Konrada Lorenze?;Začala ho považovat za svou matku a všude ho následovala;Ignorovala ho;Pokusila se ho sežrat;A
+Proč pes po příchodu na novou zahradu očůrává rohy a stromy?;Čistí si tělo;Značkuje si své teritorium (chemická komunikace);Hledá vodu;B
+Když kočka domácí přede, když ji hladíte na klíně, do jakého chování to řadíme?;Agonistické chování;Komfortní a sociální chování;Obranné chování;B
+Co dělají mravenci, když narazí na bohatý zdroj cukru, aby na místo přivedli ostatní dělnice?;Hlasitě křičí;Zanechávají na zemi pachovou stopu (feromony);Odnesou zdroj na zádech sami;B
+Jak se nazývá chování syslů, kteří při spatření káněte začnou hlasitě pískat, čímž varují ostatní, ale sami na sebe upozorní?;Sobecké chování;Altruistické (nesobecké) chování;Potravní chování;B
+Které chování předvádí jelen v lese během podzimu, když hlasitě troubí a bojuje s ostatními samci o harém samic?;Tok a soupeření (rozmnožovací chování);Zimní spánek;Komfortní čištění srsti;A
+Proč se křeček v zajetí neustále snaží hrabat v rohu plastové klece, i když tam není žádná hlína?;Je to naučený zvyk od majitele;Je to silné vrozené instinktivní chování (potřeba hrabat nory);Snaží se klec rozbít;B
+Když vlk ve smečce v boji prohrává, otočí se na záda a ukáže vítězi své nechráněné hrdlo. Co tím dává najevo?;Zve soupeře k dalšímu kolu boje;Je to gesto podřízenosti, které u vítěze zablokuje útok;Chce si hrát;B
+Jak se nazývá vnitřní biologický budík zvířat, který jim říká, kdy je čas spát, kdy lovit a kdy se rozmnožovat?;Biologické rytmy (např. cirkadiánní rytmus);Vtištění;Plovací měchýř;A
+Proč mladí lvi v africké savaně tak často zápasí a skáčou jeden na druhého, aniž by si ublížili?;Chtějí se navzájem zabít;Trénují hrou lovecké a bojové dovednosti pro dospělost;Nemají dostatek potravy;B
+Jak pomáhá etologie lidem v praktickém životě?;Pomáhá nám lépe porozumět domácím zvířatům, chovat je v dobrých podmínkách a chránit ohrožené druhy;Učí nás, jak zvířata naučit mluvit;Pomáhá nám předpovídat zatmění Měsíce;A
+
+#Původ a vývoj člověka
+
+Do kterého řádu savců patří člověk spolu s opicemi a lidoopy?;Šelmy;Hlodavci;Primáti;C
+Která věda se zabývá studiem původu, vývoje a tělesných vlastností člověka?;Etologie;Antropologie;Petrologie;B
+Která skupina žijících lidoopů je člověku geneticky nejbližší (shodujeme se s nimi v cca 98 % DNA)?;Šimpanz;Gorila;Orangutan;A
+Na kterém kontinentu začal podle vědeckých objevů prapůvodní vývoj lidského rodu?;V Evropě;V Africe;V Americe;B
+Jak se nazývá vývojová větev, která zahrnuje člověka a všechny jeho přímé vymřelé předky po oddělení od společných předků s lidoopy?;Hominini (hominidé);Primáti;Savci;A
+Patří člověk mezi tvory s tzv. bipedální lokomocí? Co to znamená?;Ano, znamená to, že se pohybuje vzpřímeně po dvou končetinách;Ne, znamená to, že létá;Ano, znamená to, že žije pod vodou;A
+Jaký tvar získala páteř člověka v průběhu vývoje, aby tlumila nárazy při chůzi po dvou nohách?;Tvar dokonalé přímky;Tvar dvakrát esovitě prohnutý (S-tvar);Tvar kruhu;B
+Jak se v průběhu vývoje změnila lidská ruka ve srovnání s nohou?;Palec na noze ztratil schopnost protistojnosti, zatímco palec na ruce je dokonale protistojný a umožňuje jemný úchop;Ruka se stala delší než noha;Na ruce nám přibyly dva prsty;A
+Co se stalo s kapacitou (objemem) mozkovny v průběhu vývoje od nejstarších předků k modernímu člověku?;Zmenšovala se;Nijak se nezměnila;Výrazně se zvětšovala;C
+Která část lidského obličeje se v průběhu vývoje zmenšovala a ustupovala (přestala vystupovat dopředu)?;Čelist a zuby;Oči;Uši;A
+Který velmi starý rod z Afriky (žil před cca 4,4 miliony let) je považován za jednoho z prvních tvorů kráčejících po dvou nohách?;Ardipithecus;Homo erectus;Homo sapiens;A
+Jak se jmenuje slavný rodovec z Afriky (žil před 3 až 4 miliony let), jehož nejznámější nalezená kostra samice dostala jméno Lucy?;Australopithecus;Ramapithecus;Neandrtálec;A
+Uměl Australopithecus prokazatelně sám cíleně vyrábět složité kamenné nástroje a rozdělávat oheň?;Ano, měl moderní dílny;Ne, měl ještě malý mozek a používal jen nalezené větve či kameny;Oheň používal pouze k vaření;B
+Který druh je považován za úplně prvního zástupce našeho vlastního rodu Homo (člověk)?;Homo erectus (člověk vzpřímený);Homo habilis (člověk zručný);Homo sapiens (člověk rozumný);B
+Proč dostal Homo habilis své druhové jméno „zručný“?;Protože uměl rychle běhat;Protože jako první začal záměrně vyrábět jednoduché kamenné nástroje (sekáče);Protože uměl šít šaty;B
+Který lidský předek jako první opustil Afriku a rozšířil se do Asie a Evropy?;Homo habilis;Homo erectus (člověk vzpřímený);Australopithecus;B
+Který významný objev začal Homo erectus aktivně využívat k ochraně, teplu a úpravě potravy?;Kolo;Písmo;Oheň;C
+Jak se nazývá masivní nadočnicový val, který byl typický pro lebku Homo erectus a neandrtálců?;Kostěný oblouk nad očima;Nadočnicový oblouk;Lebeční šev;B
+Který druh člověka (poddruh) žil v Evropě a západní Asii během doby ledové, byl skvěle přizpůsoben chladu a měl robustní postavu?;Člověk zručný;Neandrtálec (Homo sapiens neanderthalensis);Australopithecus;B
+V které zemi se nachází slavné údolí Neanderthal, kde byly v roce 1856 poprvé objeveny kosti neandrtálce?;V České republice;V Německu;Ve Francii;B
+Čím se živili neandrtálci, kteří byli vynikajícími lovci mamutů a srstnatých nosorožců?;Byli to téměř výhradně masožravci (lovci velké zvěře);Živili se pouze sběrem lesních plodů;Pěstovali obilí na polích;A
+Pohřbívali neandrtálci své mrtvé, což svědčí o počátcích rituálního a abstraktního myšlení?;Ne, nechávali je v lese;Ano, archeologové našli hroby se zbytky květin a milodarů;Mrtvé házeli do řek;B
+Jak se nazývá náš vlastní vědecký druh, do kterého patří všichni lidé žijící dnes na planetě?;Homo habilis;Homo erectus;Homo sapiens (člověk rozumný);C
+Před kolika tisíci lety se v Africe objevil anatomicky moderní člověk (Homo sapiens)?;Před cca 300 000 lety;Před 5 miliony lety;Před 10 000 lety;A
+Jak se lidově i vědecky nazývá první moderní Homo sapiens v Evropě podle francouzského naleziště Crô-Magnon?;Člověk zručný;Člověk kromaňonský;Člověk pekingský;B
+Které světoznámé archeologické naleziště lovců mamutů (Homo sapiens) se nachází na jižní Moravě pod Pavlovskými vrchy?;Dolní Věstonice;Koněpruské jeskyně;Panská skála;A
+Jak se nazývá slavná soška z pálené hlíny znázorňující ženu, která byla nalezena v Dolních Věstonicích?;Věstonická venuše;Moravská madona;Kamenná Lucy;A
+V které jeskyni v Moravském krasu byla nalezena čelist neandrtálského dítěte, což dokazuje jejich přítomnost u nás?;Jeskyně Šipka;Jeskyně Kůlna;Punkevní jeskyně;B
+Které umění, kromě sošek, po sobě zanechal člověk kromaňonský v jeskyních (např. Altamira ve Španělsku nebo Lascaux ve Francii)?;Nástěnné jeskynní malby zvířat a lovu;Tištěné knihy;Fotografie;A
+Jak se odborně nazývá proces tělesných změn, kterými se předkové člověka odlišili od lidoopů (vzpřímení postavy, změna ruky a nohy)?;Hominizace (polidštění);Sapientace;Evoluce buněk;A
+Jak se odborně nazývá proces rozvoje mozku, myšlení, řeči a společenského způsobu života u rodu Homo?;Hominizace;Sapientace (moudření);Akrece;B
+Co umožnilo lidem rozvinout artikulovanou řeč k předávání složitých informací?;Změna tvaru lebky, postavení hrtanu a rozvoj řečových center v mozku;Větší počet zubů;Chůze po čtyřech;A
+Měli naši předkové v porovnání s lidoopy delší, nebo kratší období dětství?;Kratší, osamostatnili se hned po narození;Mnohem delší, což umožnilo dlouhé učení a rozvoj mozku;Období dětství bylo stejné;B
+Jaký význam mělo pro lidský rod sdružování se do větších skupin (tlup, kmenů)?;Skupiny usnadňovaly lov velké zvěře, obranu před dravci a výchovu dětí;Nemělo to žádný význam;Skupiny lidem škodily;A
+Jsou všechny současné lidské rasy (bílá, černá, žlutá) součástí jednoho jediného biologického druhu Homo sapiens?;Ne, každá rasa je jiný biologický druh;Ano, všichni lidé na Zemi patří do jednoho společného druhu;Patří sem pouze bílá rasa;B
+Jak se nazývá kožní barvivo, které chrání lidské tělo před nebezpečným UV zářením a určuje barvu kůže?;Chlorofyl;Melanin;Hemoglobin;B
+Proč mají lidé pocházející z oblastí kolem rovníku (Afrika) přirozeně tmavou kůži?;Je to způsobeno vysokým množstvím melaninu, který je chrání před silným tropickým sluncem;Je to od sazí z ohně;Spálili se na slunci;A
+Která sféra nebo prostředí donutilo prapůvodní předky člověka v Africe sestoupit ze stromů a začít chodit po dvou nohách?;Vysychání pralesů a vznik otevřených savan (travnatých plání);Vznik obřích ledovců;Zaplavení Afriky mořem;A
+Máme dnes v naší DNA nějakou stopu po neandrtálcích, se kterými se moderní Homo sapiens v Evropě potkal a křížil?;Ne, neandrtálci zmizeli beze stopy;Ano, většina moderních lidí mimo Afriku má v sobě cca 1 až 2 % neandrtálské DNA;DNA neandrtálců byla modrá;B
+Který druh člověka jako jediný přežil do dnešních dnů a ovládl celou planetu?;Homo erectus;Homo neanderthalensis;Homo sapiens;C
+Podle čeho dostal Homo erectus své jméno?;Člověk zručný;Člověk vzpřímený;Člověk rozumný;B
+Co používali lidé kromaňonští k výrobě hrotů šípů, oštěpů a šicích jehel kromě kamene?;Mamutí klovinu, kosti a parohy;Čistý plast;Železo a bronz;A
+Jak se nazývá vědecká teorie, která říká, že moderní člověk Homo sapiens vznikl v Africe a odtud osídlil zbytek světa?;Teorie „Ven z Afriky“ (Out of Africa);Teorie multiregionální;Teorie panspermie;A
+Která lidská rasa (plemeno) byla v minulosti historicky nejvíce přizpůsobena chladnému a větrnému podnebí Asie (šikmé oči, nižší postava)?;Mongoloidní (žlutá);Negroidní (černá);Europoidní (bílá);A
+Jak se nazývají pozůstatky nebo stopy činnosti dávných lidí, které archeologové vykopávají ze země?;Fosilie a artefakty;Minerály;Geody;A
+Dokáže moderní člověk měnit své životní prostředí silou svých technologií a rozumu?;Ne, člověk se prostředí jen pasivně přizpůsobuje;Ano, lidstvo má dnes obrovský vliv na celou biosféru;Člověk žije mimo přírodu;B
+Která kostra v lidském těle prodělala největší změny kvůli chůzi po dvou (pánev získala miskovitý tvar pro nesení orgánů)?;Pánevní kost;Lebka;Kůstky v uchu;A
+Který typ palce na lidské ruce umožnil lidem psát, šít a vyrábět jemné nástroje?;Nohy;Protistojný palec;Malíček;B
+Proč se lidé v pravěku začali oblékat do zvířecích kůží?;Chtěli vypadat jako zvířata;Byl to projev módy;Chránilo je to před chladem při osídlování chladnějších oblastí Evropy;C
+Jak se nazývá období v historii lidstva, kdy Homo sapiens přešel od lovu a sběru k zemědělství a chovu zvířat (neolitická revoluce)?;Průmyslová revoluce;Zemědělská revoluce;Doba ledová;B
+
+#Lidské rasy
+
+Patří všechny lidské rasy (plemena) do jednoho společného biologického druhu?;Ne, každá rasa je jiný biologický druh;Ano, všichni lidé na Zemi patří do druhu Homo sapiens;Rasy se vědecky neřadí mezi lidi;B
+Mohou se lidé různých ras mezi sebou plodně křížit a mít zdravé potomky?;Ano, bez jakéhokoliv omezení;Ne, biologicky to není možné;Pouze pokud žijí na stejném kontinentu;A
+Jaká je přibližná shoda v DNA mezi dvěma lidmi různých ras na planetě?;Méně než 50 %;Přibližně 75 %;Více než 99,9 %;C
+Která věda zkoumá biologickou rozmanitost člověka, jeho původ, vývoj a rasy?;Etologie;Fyzická antropologie;Petrologie;B
+Na kterém kontinentu vznikl moderní člověk (Homo sapiens) a odtud osídlil ostatní části světa?;V Evropě;V Asii;V Africe;C
+Jak se nazývají vnější tělesné znaky, podle kterých se historicky rasy rozlišovaly (např. barva kůže, tvar vlasů, tvar očí)?;Anatomické znaky;Antropologické (plemenné) znaky;Genetické vrypy;B
+Co je hlavním důvodem, proč u lidí v různých částech světa vznikly odlišné tělesné znaky?;Dlouhodobé přizpůsobování se (adaptace) odlišnému podnebí a slunečnímu záření;Rozdílná strava;Náhoda;A
+Jak moderní věda (genetika) pohlíží na pojem „rasa“ u člověka?;Považuje ho za přísně oddělené biologické škatulky;Považuje ho za překonaný, protože lidské znaky do sebe plynule přecházejí a genetické rozdíly uvnitř jedné skupiny jsou větší než mezi skupinami;Považuje ho za nejdůležitější znak člověka;B
+Jak se odborně nazývá plynulý přechod tělesných znaků (např. barvy kůže) v geografickém prostoru bez ostrých hranic?;Evoluce;Klinální variace (klin);Akrece;B
+Co dokazuje, že lidstvo tvoří jednu velkou rodinu?;Společný původ v Africe a schopnost neomezeného míšení a předávání genetické informace;Rozdílná barva očí;To, že všichni mluvíme stejným jazykem;A
+Které kožní barvivo (pigment) v lidské pokožce primárně určuje barvu kůže, vlasů a očí?;Chlorofyl;Melanin;Hemoglobin;B
+Jakou hlavní funkci má melanin v lidském těle?;Chrání hlubší vrstvy kůže před nebezpečným ultrafialovým (UV) zářením ze Slunce;Pomáhá lidem dýchat;Udržuje tělo v chladu;A
+Proč mají lidé z oblastí kolem rovníku (např. střední Afrika) přirozeně velmi tmavou kůži?;Mají v kůži vysoké množství melaninu, který je chrání před spálením a rakovinou kůže ze silného slunce;Spálili se od ohně;Je to způsobeno pitím znečištěné vody;A
+Proč se u lidí v severských oblastech (např. severní Evropa) vyvinula světlá kůže?;Aby lépe odrážela sníh;Světlá kůže propouští více slabého slunečního světla, což je nezbytné pro tvorbu vitamínu D v těle;Je to projev nemoci;B
+Který důležitý vitamín si lidské tělo vyrábí v kůži za pomoci slunečního záření a lidé se světlou kůží ho v severských oblastech snáze získají?;Vitamín A;Vitamín C;Vitamín D;C
+Co se stane s produkcí melaninu v kůži světlého člověka, když v létě leží na slunci?;Sníží se na nulu;Zvýší se, což se navenek projeví jako opálení kůže;Kůže zmodrá;B
+Jak se nazývá vrozená genetická porucha, při které tělo nedokáže vyrábět melanin, takže člověk má bílou kůži, bílé vlasy a červenavé oči?;Daltonismus;Albinismus;Hemofilie;B
+Které tři hlavní antropologické skupiny (rasy) se v historii tradičně rozlišovaly?;Evropská, Africká, Asijská;Europoidní, negroidní, mongoloidní;Severská, jižní, západní;B
+Jak se jinak odborně nazývá europoidní rasa?;Bílá rasa;Černá rasa;Žlutá rasa;A
+Které znaky byly typické pro europoidní rasu díky přizpůsobení se mírnému a chladnějšímu pásmu?;Úzký vystupující nos, světlejší kůže, vlnité až rovné vlasy a bohaté ochlupení;Šikmé oči a velmi tmavá kůže;Široký plochý nos a kudrnaté vlasy;A
+Kam až geograficky sahala původní oblast osídlení europoidní rasy před velkými zámořskými objevy?;Pouze do České republiky;Do Evropy, severní Afriky, na Blízký východ a do Indie;Pouze do Ameriky;B
+Jak se jinak odborně nazývá negroidní rasa?;Žlutá rasa;Bílá rasa;Černá rasa;C
+Které znaky jsou typické pro negroidní rasu jako adaptace na horké tropické podnebí?;Široký nos, silné rty, kudrnaté vlasy (chrání hlavu před přehřátím) a tmavá kůže;Modré oči a blonďaté vlasy;Úzké šikmé oči;A
+Jak se jinak odborně nazývá mongoloidní rasa?;Bílá rasa;Žluto-hnědá rasa;Modrá rasa;B
+Které znaky jsou typické pro mongoloidní rasu, která se původně vyvíjela v drsném a větrném podnebí střední Asie?;Velmi vysoká postava;Šikmé oči s kožní řasou (epikanthus), rovné černé vlasy, plochý obličej a méně tělesného ochlupení;Kudrnaté vlasy a modré oči;B
+Jakou funkci měla u mongoloidní rasy kožní řasa nad okem (epikanthus)?;Pomáhá lidem lépe vidět ve tmě;Chránila oko před silným větrem, prachem a oslňujícím odrazem slunce od sněhu či písku;Nemá žádnou funkci;B
+Kam všude se v pravěku rozšířila mongoloidní rasa z Asie přes zamrzlou Beringovu úžinu?;Do Austrálie;Do Ameriky (původní indiáni patří biologicky k mongoloidní rase);Nikam jiným se nerozšířila;B
+Kam biologicky řadíme původní obyvatele Austrálie (Aboridžince)?;Do samostatné skupiny (australoidní), která sdílí některé znaky s negroidní rasou, ale má svá specifika;Mezi europoidní rasu;Mezi Evropany;A
+Jak se obecně nazývají lidé, kteří vznikli zkřížením (míšením) příslušníků různých ras?;Míšenci;Mutanti;Kloni;A
+Jak se odborně nazývá míšenec europoidní (bílé) a negroidní (černé) rasy?;Mulat;Mestik;Zambo;A
+Jak se odborně nazývá míšenec europoidní (bílé) a mongoloidní (žluté/indiánské) rasy?;Mulat;Mestik;Zambo;B
+Jak se odborně nazývá míšenec mongoloidní (indiánské) a negroidní (černé) rasy?;Mestik;Zambo;Mulat;B
+Ve které části světa (na kterém kontinentu) je dnes největší podíl míšenců (např. mestiků a mulatů) kvůli historickému stěhování národů?;V Asii;V Latinské (Jižní a Střední) Americe;V Africe;B
+Existují dnes na světě naprosto čisté rasy, které by se v historii nikdy nesmísily s jinými lidmi?;Ano, většina lidí je stoprocentně čistá;Ne, lidstvo se v historii neustále stěhovalo a mísilo, proto má každý v sobě namíchané geny z různých koutů světa;Čistí jsou pouze lidé v Evropě;B
+Ovlivňuje barva kůže nebo příslušnost k nějaké rase přirozenou inteligenci člověka?;Ano, bílá rasa je nejchytřejší;Ne, inteligence závisí na výchově, vzdělání a osobních předpokladech, nikoliv na rase;Ano, mongoloidní rasa neumí přemýšlet;B
+Jak se nazývá nevědecký a nebezpečný názor, který tvrdí, že některé lidské rasy jsou nadřazené a jiné méněcenné?;Etologie;Rasismus;Ekologie;B
+Jak se projevuje rasismus ve společnosti?;Přírodovědným zkoumáním kostí;Diskriminací, utlačováním nebo nenávistí vůči lidem jiné barvy pleti či původu;Sázením stromů;B
+Co bylo v historii (např. během druhé světové války) důsledkem rasistických teorií?;Mírová spolupráce;Masové vyhlazování lidí (holocaust) a utrpení milionů nevinných;Rozvoj vědy;B
+Jaký je rozdíl mezi pojmem „rasa“ (biologické znaky) a „národ“ (společenská skupina)?;Žádný, je to stejné slovo;Rasa je dána biologicky a podnebím, národ spojuje společný jazyk, historie, kultura a území;Národ je určen barvou kůže;B
+Může jeden národ (např. Američané) zahrnovat lidi různých biologických ras?;Ne, v jednom národě smí být jen jedna rasa;Ano, národnost je věc kultury a státu, nikoliv barvy kůže;Pouze v případě, že mluví latinsky;B
+Proč mají lidé žijící ve vysokých nadmořských výškách (např. v Tibetu) odlišné genetické vlastnosti krve?;Jsou nemocní;Jejich tělo se adaptovalo na prostředí s nízkým obsahem kyslíku v horách, takže jejich krev efektivněji přenáší kyslík;Obarvili si krev od slunce;B
+Jak se nazývá mezinárodní dokument chránící práva všech lidí bez rozdílu rasy a pleti?;Všeobecná deklarace lidských práv;Mohsova stupnice tvrdosti;Pravidla českého pravopisu;A
+Proč mají lidé v tropických oblastech často širší nosní otvory?;Pomáhá to rychleji ochlazovat a odvádět teplý a vlhký vzduch z těla;Aby lépe slyšeli;Širší nos slouží k lovu;A
+Proč mají lidé v chladných a suchých oblastech (např. na Sibiři) často užší a delší nos?;Úzký nos pomáhá vdechovaný studený vzduch lépe zahřát a zvlhčit, než se dostane do plic;Je to projev strachu;Aby jim do nosu nenafoukal sníh;A
+Z jakého důvodu se u lidí vyvinuly různé tvary a typy vlasů (např. kudrnaté u afrických národů)?;Kudrnaté vlasy vytvářejí vzduchovou vrstvu, která izoluje hlavu a chrání mozek před spalujícím sluncem;Byl to projev pravěké módy;Vlasy se zkroutily od horka;A
+Může se barva kůže člověka změnit během několika generací, pokud se rodina přestěhuje do jiného podnebného pásma?;Ne, genetické znaky se vyvíjely tisíce let;Ano, dítě se narodí hned s jinou barvou;Změní se pouze v zimě;A
+Která sféra Země byla klíčová pro vznik lidských ras, protože určovala intenzitu slunečního záření a teplotu v různých oblastech?;Pedosféra;Atmosféra (a její podnebné pásy podle polohy vůči Slunci);Litosféra;B
+Proč je biologická rozmanitost (pestrost) lidstva pro náš druh užitečná?;Díky ní jsme jako druh odolnější vůči různým nemocem a dokážeme žít v jakýchkoliv podmínkách na planetě;Pestrost lidem škodí;Umožňuje nám rychleji létat;A
+Jaké je hlavní poselství moderní biologie a antropologie o lidských rasách?;Lidé by se měli rozdělit a žít odděleně;Všichni lidé na Zemi jsou si biologicky rovni, tvoří jeden jediný druh a rasové předsudky jsou vědecky neopodstatněné;Některé rasy jsou lepší než jiné;B
+
+#Buňka
+
+Jak se nazývá základní stavební a funkční jednotka všech živých organismů?;Tkáň;Orgán;Buňka;C
+Které organismy mají tělo tvořené pouze jednou jedinou buňkou, která zastává všechny životní funkce?;Mnohobuněčné;Jednobuněčné;Bezbuněčné;B
+Které organismy mají tělo složené z mnoha milionů buněk, které spolupracují (např. člověk nebo strom)?;Jednobuněčné;Mnohobuněčné;Bakterie;B
+Která věda se zabývá studiem buněk, jejich stavbou a funkcí?;Biologie;Cytologie (buněčná biologie);Histologie;B
+Jak se nazývají velmi jednoduché buňky, které nemají pravé jádro ohraničené membránou (např. bakterie)?;Eukaryotické;Prokaryotické;Živočišné;B
+Jak se nazývají složitější buňky, které mají jádro chráněné membránou (např. buňky rostlin, živočichů a hub)?;Prokaryotické;Eukaryotické;Bakteriální;B
+Který přístroj je naprosto nezbytný pro pozorování buněk, protože jsou příliš malé a lidské oko je nevidí?;Teleskop (dalekohled);Mikroskop;Seismograf;B
+Který vědec v 17. století jako první pozoroval pod jednoduchým mikroskopem komůrky v korku a nazval je „buňky“?;Robert Hooke;Louis Pasteur;Charles Darwin;A
+Co tvrdí buněčná teorie, kterou vědci vyhlásili v 19. století?;Všechna zvířata vznikla z kamenů;Všechny živé organismy jsou složeny z jedné nebo více buněk a buňky vznikají z jiných buněk;Buňky žijí pouze ve vodě;B
+Která z těchto buněk je největší a můžeme ji vidět i bez mikroskopu?;Bakterie;Ptačí vejce (např. pštrosí žloutek);Lidská červená krvinka;B
+Jak se nazývá gelovitá tekutina, která vyplňuje vnitřek buňky a nacházejí se v ní všechny organely?;Nukleoplasma;Cytoplazma;Míza;B
+Která důležitá struktura řídí veškerou činnost buňky a obsahuje genetickou informaci (DNA)?;Mitochondrie;Jádro;Vakuola;B
+Která organela slouží jako „elektrárna“ buňky, protože v ní probíhá buněčné dýchání a uvolňuje se zde energie?;Chloroplast;Mitochondrie;Golgiho aparát;B
+Která tenká vrstva obklopuje každou buňku, drží ji pohromadě a selektivně propouští látky dovnitř a ven?;Buněčná stěna;Plazmatická (buněčná) membrána;Jaderná membrána;B
+Která pevná ochranná vrstva se nachází na povrchu rostlinných buněk, ale u živočišných buněk úplně chybí?;Plazmatická membrána;Buněčná stěna;Tonoplast;B
+V kterých organelách rostlinných buněk probíhá fotosyntéza (výroba cukrů a kyslíku za pomoci světla)?;Mitochondrie;Chloroplasty;Vakuoly;B
+Jaké zelené barvivo se nachází v chloroplastech a zachycuje sluneční záření?;Karoten;Chlorofyl (listová zeleň);Melanin;B
+Která velká organela (typická pro rostliny) slouží jako zásobárna vody a buněčné šťávy?;Ribozom;Vakuola;Lysozom;B
+Jak se nazývají drobné organely (kuličky), které v buňce vyrábějí bílkoviny?;Ribozomy;Mitochondrie;Chloroplasty;A
+Jak se nazývá složitá síť membránových kanálků v buňce, která navazuje na jádro a slouží k transportu látek?;Golgiho aparát;Endoplazmatické retikulum;Cytoskeleton;B
+Která organela upravuje a balí hotové látky (např. bílkoviny) k exportu pryč z buňky?;Golgiho aparát;Ribozom;Vakuola;A
+Z jaké látky je primárně složena pevná buněčná stěna rostlin?;Z celulózy (buničiny);Z chitinu;Z tuku;A
+Z jaké látky je složena buněčná stěna hub, což je odlišuje od rostlin?;Z celulózy;Z chitinu;Z vápence;B
+Najdeme v typické živočišné buňce (např. lidské) chloroplasty?;Ano, lidé jsou zelení;Ne, živočichové neumějí fotosyntézu a chloroplasty nemají;Mají je pouze v zimě;B
+Jaký tvar mají většinou rostlinné buňky díky pevné buněčné stěně?;Pravidelný, často mnohoúhelníkový nebo krabicovitý;Stále se měnící a tekutý;Tvar dokonalé hvězdy;A
+Jaký tvar mají živočišné buňky, protože nemají pevnou buněčnou stěnu?;Jsou velmi tvrdé a hranaté;Jsou proměnlivější, kulovité nebo nepravidelné;Živočišné buňky nemají tvar;B
+Mají buňky hub (např. hřibu) chloroplasty?;Ano, houby jsou rostliny;Ne, houby neumějí fotosyntézu a živiny musí přijímat z okolí;Chloroplasty mají pouze jedovaté houby;B
+Která organela obsahuje trávicí enzymy a u živočišných buněk slouží k rozkladu odpadních látek?;Ribozom;Lysozom;Mitochondrie;B
+Jak se nazývá vnitřní buněčné lešení (kostra) z jemných vláken, které dává buňce tvar a pomáhá s pohybem organel?;Buněčná stěna;Cytoskeleton;Kortex;B
+Která buňka je jednodušší a menší?;Bakteriální buňka (prokaryotická);Rostlinná buňka (eukaryotická);Lidská nervová buňka;A
+Jak se nazývá přechod látek přes membránu z místa vyšší koncentrace do nižší bez spotřeby energie (např. kyslíku)?;Aktivní transport;Difuze;Fotosyntéza;B
+Jak se nazývá speciální typ difuze, kdy přes polopropustnou membránu prochází pouze voda?;Osmóza;Dýchání;Vylučování;A
+Co se stane s živočišnou buňkou, pokud ji vložíme do čisté destilované vody (hypotonické prostředí)?;Svrkne se;Nasaje vodu a praskne (lyze);Nezmění se;B
+Proč rostlinná buňka v čisté vodě nepraskne, i když nasaje hodně vody?;Chrání ji pevná buněčná stěna;Voda do rostlinné buňky vůbec nemůže;Rostliny nemají vakuoly;A
+Jak se nazývá chemická látka (molekula), která v buňce slouží jako okamžitá zásobní baterie a zdroj energie pro všechny děje?;DNA;ATP;Chlorofyl;B
+Který proces v buňce spotřebovává kyslík a glukózu a vzniká při něm oxid uhličitý, voda a energie?;Fotosyntéza;Buněčné dýchání;Dělení buněk;B
+Která organela v prokaryotické buňce (bakterii) úplně chybí, přestože bakterie normálně dýchá?;Ribozom;Mitochondrie;Buněčná stěna;B
+Kde je v bakteriální buňce uložena její genetická informace (DNA)?;V pravém jaderném pouzdře;Volně v cytoplazmě v podobě kruhového chromozomu;V chloroplastech;B
+Jak se nazývají malé kruhové molekuly DNA v bakteriích, které mohou obsahovat např. geny pro odolnost vůči lékům?;Ribozomy;Plazmidy;Mitochondrie;B
+Jak se nazývá základní proces, kterým z jedné mateřské buňky vznikají dvě nové buňky dceřiné?;Smršťování;Dělení buňky;Fotosyntéza;B
+Jak se nazývá běžné dělení jádra eukaryotické buňky, při kterém vznikají dvě naprosto stejné buňky s plným počtem chromozomů?;Meióza;Mitóza;Metamorfóza;B
+Jak se nazývá speciální redukční dělení, kterým v těle vznikají pohlavní buňky (vajíčka a spermie) s polovičním počtem chromozomů?;Mitóza;Meióza;Akrece;B
+Co se stane s chromozomy v jádře těsně předtím, než se buňka začne dělit?;Úplně zmizí;Zdvojnásobí se (replikují), aby každá nová buňka dostala celou kopii genetického plánu;Zčernají;B
+Kolik chromozomů obsahuje jádro každé zdravé lidské tělesné buňky?;23;46;92;B
+Kolik chromozomů obsahuje lidská spermie nebo vajíčko?;23;46;12;A
+Jak se nazývá skupina buněk, které mají stejný tvar, stavbu a vykonávají stejnou funkci v těle živočichů?;Orgán;Tkáň;Pletivo;B
+Jak se nazývá skupina buněk stejného tvaru a funkce u rostlin (např. pletivo krycí)?;Tkáň;Pletivo;Orgán;B
+Která lidská buňka je specializovaná na přenos signálů a informací, má dlouhé výběžky a neumí se po poškození snadno obnovit?;Červená krvinka;Nervová buňka (neuron);Svalová buňka;B
+Která lidská buňka ztratila během vývoje své jádro, aby měla více místa pro přenášení kyslíku?;Bílá krvinka;Červená krvinka;Kostní buňka;B
+Může nová buňka vzniknout sama od sebe z neživého bláta nebo špíny?;Ano, děje se to běžně;Ne, každá buňka musí vzniknout rozdělením z již existující živé buňky;Buňky vznikají ze slunečního svitu;B
+
+#Tkáně
+
+Jak se nazývá soubor buněk, které mají stejný tvar, stejný původ a vykonávají v těle živočichů stejnou funkci?;Orgán;Tkáň;Organismus;B
+Jakým odborným slovem označujeme soubory specializovaných buněk u rostlin (např. pletivo krycí)?;Tkáně;Pletiva;Buňkoviska;B
+Která biologická věda se zabývá podrobným zkoumáním tkání a pletiv pod mikroskopem?;Cytologie;Histologie;Antropologie;B
+Co vzniká v těle živočichů spojením několika různých druhů tkání (např. srdce nebo žaludek)?;Buňka;Orgán;Soustava orgánů;B
+Zda se buňky v jedné tkáni liší od buněk v jiné tkáni (např. kostní buňka od nervové)?;Ne, všechny buňky v těle vypadají úplně stejně;Ano, liší se svým tvarem a vnitřním uspořádáním podle toho, jakou práci dělají;Liší se pouze v zimě;B
+Jak se nazývá tkáň, která pokrývá povrch těla nebo vystýlá vnitřní dutiny orgánů?;Epitel (krycí tkáň);Pojivo;Svalová tkáň;A
+Jak jsou k sobě poskládány buňky v epitelu?;Jsou těsně vedle sebe bez mezer;Jsou daleko od sebe a plavou v tekutině;Buňky v epitelu nejsou;A
+Který epitel najdeme na povrchu naší kůže, kde má za úkol chránit tělo před zraněním a vysycháním?;Jednovrstvý epitel;Mnohovrstvý dláždicový epitel;Smyslový epitel;B
+Jak se nazývá epitel, který má na svém povrchu drobné kmitající řasinky a čistí dýchací cesty od prachu?;Řasinkový epitel;Žlázový epitel;Vstřebávací epitel;A
+Který typ epitelu (např. v žaludku nebo střevech) je specializovaný na přijímání živin do těla?;Krycí epitel;Vstřebávací epitel;Smyslový epitel;B
+Jak se nazývá epitel, jehož buňky dokážou vyrábět a vylučovat různé látky (např. pot, sliny nebo hormony)?;Žlázový epitel;Smyslový epitel;Krycí epitel;A
+Který epitel (např. v oku nebo v uchu) obsahuje buňky citlivé na vnější podněty, jako je světlo nebo zvuk?;Vstřebávací epitel;Smyslový epitel;Řasinkový epitel;B
+Jaká je hlavní funkce pojivových tkání v těle?;Řízení myšlení a paměti;Spájení, opora orgánů a vyplňování prostorů mezi nimi;Vylučování potu;B
+Čím jsou pojivové tkáně výjimečné, na rozdíl od epitelů?;Obsahují velké množství mezibuněčné hmoty, ve které buňky leží;Nemají žádné buňky;Jsou tekuté jako voda;A
+Které měkké a pružné pojivo tvoří šlachy (spojení svalů s kostmi) a vazy mezi kostmi?;Chrupavka;Vazivo;Kost;B
+Do kterého typu vaziva patří buňky, které si v těle ukládají tukové zásoby jako zdroj energie a tepelnou izolaci?;Tukové vazivo;Kostní tkáň;Řasinkový epitel;A
+Které pevné a pružné pojivo kryje konce kostí v kloubech, tvoří nosní přepážku nebo ušní boltec?;Vazivo;Chrupavka;Kost;B
+Mají chrupavky v dospělosti hustou síť krevních cév, proto se po zranění tak špatně a pomalu hojí?;Ano, teče z nich hodně krve;Ne, chrupavka neobsahuje cévy a živiny do ní pronikají pomalu z okolí;Cévy mají pouze chrupavky dětí;B
+Která tkáň je nejtvrdším pojivem v těle a tvoří celou kostru člověka?;Vazivo;Kostní tkáň;Chrupavka;B
+Které dvě hlavní látky dělají kostní tkáň pevnou a zároveň pružnou?;Voda a vzduch;Minerální látky (vápník, fosfor) a organická látka ossein;Čisté zlato a jíl;B
+Co se stane s kostmi staršího člověka, když v nich ubývá organická hmota a vápník?;Jsou pružnější;Stávají se křehkými a snáze se lámou (řídnutí kostí);Promění se v chrupavku;B
+Proč řadíme krev mezi tekuté pojivové tkáně?;Protože její buňky (krvinky) plavou v tekuté mezibuněčné hmotě (krevní plazmě);Protože krev neteče;Krev není tkáň;A
+Jakou jedinečnou schopnost mají buňky svalové tkáně, což umožňuje veškerý pohyb těla a orgánů?;Dokážou se smršťovat (zkracovat) a natahovat;Dokážou vyrábět vápník;Dokážou svítit;A
+Které bílkovinné vlákna uvnitř svalových buněk zajišťují jejich smršťování?;Melanin a keratin;Aktin a myosin;Hemoglobin a chlorofyl;B
+Která svalová tkáň tvoří kosterní svaly (např. biceps), její buňky mají pod mikroskopem pruhy a můžeme ji ovládat vůlí?;Hladká svalová tkáň;Příčně pruhovaná (kosterní) svalová tkáň;Srdeční svalová tkáň;B
+Která svalová tkáň tvoří stěny vnitřních orgánů (např. žaludku, střev nebo cév), pracuje pomalu a neovládáme ji vůlí?;Hladká svalová tkáň;Kosterní svalová tkáň;Srdeční svalová tkáň;A
+Která sféra nebo tkáň pracuje neúnavně po celý život, má stavbu podobnou kosternímu svalu, ale pracuje automaticky bez naší vůle?;Hladký sval;Srdeční svalová tkáň (myokard);Bílá tkáň;B
+Můžeme silou své vůle (myšlenkou) okamžitě zastavit práci hladkých svalů ve svých střevech?;Ano, běžně to děláme;Ne, tyto svaly pracují nezávisle na našem vědomí;Hladké svaly pracují jen v noci;B
+Jaká je hlavní úloha nervové tkáně v těle?;Přenášení kyslíku;Tvorba a přenos nervových vzruchů (signálů) a řízení těla;Ukládání tuku;B
+Jak se nazývá hlavní specializovaná nervová buňka s dlouhými výběžky?;Neuron;Nefronie;Edafon;A
+Jak se nazývají menší pomocné buňky v nervové tkáni, které neuron chrání, vyživují a čistí jeho okolí?;Krvinky;Gliové buňky (glie);Svalová vlákna;B
+Jak se nazývá místo (spojení), kde si dva neurony mezi sebou předávají signály pomocí chemických látek?;Kloaka;Synapse;Mžurka;B
+Obnovuje se nervová tkáň v mozku po těžkém zranění stejně rychle a snadno jako kůže?;Ano, mozek zahojí škrábanec za dva dny;Ne, neurony mají velmi omezenou schopnost dělení a obnovy;Nervová tkáň se neobnovuje vůbec;B
+Jak se nazývají pletiva, jejichž buňky se neustále dělí a umožňují tak růst rostliny do výšky i šířky?;Trvalá pletiva;Dělivá pletiva (meristémy);Zásobní pletiva;B
+Které pletivo pokrývá povrch rostliny (např. pokožka listu s průduchy) a chrání ji před okolím?;Krycí pletivo;Vodivé pletivo;Základní pletivo;A
+Která pletiva tvoří v rostlině dlouhé trubičky (cévy) a rozvádějí vodu s minerály od kořenů nahoru a cukry z listů dolů?;Zásobní pletiva;Vodivá pletiva (cévní svazky);Krycí pletiva;B
+Jak se nazývá část cévního svazku (dřevo), která vede vodu a minerální látky z kořenů směrem nahoru do listů?;Xylém (dřevní část);Floém (lýková část);Pokožka;A
+Jak se nazývá část cévního svazku (lýko), která vede organické živiny (cukry) vyrobené fotosyntézou z listů do kořenů?;Xylém;Floém (lýková část);Mastek;B
+Která pletiva tvoří vnitřek rostlinných orgánů a slouží např. k fotosyntéze nebo ukládání zásobního škrobu?;Krycí pletiva;Základní pletiva;Dělivá pletiva;B
+Do které tkáně patří lidské vlasy, chlupy a nehty, které vznikají z rohovějících buněk kůže?;Do pojivové tkáně;Do epitelové tkáně (deriváty kůže);Do svalové tkáně;B
+Která tkáň tvoří největší podíl hmotnosti lidského těla u sportovců?;Nervová tkáň;Příčně pruhovaná svalová tkáň;Tukové vazivo;B
+Co se stane se svalovou tkání, pokud člověk dlouhodobě necvičí a jen leží na lůžku?;Svaly se zvětší;Svalové buňky slábnou a tkáň ubývá (atrofie);Svaly se promění v kost;B
+Která tkáň nám umožňuje cítit bolest, chlad nebo teplo, když se dotkneme horkých kamen?;Svalová tkáň;Nervová tkáň spojená se smyslovým epitelem;Kostní tkáň;B
+Který orgán lidského těla obsahuje nejvíce nervové tkáně?;Žaludek;Mozek;Ledviny;B
+Zda se buňky kostní tkáně v těle neustále obnovují a přestavují, nebo zůstávají od dětství úplně stejné?;Zůstávají stejné;Neustále se přestavují a obnovují pomocí speciálních buněk podle toho, jak kosti zatěžujeme;Kostní buňky žijí jen jeden rok;B
+Proč je pro správný vývoj kostní tkáně u dětí důležitý pohyb a strava bohatá na vápník a vitamín D?;Aby kosti byly silné, pevné a správně rostly;Pohyb kosti barví na bílo;Bez vápníku by kosti změkly na sliz;A
+Jak se nazývá tekutá tkáň, která rozváží po celém těle kyslík a chrání nás před infekcemi?;Míza;Krev;Slina;B
+Která svalová tkáň má buňky spojené speciálními můstky, aby se celý orgán smrštil najednou a pumpoval krev?;Hladký sval;Srdeční svalová tkáň;Kosterní sval;B
+Která tkáň nejrychleji regeneruje (hojí se) po škrábanci nebo drobném říznutí?;Nervová tkáň;Krycí epitel kůže;Chrupavka;B
+Proč jsou tkáně a pletiva v mnohobuněčném těle tak důležité?;Umožňují dělbu práce – každá skupina buněk umí perfektně jednu věc, což zajišťuje chod složitého těla;Nemají žádný význam;Vyrábějí kameny;A
+
+#Orgánové soustavy
+
+Která soustava tvoří pevnou oporu těla, chrání vnitřní orgány a upínají se na ni svaly?;Svalová soustava;Kosterní soustava;Cévní soustava;B
+Kolik kostí přibližně tvoří kostru dospělého člověka?;Kolem 50;Kolem 206;Více než 1000;B
+Jak se nazývá pohyblivé spojení dvou nebo více kostí, které umožňuje pohyb končetin?;Šlacha;Kloub;Vaz;B
+Která soustava zajišťuje aktivní pohyb celého těla a pohyb stěn vnitřních orgánů?;Kosterní soustava;Svalová soustava;Nervová soustava;B
+Jakým pojmem označujeme pevné provazce z vaziva, kterými jsou kosterní svaly přichyceny ke kostem?;Šlachy;Klouby;Chrupavky;A
+Která orgánová soustava zajišťuje příjem potravy, její mechanické a chemické zpracování a vstřebávání živin?;Dýchací soustava;Trávicí soustava;Vylučovací soustava;B
+V které části trávicí soustavy začíná mechanické rozmělňování potravy zuby a její chemické natravování slinami?;V žaludku;V ústní dutině;V tenkém střevě;B
+Jak se nazývá svalnatý vak, ve kterém se potrava promíchává s kyselou žaludeční šťávou a rozkládají se zde bílkoviny?;Jícen;Žaludek;Tenké střevo;B
+V které části trávicí trubice dochází k hlavnímu chemickému trávení a k naprostému vstřebávání živin do krve?;V tlustém střevě;V tenkém střevě;V jícnu;B
+Který orgán je největší žlázou lidského těla, tvoří žluč pro trávení tuků a zneškodňuje jedovaté látky?;Slezina;Játra;Slinivka břišní;B
+Jaká je hlavní funkce tlustého střeva v lidském těle?;Vstřebávání vody a minerálních látek a zahušťování nestrávených zbytků na stolici;Trávení masa;Vytváření žaludeční kyseliny;A
+Která soustava zajišťuje okysličování krve a odvádění oxidu uhličitého z těla ven?;Cévní soustava;Dýchací soustava;Mízní soustava;B
+Jak se nazývají drobné plicní váčky (sklípky), na jejichž tenké stěně dochází k samotné výměně plynů mezi vzduchem a krví?;Průdušky;Plicní sklípky (alveoly);Průdušnice;B
+Který plochý sval pod plícemi je hlavním dýchacím svalem člověka a odděluje hrudní a břišní dutinu?;Mezižeberní sval;Bránice;Srdce;B
+Jak se nazývá trubice vyztužená chrupavkami, která navazuje na hrtan a vede vzduch dále do průdušek?;Jícen;Průdušnice;Hltan;B
+Který plyn z vdechnutého vzduchu buňky nutně potřebují k výrobě energie?;Oxid uhličitý;Kyslík;Dusík;B
+Která orgánová soustava pohání a rozvádí krev po celém těle, čímž přenáší kyslík, živiny i hormony?;Dýchací soustava;Cévní (oběhová) soustava;Mízní soustava;B
+Který dutý svalnatý orgán funguje jako neúnavná pumpa cévní soustavy?;Plíce;Srdce;Játra;B
+Kolik předsíní a komor má dokonale rozdělené srdce člověka?;Jednu předsíň a jednu komoru;Dvě předsíně a dvě komory;Dvě předsíně a jednu komoru;B
+Jak se nazývají cévy, které vedou krev směrem ze srdce do těla a většinou obsahují okysličenou krev?;Tepny;Žíly;Vlásečnice;A
+Jak se nazývají cévy, které sbírají krev z těla a vedou ji zpět do srdce?;Tepny;Žíly;Mízovody;B
+Která soustava odvádí z tkání přebytečnou tekutinu (mízu), obsahuje uzliny a hraje zásadní roli v obranyschopnosti (imunitě)?;Vylučovací soustava;Mízní (lymfatická) soustava;Trávicí soustava;B
+Který oválný orgán v levém podžebří filtruje krev, ničí staré červené krvinky a slouží jako zásobárna krve?;Játra;Slezina;Žaludek;B
+Která soustava očišťuje krev od odpadních látek a tvoří moč?;Trávicí soustava;Vylučovací soustava;Pohlavní soustava;B
+Které párové orgány fazolovitého tvaru filtrují krev a jsou hlavním centrem vylučovací soustavy?;Plíce;Ledviny;Močovody;B
+Jak se nazývají trubičky, kterými hotová moč odtéká z ledvin do močového měchýře?;Močovody;Močová trubice;Cévní kapiláry;A
+Která soustava (tvořená pokožkou, škárou a podkožním vazivem) chrání tělo před vnějšími vlivy a pomáhá udržovat stálou teplotu?;Kosterní soustava;Kožní soustava;Nervová soustava;B
+Jakým způsobem kůže pomáhá ochlazovat tělo, pokud je nám velké horko?;Vylučováním potu pomocí potních žláz;Růstem nehtů;Změnou barvy na modrou;A
+Která soustava přijímá podněty z okolí, bleskově je zpracovává a řídí činnost všech orgánů v těle?;Hormonální soustava;Nervová soustava;Oběhová soustava;B
+Z jakých dvou hlavních částí se skládá Centrální nervová soustava (CNS)?;Z mozku a míchy;Z nervů na rukou a na nohách;Z očí a uší;A
+Která lebeční kost chráněný orgán je hlavním řídícím centrem lidského myšlení, paměti a citů?;Mícha;Mozek;Srdce;B
+Která orgánová soustava pomáhá nervové soustavě řídit tělo, ale používá k tomu chemické látky (hormony) vylučované do krvy?;Nervová soustava;Hormonální (endokrinní) soustava;Mízní soustava;B
+Která žláza s vnitřní sekrecí (uložená na krku) ovlivňuje rychlost látkové výměny (metabolismu) a potřebuje ke své funkci jód?;Podvěsek mozkový (hypofýza);Štítná žláza;Nadledviny;B
+Přes které orgány nervová soustava získává informace o světě kolem nás (zrak, sluch, čich, chuť, hmat)?;Smyslové orgány;Trávicí orgány;Kosti;A
+Která orgánová soustava zajišťuje rozmnožování a zachování lidského druhu?;Vylučovací soustava;Pohlavní soustava;Hormonální soustava;B
+Jak se nazývají mužské pohlavní žlázy, ve kterých se tvoří spermie a pohlavní hormon testosteron?;Vaječníky;Varolata (varata);Děloha;B
+Jak se nazývají ženské pohlavní žlázy, ve kterých pravidelně dozrávají vajíčka?;Varata;Vaječníky;Vejcovody;B
+V kterém svalnatém orgánu v těle ženy dochází k úspěšnému vývoji a růstu lidského plodu (dítěte) během těhotenství?;V pochvě;V děloze;V močovém měchýři;B
+Fungují orgánové soustavy v lidském těle naprosto samostatně a bez ohledu na ostatní?;Ano, každá soustava pracuje izolovaně;Ne, všechny soustavy jsou propojené a úzce spolupracují pro udržení života;Soustavy spolupracují jen při sportu;B
+Jak se odborně nazývá stálost vnitřního prostředí organismu (např. stálá teplota, pH a množství vody), kterou soustavy udržují?;Evoluce;Homeostáza;Metamorfóza;B
+Které dvě soustavy spolupracují, když běžící člověk potřebuje rychle pohybovat nohama a jeho svaly vyžadují více kyslíku?;Svalová a dýchací soustava (spolu s cévní);Trávicí a vylučovací soustava;Kůže a nervová soustava;A
+Která soustava chrání lidské tělo před útoky nebezpečných virů, bakterií a plísní (obranná soustava)?;Pohlavní soustava;Imunitní soustava;Kosterní soustava;B
+Kam putuje kyslík z dýchací soustavy, aby ho cévní soustava mohla předat všem buňkám?;Do žaludku;Do krve (v plicních kapilárách);Do moči;B
+Která žláza s vnitřní sekrecí produkuje hormon inzulin, který pomáhá buňkám přijímat cukr z krve?;Štítná žláza;Slinivka břišní;Nadledviny;B
+Co se stane s tělem, pokud jedna z orgánových soustav vážně selže (např. selhání ledvin)?;Ostatní orgány budou pracovat lépe;Dojde k vážnému ohrožení zdraví nebo celého života organismu;Tělo si okamžitě vyrobí novou soustavu;B
+Která soustava zpracovává jídlo na drobné aminokyseliny, aby z nich svalová soustava mohla budovat svaly?;Dýchací soustava;Trávicí soustava;Nervová soustava;B
+Jak se nazývá tekutina, která koluje v cévách, přenáší teplo z jater a svalů do kůže a zahřívá nebo ochlazuje tělo?;Voda;Krev;Míza;B
+Který orgán je centrem rovnováhy a sluchu zároveň?;Oko;Ucho (vnitřní ucho);Nos;B
+Která struktura v ústní dutině pomáhá trávicí soustavě posouvat potravu a dýchací soustavě (při řeči) tvořit slova?;Zuby;Jazyk;Slinná žláza;B
+Proč je důležité udržovat všechny orgánové soustavy v dobré kondici pomocí zdravé stravy a pohybu?;Abychom měli barevnější kůži;Pro správné a zdravé fungování celého lidského těla jako jednoho celku;Není to důležité, tělo funguje samo;B
+
+#Kosterní soustava
+
+Která soustava tvoří pevnou oporu těla, chrání vnitřní orgány a upínají se na ni svaly?;Svalová soustava;Kosterní soustava;Cévní soustava;B
+Kolik kostí přibližně tvoří kostru dospělého člověka?;Kolem 50;Kolem 206;Více než 1000;B
+Jak se nazývá pohyblivé spojení dvou nebo více kostí, které umožňuje pohyb končetin?;Šlacha;Kloub;Vaz;B
+Která soustava zajišťuje aktivní pohyb celého těla a pohyb stěn vnitřních orgánů?;Kosterní soustava;Svalová soustava;Nervová soustava;B
+Jakým pojmem označujeme pevné provazce z vaziva, kterými jsou kosterní svaly přichyceny ke kostem?;Šlachy;Klouby;Chrupavky;A
+Která orgánová soustava zajišťuje příjem potravy, její mechanické a chemické zpracování a vstřebávání živin?;Dýchací soustava;Trávicí soustava;Vylučovací soustava;B
+V které části trávicí soustavy začíná mechanické rozmělňování potravy zuby a její chemické natravování slinami?;V žaludku;V ústní dutině;V tenkém střevě;B
+Jak se nazývá svalnatý vak, ve kterém se potrava promíchává s kyselou žaludeční šťávou a rozkládají se zde bílkoviny?;Jícen;Žaludek;Tenké střevo;B
+V které části trávicí trubice dochází k hlavnímu chemickému trávení a k naprostému vstřebávání živin do krve?;V tlustém střevě;V tenkém střevě;V jícnu;B
+Který orgán je největší žlázou lidského těla, tvoří žluč pro trávení tuků a zneškodňuje jedovaté látky?;Slezina;Játra;Slinivka břišní;B
+Jaká je hlavní funkce tlustého střeva v lidském těle?;Vstřebávání vody a minerálních látek a zahušťování nestrávených zbytků na stolici;Trávení masa;Vytváření žaludeční kyseliny;A
+Která soustava zajišťuje okysličování krve a odvádění oxidu uhličitého z těla ven?;Cévní soustava;Dýchací soustava;Mízní soustava;B
+Jak se nazývají drobné plicní váčky (sklípky), na jejichž tenké stěně dochází k samotné výměně plynů mezi vzduchem a krví?;Průdušky;Plicní sklípky (alveoly);Průdušnice;B
+Který plochý sval pod plícemi je hlavním dýchacím svalem člověka a odděluje hrudní a břišní dutinu?;Mezižeberní sval;Bránice;Srdce;B
+Jak se nazývá trubice vyztužená chrupavkami, která navazuje na hrtan a vede vzduch dále do průdušek?;Jícen;Průdušnice;Hltan;B
+Který plyn z vdechnutého vzduchu buňky nutně potřebují k výrobě energie?;Oxid uhličitý;Kyslík;Dusík;B
+Která orgánová soustava pohání a rozvádí krev po celém těle, čímž přenáší kyslík, živiny i hormony?;Dýchací soustava;Cévní (oběhová) soustava;Mízní soustava;B
+Který dutý svalnatý orgán funguje jako neúnavná pumpa cévní soustavy?;Plíce;Srdce;Játra;B
+Kolik předsíní a komor má dokonale rozdělené srdce člověka?;Jednu předsíň a jednu komoru;Dvě předsíně a dvě komory;Dvě předsíně a jednu komoru;B
+Jak se nazývají cévy, které vedou krev směrem ze srdce do těla a většinou obsahují okysličenou krev?;Tepny;Žíly;Vlásečnice;A
+Jak se nazývají cévy, které sbírají krev z těla a vedou ji zpět do srdce?;Tepny;Žíly;Mízovody;B
+Která soustava odvádí z tkání přebytečnou tekutinu (mízu), obsahuje uzliny a hraje zásadní roli v obranyschopnosti (imunitě)?;Vylučovací soustava;Mízní (lymfatická) soustava;Trávicí soustava;B
+Který oválný orgán v levém podžebří filtruje krev, ničí staré červené krvinky a slouží jako zásobárna krve?;Játra;Slezina;Žaludek;B
+Která soustava očišťuje krev od odpadních látek a tvoří moč?;Trávicí soustava;Vylučovací soustava;Pohlavní soustava;B
+Které párové orgány fazolovitého tvaru filtrují krev a jsou hlavním centrem vylučovací soustavy?;Plíce;Ledviny;Močovody;B
+Jak se nazývají trubičky, kterými hotová moč odtéká z ledvin do močového měchýře?;Močovody;Močová trubice;Cévní kapiláry;A
+Která soustava (tvořená pokožkou, škárou a podkožním vazivem) chrání tělo před vnějšími vlivy a pomáhá udržovat stálou teplotu?;Kosterní soustava;Kožní soustava;Nervová soustava;B
+Jakým způsobem kůže pomáhá ochlazovat tělo, pokud je nám velké horko?;Vylučováním potu pomocí potních žláz;Růstem nehtů;Změnou barvy na modrou;A
+Která soustava přijímá podněty z okolí, bleskově je zpracovává a řídí činnost všech orgánů v těle?;Hormonální soustava;Nervová soustava;Oběhová soustava;B
+Z jakých dvou hlavních částí se skládá Centrální nervová soustava (CNS)?;Z mozku a míchy;Z nervů na rukou a na nohách;Z očí a uší;A
+Která lebeční kost chráněný orgán je hlavním řídícím centrem lidského myšlení, paměti a citů?;Mícha;Mozek;Srdce;B
+Která orgánová soustava pomáhá nervové soustavě řídit tělo, ale používá k tomu chemické látky (hormony) vylučované do krvy?;Nervová soustava;Hormonální (endokrinní) soustava;Mízní soustava;B
+Která žláza s vnitřní sekrecí (uložená na krku) ovlivňuje rychlost látkové výměny (metabolismu) a potřebuje ke své funkci jód?;Podvěsek mozkový (hypofýza);Štítná žláza;Nadledviny;B
+Přes které orgány nervová soustava získává informace o světě kolem nás (zrak, sluch, čich, chuť, hmat)?;Smyslové orgány;Trávicí orgány;Kosti;A
+Která orgánová soustava zajišťuje rozmnožování a zachování lidského druhu?;Vylučovací soustava;Pohlavní soustava;Hormonální soustava;B
+Jak se nazývají mužské pohlavní žlázy, ve kterých se tvoří spermie a pohlavní hormon testosteron?;Vaječníky;Varolata (varata);Děloha;B
+Jak se nazývají ženské pohlavní žlázy, ve kterých pravidelně dozrávají vajíčka?;Varata;Vaječníky;Vejcovody;B
+V kterém svalnatém orgánu v těle ženy dochází k úspěšnému vývoji a růstu lidského plodu (dítěte) během těhotenství?;V pochvě;V děloze;V močovém měchýři;B
+Fungují orgánové soustavy v lidském těle naprosto samostatně a bez ohledu na ostatní?;Ano, každá soustava pracuje izolovaně;Ne, všechny soustavy jsou propojené a úzce spolupracují pro udržení života;Soustavy spolupracují jen při sportu;B
+Jak se odborně nazývá stálost vnitřního prostředí organismu (např. stálá teplota, pH a množství vody), kterou soustavy udržují?;Evoluce;Homeostáza;Metamorfóza;B
+Které dvě soustavy spolupracují, když běžící člověk potřebuje rychle pohybovat nohama a jeho svaly vyžadují více kyslíku?;Svalová a dýchací soustava (spolu s cévní);Trávicí a vylučovací soustava;Kůže a nervová soustava;A
+Která soustava chrání lidské tělo před útoky nebezpečných virů, bakterií a plísní (obranná soustava)?;Pohlavní soustava;Imunitní soustava;Kosterní soustava;B
+Kam putuje kyslík z dýchací soustavy, aby ho cévní soustava mohla předat všem buňkám?;Do žaludku;Do krve (v plicních kapilárách);Do moči;B
+Která žláza s vnitřní sekrecí produkuje hormon inzulin, který pomáhá buňkám přijímat cukr z krve?;Štítná žláza;Slinivka břišní;Nadledviny;B
+Co se stane s tělem, pokud jedna z orgánových soustav vážně selže (např. selhání ledvin)?;Ostatní orgány budou pracovat lépe;Dojde k vážnému ohrožení zdraví nebo celého života organismu;Tělo si okamžitě vyrobí novou soustavu;B
+Která soustava zpracovává jídlo na drobné aminokyseliny, aby z nich svalová soustava mohla budovat svaly?;Dýchací soustava;Trávicí soustava;Nervová soustava;B
+Jak se nazývá tekutina, která koluje v cévách, přenáší teplo z jater a svalů do kůže a zahřívá nebo ochlazuje tělo?;Voda;Krev;Míza;B
+Který orgán je centrem rovnováhy a sluchu zároveň?;Oko;Ucho (vnitřní ucho);Nos;B
+Která struktura v ústní dutině pomáhá trávicí soustavě posouvat potravu a dýchací soustavě (při řeči) tvořit slova?;Zuby;Jazyk;Slinná žláza;B
+Proč je důležité udržovat všechny orgánové soustavy v dobré kondici pomocí zdravé stravy a pohybu?;Abychom měli barevnější kůži;Pro správné a zdravé fungování celého lidského těla jako jednoho celku;Není to důležité, tělo funguje samo;B
+
+
+
+
