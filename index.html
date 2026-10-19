@@ -580,7 +580,7 @@
             }, 400);
         });
         
-         // 3D: UKONČENÍ DUELU
+ // 3D: UKONČENÍ DUELU (S OPRAVENÝM KONCEM ZÁVOREK)
         function endDuel() {
             clearInterval(gameState.timerInterval); gameState.timerInterval = null; duelModal.classList.add('hidden');
             let winnerId = gameState.attackerIndex; let loserId = gameState.defenderIndex;
@@ -614,8 +614,9 @@
                 if (gameState.activeTurnPlayer === 1) { z1.classList.add('active-turn'); z2.classList.remove('active-turn'); }
                 else { z2.classList.add('active-turn'); z1.classList.remove('active-turn'); }
                 
+                // 🔥 Při pokračování z meziobrazovky pouze ukážeme další otázku.
+                // Ta si sama odpočítá 3 vteřiny klidu a až pak spustí časovač.
                 showNextQuestion(); 
-                if (!gameState.isTimeFrozen) startTimerLoop();
                 gameState.isClickLocked = false;
             }
         });
@@ -627,7 +628,7 @@
         function checkGameEnd() {
             const activeOwners = Array.from(new Set(gameState.grid.filter(c => !c.eliminated && c.currentOwner !== -1).map(c => c.currentOwner)));
             if (activeOwners.length === 1) {
-                const absoluteWinner = gameState.grid.find(c => c.originalOwner === activeOwners[0]);
+                const absoluteWinner = gameState.grid.find(c => c.originalOwner === activeOwners);
                 gameStatus.innerHTML = `🏆🏆 <strong>KONEC HRY! Žák [ ${absoluteWinner.initials} ] ovládl celou podlahu!</strong> 🏆🏆`;
                 btnRandomize.classList.add('hidden'); btnPassTurn.classList.add('hidden'); renderFloor(); return true;
             }
@@ -646,7 +647,8 @@
                 if (gameState.isTimeFrozen) {
                     gameState.isTimeFrozen = false;
                     if (indicator) { indicator.innerText = "ČAS BĚŽÍ"; indicator.style.backgroundColor = "var(--success)"; }
-                    if (!duelModal.classList.contains('hidden') && document.getElementById('game-overlay').classList.contains('hidden')) {
+                    // Čas odmrazíme klávesou R pouze v případě, že neběží úvodní 3vteřinový zámek otázky
+                    if (!duelModal.classList.contains('hidden') && document.getElementById('game-overlay').classList.contains('hidden') && !gameState.isClickLocked) {
                         startTimerLoop();
                     }
                 }
@@ -655,7 +657,6 @@
     </script>
 </body>
 </html>
-
         
 
 
