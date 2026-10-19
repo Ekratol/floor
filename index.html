@@ -142,7 +142,7 @@
             <div class="duel-arena">
                 <div id="p1-zone" class="player-zone">
                     <div id="p1-name" class="p-name">Útočník</div>
-                    <div id="p1-timer" class="p-timer">45.0</div>
+                    <div id="p1-timer" class="p-timer">30.0</div>
                 </div>
                 <div class="vs-divider" style="display: flex; flex-direction: column; align-items: center; gap: 5px;">
                     <div>VS</div>
@@ -150,7 +150,7 @@
                 </div>
                 <div id="p2-zone" class="player-zone">
                     <div id="p2-name" class="p-name">Obránce</div>
-                    <div id="p2-timer" class="p-timer">45.0</div>
+                    <div id="p2-timer" class="p-timer">30.0</div>
                 </div>
             </div>
 
@@ -419,7 +419,7 @@
                 gameState.currentRoundQuestions = [...remainingQuestions].sort(() => Math.random() - 0.5);
             }
             gameState.currentQuestionIdx = 0; gameState.timers.p1 = 45.0; gameState.timers.p2 = 45.0;
-            p1Timer.innerText = "45.0"; p2Timer.innerText = "45.0";
+            p1Timer.innerText = "30.0"; p2Timer.innerText = "30.0";
             
             gameState.activeTurnPlayer = 2; gameState.isClickLocked = false;
             document.getElementById('p2-zone').classList.add('active-turn'); document.getElementById('p1-zone').classList.remove('active-turn');
