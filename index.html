@@ -180,7 +180,7 @@
             totalCells: 12, rows: 3, cols: 4, grid: [],
             attackerIndex: null, defenderIndex: null,
             currentRoundQuestions: [], currentQuestionIdx: 0,
-            activeTurnPlayer: null, timers: { p1: 45, p2: 45 },
+            activeTurnPlayer: null, timers: { p1: 30, p2: 30 },
             timerInterval: null, isClickLocked: false, isTimeFrozen: false
         };
 
@@ -418,7 +418,7 @@
             } else {
                 gameState.currentRoundQuestions = [...remainingQuestions].sort(() => Math.random() - 0.5);
             }
-            gameState.currentQuestionIdx = 0; gameState.timers.p1 = 45.0; gameState.timers.p2 = 45.0;
+            gameState.currentQuestionIdx = 0; gameState.timers.p1 = 30.0; gameState.timers.p2 = 30.0;
             p1Timer.innerText = "30.0"; p2Timer.innerText = "30.0";
             
             gameState.activeTurnPlayer = 2; gameState.isClickLocked = false;
