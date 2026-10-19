@@ -205,7 +205,7 @@
         const btnOptA = document.getElementById('btn-opt-A');
         const btnOptB = document.getElementById('btn-opt-B');
         const btnOptC = document.getElementById('btn-opt-C');
-        const btnQuizPass = document.getElementById('btn-quiz-pass');
+        const  = document.getElementById('btn-quiz-pass');
 
         // ZVUKOVÝ ENGINE (Táhlé tóny a fanfára)
         const AudioEngine = {
@@ -432,8 +432,12 @@
             if (!gameState.isTimeFrozen) startTimerLoop();
         }
 
-        // ZOBRAZENÍ ABC OTÁZKY (S POJISTKOU PŘI VYČERPÁNÍ OTÁZEK)
+          // ZOBRAZENÍ ABC OTÁZKY (S 3VTEŘINOVÝM ZÁMRZEM ČASU I TLAČÍTEK)
         function showNextQuestion() {
+            // 🛑 OKAMŽITĚ ZASTAVÍME ODPOČÍTÁVÁNÍ ČASU pro čtení otázky
+            clearInterval(gameState.timerInterval);
+            gameState.timerInterval = null;
+
             let defenderData = gameState.grid.find(c => c.originalOwner === gameState.defenderIndex);
             let currentTopic = "Záložní Téma";
             if (defenderData && defenderData.topic) { currentTopic = defenderData.topic; }
@@ -460,11 +464,50 @@
                 const dbIndex = QUIZ_DATABASE[currentTopic].findIndex(item => item.q === currentQ.q);
                 if (dbIndex !== -1) QUIZ_DATABASE[currentTopic].splice(dbIndex, 1);
             }
+            
             if (currentQ) {
                 quizQuestion.innerText = currentQ.q; btnOptA.innerText = currentQ.optA; btnOptB.innerText = currentQ.optB; btnOptC.innerText = currentQ.optC;
+                
+                // 🔒 AKTIVACE ZÁMKU KLIKÁNÍ A BLOKACE TLAČÍTEK
+                gameState.isClickLocked = true; 
+                
+                const buttons = [btnOptA, btnOptB, btnOptC, btnQuizPass];
+                buttons.forEach(btn => {
+                    btn.disabled = true;
+                    btn.style.opacity = "0.4";
+                    btn.style.cursor = "not-allowed";
+                });
+                
+                // Vizuální odpočet pauzy pro žáky
+                let secondsLeft = 3;
+                const originalText = currentQ.q;
+                quizQuestion.innerHTML = `${originalText}<br><span style="color:var(--warning); font-size:1rem; font-weight:bold;">⏱️ Čtení zadání... (Odemčení za ${secondsLeft}s)</span>`;
+                
+                const countdownInterval = setInterval(() => {
+                    secondsLeft--;
+                    if (secondsLeft > 0) {
+                        quizQuestion.innerHTML = `${originalText}<br><span style="color:var(--warning); font-size:1rem; font-weight:bold;">⏱️ Čtení zadání... (Odemčení za ${secondsLeft}s)</span>`;
+                    } else {
+                        clearInterval(countdownInterval);
+                        quizQuestion.innerText = originalText;
+                        
+                        // 🔓 ODEMČENÍ TLAČÍTEK
+                        buttons.forEach(btn => {
+                            btn.disabled = false;
+                            btn.style.opacity = "1";
+                            btn.style.cursor = "pointer";
+                        });
+                        gameState.isClickLocked = false;
+
+                        // ▶️ ODMRAZENÍ ČASU: Časovač se rozběhne jen tehdy, pokud rozhodčí nezmrazil čas klávesou T
+                        if (!gameState.isTimeFrozen) {
+                            startTimerLoop();
+                        }
+                    }
+                }, 1000);
             }
         }
-
+        
         // ČASOVÁ LOOP
         function startTimerLoop() {
             if (gameState.timerInterval) clearInterval(gameState.timerInterval);
@@ -514,7 +557,7 @@
         btnOptB.addEventListener('click', () => selectABC('B'));
         btnOptC.addEventListener('click', () => selectABC('C'));
 
-        // PŘESKOČENÍ (STEJNÝ HRÁČ DRŽÍ TAH)
+           // PŘESKOČENÍ (STEJNÝ HRÁČ DRŽÍ TAH S NÁSLEDNÝM 3VTEŘINOVÝM ZÁMKEM NOVÉ OTÁZKY)
         btnQuizPass.addEventListener('click', () => {
             if (gameState.isClickLocked) return; gameState.isClickLocked = true;
             AudioEngine.play('wrong');
@@ -523,8 +566,13 @@
             else { gameState.timers.p2 = Math.max(0, gameState.timers.p2 - penalty); p2Timer.innerText = gameState.timers.p2.toFixed(1); }
             gameState.currentQuestionIdx++;
             if (gameState.timers.p1 <= 0 || gameState.timers.p2 <= 0) { endDuel(); return; }
-            setTimeout(() => { showNextQuestion(); gameState.isClickLocked = false; }, 1400);
+            
+            // Počkáme 400ms na probliknutí červené a zavoláme showNextQuestion, která spustí nový 3s zámek
+            setTimeout(() => { 
+                showNextQuestion(); 
+            }, 400);
         });
+        
          // 3D: UKONČENÍ DUELU
         function endDuel() {
             clearInterval(gameState.timerInterval); gameState.timerInterval = null; duelModal.classList.add('hidden');
