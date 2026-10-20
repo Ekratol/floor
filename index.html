@@ -571,13 +571,17 @@
             document.getElementById('overlay-subtitle').innerText = `Žák [ ${winnerData.initials} ] ovládl území žáka [ ${loserData.initials} ]!`;
             document.getElementById('game-overlay').classList.remove('hidden');
 
-            gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ].`;
+                  gameStatus.innerText = `💥 Duel skončil! Žák [ ${winnerData.initials} ] zvítězil nad [ ${loserData.initials} ].`;
             gameState.defenderIndex = null;
+            
+            // 🔥 KLÍČOVÁ OPRAVA: Nejdříve podlahu překreslíme a přebarvíme...
+            renderFloor();
+
+            // 🏆 ...a teprve potom zkontrolujeme, zda šlo o finální souboj a hra skončila!
             if (checkGameEnd()) return;
 
             if (isAttackerWinner) { btnRandomize.classList.add('hidden'); btnPassTurn.classList.remove('hidden'); }
             else { gameState.attackerIndex = null; btnPassTurn.classList.add('hidden'); btnRandomize.classList.remove('hidden'); }
-            renderFloor();
         }
 
         document.getElementById('btn-overlay-continue').addEventListener('click', () => {
